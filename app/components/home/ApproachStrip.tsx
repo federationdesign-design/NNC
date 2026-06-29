@@ -1,30 +1,27 @@
 import Link from "next/link";
 import styles from "./ApproachStrip.module.css";
 
-const PILLARS = [
-  { label: "Trauma-aware practice" },
-  { label: "Attachment-informed care" },
-  { label: "High staffing ratios" },
-  { label: "Consistent adults" },
-  { label: "Structured routines" },
-  { label: "ASD and LD capable" },
+const NAV_LINKS = [
+  { label: "Home",      href: "/" },
+  { label: "Our Homes", href: "/homes" },
+  { label: "Team",      href: "/team" },
+  { label: "About",     href: "/about" },
+  { label: "Contact",   href: "/contact" },
+  { label: "Policies",  href: "/policies" },
 ];
 
 export default function ApproachStrip() {
   return (
-    <div className={styles.strip}>
+    <nav className={styles.strip} aria-label="Site navigation">
       <div className={styles.inner}>
-        <div className={styles.pillars}>
-          {PILLARS.map((p, i) => (
-            <span key={i} className={styles.pillar}>
-              {p.label}
-            </span>
+        <div className={styles.links}>
+          {NAV_LINKS.map((l) => (
+            <Link key={l.href} href={l.href} className={styles.link}>
+              {l.label}
+            </Link>
           ))}
         </div>
-        <Link href="/approach" className={styles.link}>
-          Our approach
-        </Link>
       </div>
-    </div>
+    </nav>
   );
 }

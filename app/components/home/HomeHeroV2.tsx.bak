@@ -15,8 +15,9 @@ const PROPERTIES: PropertyData[] = [
     beds: 2,
     type: "Children's Home",
     status: "Open",
-    summary: "A warm, structured two-bed home supporting children with emotional, behavioural and relational needs in East Kent.",
+    summary: "A warm, structured two-bed home supporting children with emotional, behavioural and relational needs.",
     image: "/homes/ivy-cottage.jpg",
+    highlight: "Placements available",
   },
   {
     slug: "holly-tree-cottage",
@@ -25,8 +26,19 @@ const PROPERTIES: PropertyData[] = [
     beds: 1,
     type: "Solo Home",
     status: "Open",
-    summary: "Operating as a solo placement for higher-complexity children who benefit from a dedicated, low-arousal environment.",
+    summary: "Operating as a solo placement for higher-complexity children where appropriate.",
     image: "/homes/holly-tree-cottage.jpg",
+    highlight: "Solo placement",
+  },
+  {
+    slug: "canterbury",
+    name: "Canterbury Home",
+    location: "Canterbury, Kent",
+    beds: 3,
+    type: "Purpose-Built",
+    status: "Proposed",
+    summary: "Proposed 3-bed purpose-built home at Pebblings, Grove Road, Preston, Kent CT3 1EE.",
+    image: "/homes/canterbury.jpg",
   },
   {
     slug: "deal",
@@ -35,7 +47,7 @@ const PROPERTIES: PropertyData[] = [
     beds: 3,
     type: "Purpose-Built",
     status: "Proposed",
-    summary: "A proposed 3-bed purpose-built home at Wallers Field, Deal - designed for stabilisation and step-down support.",
+    summary: "Proposed 3-bed purpose-built home at Wallers Field development, Deal.",
     image: "/homes/deal.jpg",
   },
 ];
@@ -65,24 +77,26 @@ export default function HomeHeroV2() {
     <>
       <div className={styles.root}>
 
-        {/* LEFT PANEL */}
+        {/* LEFT PANEL - white, fixed width, full height */}
         <aside className={styles.panel}>
-          {/* Logo - 2x bigger, centred */}
+          {/* Logo */}
           <div className={styles.logoArea}>
             <Link href="/" aria-label="Nurturing Nests home">
               <Image
                 src="/header-logo.svg"
                 alt="Nurturing Nests"
-                width={200}
-                height={110}
+                width={120}
+                height={68}
                 className={styles.logo}
                 priority
               />
             </Link>
           </div>
 
-          <p className={styles.panelHeading}>Our Homes</p>
+          {/* Homes label */}
+          <p className={styles.panelHeading}>Upcoming Homes</p>
 
+          {/* Property cards */}
           <div className={styles.cards}>
             {PROPERTIES.map((p) => (
               <PropertyRailCard
@@ -94,8 +108,9 @@ export default function HomeHeroV2() {
           </div>
         </aside>
 
-        {/* RIGHT HERO */}
+        {/* RIGHT HERO - full bleed image, text bottom-left */}
         <div className={styles.heroArea}>
+          {/* Background image */}
           <div className={styles.heroBg}>
             <Image
               src="/hero/hero-desktop.jpg"
@@ -109,22 +124,20 @@ export default function HomeHeroV2() {
             <div ref={overlayRef} className={styles.scrollOverlay} />
           </div>
 
-          {/* Hero content layout */}
+          {/* Text - anchored bottom-left like ANT */}
           <div className={styles.heroContent}>
-            {/* Subtitle top-left, max 6 words per line */}
-            <div className={styles.heroTopLeft}>
+            <div className={styles.heroText}>
               <p className={styles.heroSubtitle}>
-                Specialist residential care<br />
-                for children in Kent.<br />
-                Keeping families together.
+                Therapeutically informed, relationship-based care for children
+                and young people with complex needs. Keeping Kent children in Kent.
               </p>
+              <h1 className={styles.heroHeading}>
+                Specialist residential care in Kent
+              </h1>
             </div>
 
-            {/* H1 + CTA bottom-right */}
-            <div className={styles.heroBottomRight}>
-              <h1 className={styles.heroHeading}>
-                Specialist residential<br />care in Kent
-              </h1>
+            {/* CTA bottom-right like ANT */}
+            <div className={styles.heroCta}>
               <Link href="/homes" className={styles.ctaBtn}>
                 View homes
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"

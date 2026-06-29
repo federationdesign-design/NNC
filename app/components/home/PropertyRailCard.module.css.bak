@@ -1,11 +1,11 @@
-/* PropertyRailCard.module.css */
+/* PropertyRailCard.module.css - light version for white panel */
 
 .card {
   display: flex;
   flex-direction: row;
   gap: var(--space-3);
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
   border-radius: var(--radius-md);
   padding: var(--space-3);
   text-decoration: none;
@@ -14,63 +14,61 @@
 }
 
 .card:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.4);
+  background: var(--color-brand-light);
+  border-color: var(--color-brand);
 }
 
 .media {
   position: relative;
-  width: 90px;
-  min-width: 90px;
-  height: 72px;
+  width: 80px;
+  min-width: 80px;
+  height: 64px;
   border-radius: var(--radius-sm);
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--color-brand-light);
   flex-shrink: 0;
 }
 
-.img {
-  object-fit: cover;
-}
+.img { object-fit: cover; }
 
 .info {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
   min-width: 0;
 }
 
 .status {
   font-family: var(--font-body);
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 2px 8px;
+  padding: 2px 7px;
   border-radius: 20px;
   align-self: flex-start;
 }
 
 .statusOpen {
-  background: rgba(255, 255, 255, 0.2);
-  color: #fff;
+  background: #d1fae5;
+  color: #065f46;
 }
 
 .statusProposed {
-  background: rgba(43, 158, 212, 0.3);
-  color: #e8f5fb;
+  background: var(--color-brand-light);
+  color: var(--color-brand-dark);
 }
 
 .statusDev {
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(255,255,255,0.7);
+  background: #f3f4f6;
+  color: var(--color-muted);
 }
 
 .name {
   font-family: var(--font-display);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--color-ink);
   margin: 0;
   white-space: nowrap;
   overflow: hidden;
@@ -79,8 +77,8 @@
 
 .location {
   font-family: var(--font-body);
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.65);
+  font-size: 0.75rem;
+  color: var(--color-muted);
   margin: 0;
 }
 
@@ -98,24 +96,24 @@
 
 .specLabel {
   font-family: var(--font-body);
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.45);
+  color: var(--color-muted);
 }
 
 .specValue {
   font-family: var(--font-body);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  color: rgba(255,255,255,0.9);
+  color: var(--color-ink);
 }
 
 .highlight {
   font-family: var(--font-body);
-  font-size: 0.72rem;
-  color: var(--color-brand-light);
+  font-size: 0.7rem;
+  color: var(--color-brand);
+  font-weight: 600;
   margin: 0;
-  margin-top: 2px;
 }
