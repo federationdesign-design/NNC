@@ -201,7 +201,7 @@
   .track {
     flex: 1;
     min-width: 0;
-    max-width: calc(100vw - 420px);
+
     border-top: none;
     overflow-x: scroll;
   }
