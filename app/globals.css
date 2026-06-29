@@ -2,33 +2,72 @@
 @tailwind components;
 @tailwind utilities;
 
+/* NNC - CSS custom properties for layout mechanics and CSS Modules components */
+:root {
+  --nav-height: 56px;
+  --container: 1240px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --space-7: 80px;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+
+  --t-fast: 0.2s;
+  --t-base: 0.3s;
+  --t-slow: 0.4s;
+
+  --color-surface:     #ffffff;
+  --color-ink:         #1A1A1A;
+  --color-muted:       #5a6a7a;
+  --color-brand:       #2B9ED4;
+  --color-brand-dark:  #1f7faa;
+  --color-brand-light: #e8f5fb;
+  --color-line:        #e2e8f0;
+  --font-display:      var(--font-mali), cursive;
+  --font-body:         var(--font-mali), cursive;
+}
+
+@media (min-width: 768px)  { :root { --nav-height: 64px; } }
+@media (min-width: 1024px) { :root { --nav-height: 72px; } }
+
 @layer base {
-  /* Focus visible - visible on keyboard, invisible on mouse click */
   :focus-visible {
     outline: 2px solid theme('colors.brand.DEFAULT');
     outline-offset: 3px;
     border-radius: 2px;
   }
 
-  /* Remove default focus ring for mouse users */
   :focus:not(:focus-visible) {
     outline: none;
   }
 
-  /* Base body */
   body {
-    @apply text-text bg-surface antialiased;
+    background-color: theme('colors.surface.DEFAULT');
+    color: theme('colors.ink.DEFAULT');
+    font-family: var(--font-mali), cursive;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     font-feature-settings: 'kern' 1;
   }
 
-  /* Smooth scrolling - respects reduced motion */
   @media (prefers-reduced-motion: no-preference) {
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
   }
 
-  /* Screen reader only utility */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-mali), cursive;
+    color: var(--color-ink);
+  }
+}
+
+@layer utilities {
   .sr-only {
     position: absolute;
     width: 1px;
@@ -41,14 +80,18 @@
     border-width: 0;
   }
 
-  .focus\:not-sr-only:focus {
-    position: static;
-    width: auto;
-    height: auto;
-    padding: revert;
-    margin: revert;
-    overflow: visible;
-    clip: auto;
-    white-space: normal;
+  .site-container {
+    max-width: var(--container);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .site-container {
+    padding-left: 60px;
+    padding-right: 60px;
   }
 }

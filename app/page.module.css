@@ -1,0 +1,59 @@
+/* page.module.css - homepage */
+
+.heroPlaceholder {
+  min-height: 100dvh;
+  background: var(--color-brand-light);
+  display: flex;
+  align-items: center;
+  padding-top: var(--nav-height);
+}
+
+.heroInner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: var(--space-7) 20px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.heroHeading {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-weight: 700;
+  color: var(--color-ink);
+  line-height: 1.15;
+  max-width: 14ch;
+  margin: 0;
+}
+
+.heroSub {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.6;
+  color: var(--color-muted);
+  max-width: 46ch;
+  margin: 0;
+}
+
+.heroCta {
+  display: inline-block;
+  align-self: flex-start;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--color-brand);
+  padding: 12px 28px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: background var(--t-fast);
+}
+
+.heroCta:hover {
+  background: var(--color-brand-dark);
+}
+
+@media (min-width: 1024px) {
+  .heroInner { padding-left: 60px; padding-right: 60px; }
+}

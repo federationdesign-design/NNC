@@ -5,6 +5,8 @@ import CookieBanner from './components/cookies/CookieBanner'
 import { BUSINESS } from '../lib/business'
 import { GTM_ID } from '../lib/gtm'
 import './globals.css'
+import SiteNav from "./components/layout/SiteNav";
+import SiteFooter from "./components/layout/SiteFooter";
 
 const mali = Mali({
   subsets: ['latin'],
@@ -46,7 +48,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <header role="banner">
           </header>
           <main id="main-content" role="main">
-            {children}
+            <SiteNav />
+          <main>{children}</main>
+          <SiteFooter />
           </main>
           <footer role="contentinfo">
           </footer>

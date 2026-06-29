@@ -1,140 +1,95 @@
-import Link from 'next/link'
-import Image from 'next/image'
-import { BUSINESS } from '../../../lib/business'
+import Link from "next/link";
+import Image from "next/image";
+import styles from "./SiteFooter.module.css";
+
+const HOMES_LINKS = [
+  { label: "Ivy Cottage",        href: "/homes/ivy-cottage" },
+  { label: "Holly Tree Cottage", href: "/homes/holly-tree-cottage" },
+];
+
+const ABOUT_LINKS = [
+  { label: "Our Approach", href: "/approach" },
+  { label: "Senior Team",  href: "/team" },
+  { label: "News",         href: "/news" },
+  { label: "Contact",      href: "/contact" },
+];
+
+const LEGAL_LINKS = [
+  { label: "Privacy Policy",      href: "/privacy" },
+  { label: "Cookie Policy",       href: "/cookies" },
+  { label: "Complaints Procedure",href: "/complaints" },
+];
 
 export default function SiteFooter() {
+  const year = new Date().getFullYear();
+
   return (
-    <footer
-      style={{
-        background: '#000',
-        borderTop: '1px solid rgba(255,255,255,0.1)',
-        padding: '64px 24px 40px',
-      }}
-    >
-      <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '48px',
-            marginBottom: '64px',
-          }}
-        >
-          {/* Brand column */}
-          <div>
+    <footer className={styles.footer}>
+      <div className={styles.inner}>
+
+        <div className={styles.brand}>
+          <Link href="/" aria-label="Nurturing Nests home">
             <Image
-              src="/Adapt-Ability-Dark-Background-600x217.png"
-              alt="Adapt Ability"
-              width={130}
-              height={47}
-              style={{ marginBottom: '20px' }}
+              src="/header-logo.jpg"
+              alt="Nurturing Nests"
+              width={120}
+              height={56}
+              className={styles.logoImg}
             />
-            <p style={{ fontSize: '0.875rem', lineHeight: 1.7, opacity: 0.6, maxWidth: '260px' }}>
-              Specialists in innovative self-balancing mobility vehicles, enhancing independence for wheelchair and ambulatory users across the UK.
-            </p>
-          </div>
-
-          {/* Products */}
-          <div>
-            <p style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', opacity: 0.4, marginBottom: '16px' }}>
-              Products
-            </p>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              {[
-                { label: 'Omeo', href: '/omeo' },
-                { label: 'Hoss', href: '/hoss' },
-                { label: 'Accessories', href: '/products' },
-              ].map((l) => (
-                <li key={l.href}>
-                  <Link href={l.href} style={{ color: '#fff', textDecoration: 'none', fontSize: '0.875rem', opacity: 0.7, transition: 'opacity 0.2s' }}>
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
-            <p style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', opacity: 0.4, marginBottom: '16px' }}>
-              Company
-            </p>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              {[
-                { label: 'About us', href: '/about' },
-                { label: 'Try a vehicle', href: '/try' },
-                { label: 'Gallery', href: '/gallery' },
-                { label: 'Contact', href: '/contact' },
-                { label: 'Blog', href: '/blog' },
-              ].map((l) => (
-                <li key={l.href}>
-                  <Link href={l.href} style={{ color: '#fff', textDecoration: 'none', fontSize: '0.875rem', opacity: 0.7, transition: 'opacity 0.2s' }}>
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <p style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', opacity: 0.4, marginBottom: '16px' }}>
-              Contact
-            </p>
-            <address style={{ fontStyle: 'normal', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              <a href={`tel:${BUSINESS.telephone}`} style={{ color: '#fff', textDecoration: 'none', fontSize: '0.875rem', opacity: 0.7 }}>
-                {BUSINESS.telephoneDisplay}
-              </a>
-              <a href={`mailto:${BUSINESS.email}`} style={{ color: '#fff', textDecoration: 'none', fontSize: '0.875rem', opacity: 0.7 }}>
-                {BUSINESS.email}
-              </a>
-              <p style={{ fontSize: '0.875rem', opacity: 0.5, margin: 0, lineHeight: 1.6 }}>
-                {BUSINESS.address.street}<br />
-                {BUSINESS.address.locality}<br />
-                {BUSINESS.address.postcode}
-              </p>
-              <p style={{ fontSize: '0.8rem', opacity: 0.4, margin: 0 }}>
-                {BUSINESS.hoursDisplay}
-              </p>
-            </address>
-          </div>
+          </Link>
+          <p className={styles.strapline}>
+            Specialist residential care for children and young people in Kent.
+          </p>
+          <p className={styles.ofsted}>Registered with Ofsted</p>
         </div>
 
-        {/* Trust bar */}
-        <div
-          style={{
-            borderTop: '1px solid rgba(255,255,255,0.08)',
-            paddingTop: '32px',
-            display: 'flex',
-            flexWrap: 'wrap',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '24px',
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '32px', flexWrap: 'wrap' }}>
-            <Image src="/BHTA-TSI-Logo_Colour-L.png" alt="BHTA member" width={80} height={40} style={{ objectFit: 'contain', opacity: 0.7 }} />
-            <Image src="/Trust-Pilot-Reviews-Logo-1.png" alt="Trustpilot" width={100} height={24} style={{ objectFit: 'contain', opacity: 0.7 }} />
-          </div>
-
-          <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
-            {[
-              { label: 'Privacy policy', href: '/privacy' },
-              { label: 'Cookies', href: '/cookies' },
-              { label: 'Complaints', href: '/complaints' },
-              { label: 'Ordering & returns', href: '/ordering' },
-            ].map((l) => (
-              <Link key={l.href} href={l.href} style={{ color: '#fff', textDecoration: 'none', fontSize: '0.75rem', opacity: 0.4 }}>
-                {l.label}
-              </Link>
+        <div className={styles.col}>
+          <h3 className={styles.colHead}>Our Homes</h3>
+          <ul className={styles.colList} role="list">
+            {HOMES_LINKS.map((l) => (
+              <li key={l.href}>
+                <Link href={l.href} className={styles.colLink}>{l.label}</Link>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
 
-        <p style={{ fontSize: '0.75rem', opacity: 0.3, marginTop: '24px' }}>
-          &copy; {new Date().getFullYear()} {BUSINESS.name}. All rights reserved.
-        </p>
+        <div className={styles.col}>
+          <h3 className={styles.colHead}>About Us</h3>
+          <ul className={styles.colList} role="list">
+            {ABOUT_LINKS.map((l) => (
+              <li key={l.href}>
+                <Link href={l.href} className={styles.colLink}>{l.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className={styles.col}>
+          <h3 className={styles.colHead}>Contact</h3>
+          <address className={styles.address}>
+            <p>info@nurturingnests.co.uk</p>
+            <p>0208 345 678</p>
+          </address>
+          <p className={styles.regNote}>
+            Company No. 11223861
+          </p>
+        </div>
+
+      </div>
+
+      <div className={styles.legal}>
+        <div className={styles.legalInner}>
+          <span>&copy; {year} Nurturing Nests Ltd. All rights reserved.</span>
+          <ul className={styles.legalLinks} role="list">
+            {LEGAL_LINKS.map((l) => (
+              <li key={l.href}>
+                <Link href={l.href} className={styles.legalLink}>{l.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </footer>
-  )
+  );
 }
