@@ -41,8 +41,9 @@ const PROPERTIES: PropertyData[] = [
 ];
 
 const HERO_IMAGES = [
-  "/hero/hero-desktop.jpg",
   "/hero/image2.jpg",
+  "/hero/image2.jpg",
+
 ];
 
 const NAV_LINKS = [
@@ -181,7 +182,7 @@ export default function HomeHeroV2() {
                 {/* Ofsted Good Provider card - compact */}
                 <div className={styles.ofstedCard}>
                   <Image src="/ofsted.png" alt="Ofsted Good Provider"
-                         fill style={{ objectFit: "contain", padding: "12px" }}
+                         fill style={{ objectFit: "cover" }}
                          sizes="160px" />
                 </div>
 
