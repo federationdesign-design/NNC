@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Mali } from 'next/font/google'
 import { ConsentProvider } from './components/cookies/consent-context'
-import CookieBanner from './components/cookies/CookieBanner'
+// import CookieBanner from './components/cookies/CookieBanner'
 import { BUSINESS } from '../lib/business'
 import { GTM_ID } from '../lib/gtm'
 import './globals.css'
@@ -54,7 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </main>
           <footer role="contentinfo">
           </footer>
-          <CookieBanner />
+          {/* <CookieBanner /> */}
         </ConsentProvider>
       </body>
     </html>
