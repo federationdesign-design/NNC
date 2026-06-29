@@ -124,3 +124,55 @@
   .left { flex: 1.2; }
   .right { flex: 0.8; }
 }
+
+/* Info card - stats box */
+.infoCard {
+  background: var(--color-brand);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.infoCardStat {
+  font-family: var(--font-mali), cursive;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  line-height: 1;
+}
+
+.infoCardLabel {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.85);
+  margin: 0;
+}
+
+/* Ofsted info card */
+.ofstedInfoCard {
+  background: var(--color-brand);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.ofstedInfoText {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.85);
+  margin: 0;
+}
+
+/* Right column stacks */
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
