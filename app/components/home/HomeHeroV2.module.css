@@ -242,6 +242,7 @@
   flex-shrink: 0;
   /* explicit min-height as fallback */
   min-height: 100px;
+  height: 100%;
 }
 
 /* CTA row */
