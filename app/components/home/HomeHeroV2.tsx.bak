@@ -121,7 +121,7 @@ export default function HomeHeroV2() {
             <div className={styles.heroNavLinks}>
               {NAV_LINKS.map((l, i) => (
                 <Link key={l.href} href={l.href} className={styles.heroNavLink}
-                      style={i > 0 ? { borderLeft: "1px solid rgba(255,255,255,0.25)" } : {}}>
+>
                   {l.label}
                 </Link>
               ))}

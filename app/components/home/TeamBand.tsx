@@ -98,24 +98,6 @@ export default function TeamBand() {
         <div className={styles.track}>
           {TEAM.map((member) => (
             <div key={member.slug} className={styles.card}>
-              {/* Contact icons */}
-              <div className={styles.contactIcons}>
-                {member.email && (
-                  <a href={`mailto:${member.email}`} className={styles.iconBtn}
-                     title={`Email ${member.name}`}>
-                    <EmailIcon />
-                    <span>Email {member.name.split(" ")[0]}</span>
-                  </a>
-                )}
-                {member.linkedin && (
-                  <a href={member.linkedin} target="_blank" rel="noopener noreferrer"
-                     className={styles.iconBtn}>
-                    <LinkedInIcon />
-                    <span>LinkedIn</span>
-                  </a>
-                )}
-              </div>
-
               {/* Avatar + name/role side by side */}
               <div className={styles.identity}>
                 <div className={styles.avatar}>
@@ -125,6 +107,23 @@ export default function TeamBand() {
                 <div className={styles.identityText}>
                   <h3 className={styles.name}>{member.name}</h3>
                   <p className={styles.role}>{member.role}</p>
+                  {/* Contact icons below role */}
+                  <div className={styles.contactIcons}>
+                    {member.email && (
+                      <a href={`mailto:${member.email}`} className={styles.iconBtn}
+                         title={`Email ${member.name}`}>
+                        <EmailIcon />
+                        <span>Email {member.name.split(" ")[0]}</span>
+                      </a>
+                    )}
+                    {member.linkedin && (
+                      <a href={member.linkedin} target="_blank" rel="noopener noreferrer"
+                         className={styles.iconBtn}>
+                        <LinkedInIcon />
+                        <span>LinkedIn</span>
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
 

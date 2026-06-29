@@ -50,7 +50,7 @@
   object-fit: cover;
   object-position: center top;
   opacity: 0;
-  transition: opacity 1s ease;
+  transition: opacity 2s ease;
 }
 
 .heroBgImgActive { opacity: 1; }
@@ -189,6 +189,7 @@
 .heroBottomRow {
   display: flex;
   align-items: stretch;
+  justify-content: flex-end;
   gap: 12px;
   flex-wrap: wrap;
 }
@@ -201,9 +202,9 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  flex: 1;
-  min-width: 260px;
-  max-width: 400px;
+  width: 260px;
+  min-width: 220px;
+  max-width: 280px;
 }
 
 .whiteCardText {
@@ -234,7 +235,7 @@
   width: 160px;
   min-width: 160px;
   height: 140px;
-  background: #1e1e4a;
+  background: transparent;
   border-radius: var(--radius-lg);
   overflow: hidden;
   flex-shrink: 0;

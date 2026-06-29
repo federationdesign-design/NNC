@@ -20,7 +20,7 @@ const TEAM: TeamMember[] = [
     role: "Director",
     image: "/team/george-ball.jpg",
     slug: "george-ball",
-    bio: "Co-founder of Nurturing Nests with extensive experience in children's residential care governance and strategic development.",
+    bio: "Co-founder of Nurturing Nests with extensive experience in children's residential care governance and strategic development across Kent.",
     email: "info@nurturingnests.co.uk",
   },
   {
@@ -58,19 +58,19 @@ const TEAM: TeamMember[] = [
 ];
 
 const EmailIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect x="1" y="3" width="14" height="10" rx="1.5" stroke="currentColor" strokeWidth="1.3"/>
-    <path d="M1 5l7 5 7-5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"/>
+    <rect x="1" y="2.5" width="12" height="9" rx="1.5" stroke="currentColor" strokeWidth="1.2"/>
+    <path d="M1 4.5l6 4 6-4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
   </svg>
 );
 
 const LinkedInIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect x="1" y="1" width="14" height="14" rx="2" stroke="currentColor" strokeWidth="1.3"/>
-    <path d="M4 6.5V12M4 4.5v.01M7.5 12V9a1.5 1.5 0 013 0v3M7.5 9v3"
-          stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"/>
+    <rect x="1" y="1" width="12" height="12" rx="2" stroke="currentColor" strokeWidth="1.2"/>
+    <path d="M3.5 5.5V10.5M3.5 3.5v.5M6.5 10.5V8a1.5 1.5 0 013 0v2.5M6.5 7.5v3"
+          stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
   </svg>
 );
 
@@ -78,8 +78,7 @@ export default function TeamBand() {
   return (
     <section className={styles.section}>
       <div className={styles.inner}>
-
-        {/* Pinned left header */}
+        {/* Pinned left header - 50% wider */}
         <div className={styles.header}>
           <p className={styles.eyebrow}>The people behind the homes</p>
           <h2 className={styles.heading}>
@@ -95,45 +94,40 @@ export default function TeamBand() {
           </Link>
         </div>
 
-        {/* Full-bleed scrolling cards */}
+        {/* Scrolling cards */}
         <div className={styles.track}>
           {TEAM.map((member) => (
             <div key={member.slug} className={styles.card}>
-              {/* Contact icons top */}
+              {/* Contact icons */}
               <div className={styles.contactIcons}>
                 {member.email && (
-                  <a href={`mailto:${member.email}`}
-                     className={styles.iconBtn}
+                  <a href={`mailto:${member.email}`} className={styles.iconBtn}
                      title={`Email ${member.name}`}>
                     <EmailIcon />
                     <span>Email {member.name.split(" ")[0]}</span>
                   </a>
                 )}
                 {member.linkedin && (
-                  <a href={member.linkedin}
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     className={styles.iconBtn}
-                     title="View LinkedIn profile">
+                  <a href={member.linkedin} target="_blank" rel="noopener noreferrer"
+                     className={styles.iconBtn}>
                     <LinkedInIcon />
                     <span>LinkedIn</span>
                   </a>
                 )}
               </div>
 
-              {/* Avatar */}
-              <div className={styles.avatar}>
-                <Image
-                  src={member.image}
-                  alt={member.name}
-                  fill
-                  sizes="80px"
-                  className={styles.avatarImg}
-                />
+              {/* Avatar + name/role side by side */}
+              <div className={styles.identity}>
+                <div className={styles.avatar}>
+                  <Image src={member.image} alt={member.name} fill
+                         sizes="72px" className={styles.avatarImg} />
+                </div>
+                <div className={styles.identityText}>
+                  <h3 className={styles.name}>{member.name}</h3>
+                  <p className={styles.role}>{member.role}</p>
+                </div>
               </div>
 
-              <h3 className={styles.name}>{member.name}</h3>
-              <p className={styles.role}>{member.role}</p>
               <p className={styles.bio}>{member.bio}</p>
 
               <Link href={`/team/${member.slug}`} className={styles.viewBtn}>
@@ -142,7 +136,6 @@ export default function TeamBand() {
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

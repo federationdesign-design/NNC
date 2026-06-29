@@ -61,7 +61,7 @@ export default function HomeHeroV2() {
     if (HERO_IMAGES.length <= 1) return;
     const interval = setInterval(() => {
       setSlideIndex((i) => (i + 1) % HERO_IMAGES.length);
-    }, 5000);
+    }, 10000);
     return () => clearInterval(interval);
   }, []);
 

@@ -79,8 +79,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(255,255,255,0.15);
 }
+
 
 .heroNavLinks { display: flex; align-items: stretch; }
 
@@ -115,16 +115,20 @@
   font-family: var(--font-jakarta), system-ui, sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--color-ink);
-  background: #fff;
+  color: #fff;
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,0.7);
   padding: 11px 22px;
   border-radius: 999px;
   text-decoration: none;
-  transition: background var(--t-fast);
+  transition: background var(--t-fast), border-color var(--t-fast);
   white-space: nowrap;
 }
 
-.referralBtn:hover { background: var(--color-brand-light); }
+.referralBtn:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: #fff;
+}
 
 .callBtn {
   display: inline-flex;
