@@ -1,0 +1,202 @@
+/* HomeHeroV2.module.css - closely matches ANT Training hero layout */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  margin-top: calc(-1 * var(--nav-height));
+}
+
+/* ===== LEFT PANEL ===== */
+.panel {
+  background: #fff;
+  width: 100%;
+  padding: calc(var(--nav-height) + 24px) 24px 32px;
+  border-right: 1px solid var(--color-line);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.logoArea {
+  margin-bottom: 24px;
+}
+
+.logo {
+  height: 60px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.panelHeading {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0 0 16px 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Override card styles inside panel for tight stacking like ANT */
+.cards > * {
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid var(--color-line);
+  padding: 12px 0;
+  background: transparent;
+}
+
+.cards > *:hover {
+  background: var(--color-brand-light);
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: var(--radius-sm);
+}
+
+/* ===== RIGHT HERO ===== */
+.heroArea {
+  position: relative;
+  flex: 1;
+  min-height: 60dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-brand-dark);
+  overflow: hidden;
+}
+
+.heroBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.heroBgImg {
+  object-fit: cover;
+  object-position: center top;
+}
+
+.brandOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 55, 90, 0.55);
+  z-index: 1;
+}
+
+.scrollOverlay {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+  transition: none;
+}
+
+/* Hero content - bottom layout like ANT */
+.heroContent {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--nav-height) 40px 48px;
+  gap: 24px;
+}
+
+.heroText {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 680px;
+}
+
+.heroSubtitle {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  line-height: 1.65;
+  color: rgba(255,255,255,0.75);
+  margin: 0;
+  max-width: 56ch;
+}
+
+/* Large heading at bottom like ANT */
+.heroHeading {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5.5vw, 5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  color: #fff;
+  margin: 0;
+}
+
+/* CTA bottom-right like ANT */
+.heroCta {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  border: 1.5px solid rgba(255,255,255,0.6);
+  padding: 16px 32px;
+  border-radius: 999px;
+  transition: border-color var(--t-fast), background var(--t-fast);
+}
+
+.ctaBtn:hover {
+  border-color: #fff;
+  background: rgba(255,255,255,0.1);
+}
+
+/* ===== DESKTOP ===== */
+@media (min-width: 900px) {
+  .root {
+    flex-direction: row;
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  .panel {
+    width: 340px;
+    min-width: 340px;
+    flex-shrink: 0;
+    height: 100dvh;
+    overflow-y: auto;
+    position: sticky;
+    top: 0;
+    padding: calc(var(--nav-height) + 32px) 28px 40px;
+  }
+
+  .heroArea {
+    flex: 1;
+    height: 100dvh;
+    min-height: 100dvh;
+  }
+
+  .heroContent {
+    padding: 80px 60px 60px;
+  }
+}
+
+@media (min-width: 1240px) {
+  .panel { width: 380px; min-width: 380px; }
+  .heroContent { padding: 80px 80px 72px; }
+}
