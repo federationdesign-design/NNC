@@ -3,7 +3,7 @@
 .section {
   background: var(--color-surface);
   border-top: 1px solid var(--color-line);
-  /* critical: no overflow:hidden here - clips the scroll track */
+  overflow: visible;
 }
 
 .inner {
@@ -201,7 +201,9 @@
   .track {
     flex: 1;
     min-width: 0;
+
     border-top: none;
+    overflow-x: scroll;
   }
 
   .card {

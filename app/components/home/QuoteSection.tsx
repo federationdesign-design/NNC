@@ -7,7 +7,7 @@ export default function QuoteSection() {
     <section className={styles.section}>
       <div className={styles.inner}>
 
-        {/* Left: large pull quote + body copy */}
+        {/* Left: pull quote + body copy */}
         <div className={styles.left}>
           <blockquote className={styles.pullQuote}>
             &ldquo;We deliver what Kent needs now - and we are growing
@@ -30,25 +30,39 @@ export default function QuoteSection() {
           </div>
         </div>
 
-        {/* Right: two cards matching concept screenshots */}
+        {/* Right: three stacked cards */}
         <div className={styles.right}>
 
-          {/* Card 1: Dark navy - Ofsted wordmark left, text + View Report right */}
+          {/* Card 1: George Ball testimonial quote */}
+          <div className={styles.testimonialCard}>
+            <blockquote className={styles.testimonialQuote}>
+              &ldquo;We deliver what Kent needs now - and we are growing
+              responsibly for what Kent will need next.&rdquo;
+            </blockquote>
+            <div className={styles.testimonialAuthor}>
+              <div className={styles.testimonialAvatar}>
+                <Image src="/team/george-ball.jpg" alt="George Ball"
+                       fill sizes="52px" className={styles.testimonialAvatarImg} />
+              </div>
+              <div>
+                <p className={styles.testimonialName}>George Ball</p>
+                <p className={styles.testimonialRole}>Co-Director</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 2: Dark navy - Ofsted wordmark left, text + View Report right */}
           <div className={styles.ofstedCard}>
             <div className={styles.ofstedCardLeft}>
-              <Image
-                src="/ofsted-raw-no-frame.png"
-                alt="Ofsted"
-                width={160}
-                height={72}
-                style={{ objectFit: "contain", objectPosition: "left center" }}
-              />
+              <Image src="/ofsted-raw-no-frame.png" alt="Ofsted"
+                     width={160} height={72}
+                     style={{ objectFit: "contain", objectPosition: "left center" }} />
             </div>
             <div className={styles.ofstedCardRight}>
               <p className={styles.ofstedCardText}>
                 Our model has been intentionally designed around the real referral
-                patterns we receive providing stability, structure and relational
-                consistency for children with complex emotional and neurodiverse needs.
+                patterns we receive, providing stability, structure and relational
+                consistency for children with complex needs.
               </p>
               <Link href="/ofsted" className={styles.cardBtn}>
                 View Report
@@ -61,24 +75,14 @@ export default function QuoteSection() {
             </div>
           </div>
 
-          {/* Card 2: Brand blue - NNC logo, girl bg image, Make a referral */}
+          {/* Card 3: Brand blue with girl background image */}
           <div className={styles.nncCard}>
-            <Image
-              src="/girlpointblue.jpg"
-              alt=""
-              fill
-              sizes="(min-width: 768px) 400px, 100vw"
-              className={styles.nncCardBg}
-            />
+            <Image src="/girlpointblue.jpg" alt="" fill
+                   sizes="400px" className={styles.nncCardBg} />
             <div className={styles.nncCardOverlay} />
             <div className={styles.nncCardContent}>
-              <Image
-                src="/header-logo.svg"
-                alt="Nurturing Nests"
-                width={100}
-                height={56}
-                className={styles.nncCardLogo}
-              />
+              <Image src="/header-logo.svg" alt="Nurturing Nests"
+                     width={100} height={56} className={styles.nncCardLogo} />
               <p className={styles.nncCardText}>
                 Our model has been intentionally designed around the real referral
                 patterns we receive providing stability, structure and relational

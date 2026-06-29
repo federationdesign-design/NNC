@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./QuoteSection.module.css";
 
 export default function QuoteSection() {
@@ -6,7 +7,7 @@ export default function QuoteSection() {
     <section className={styles.section}>
       <div className={styles.inner}>
 
-        {/* Left: large quote + body copy */}
+        {/* Left: large pull quote + body copy */}
         <div className={styles.left}>
           <blockquote className={styles.pullQuote}>
             &ldquo;We deliver what Kent needs now - and we are growing
@@ -29,43 +30,69 @@ export default function QuoteSection() {
           </div>
         </div>
 
-        {/* Right: three stacked boxes */}
+        {/* Right: two cards matching concept screenshots */}
         <div className={styles.right}>
 
-          {/* Box 1: George Ball quote */}
-          <div className={styles.testimonialCard}>
-            <blockquote className={styles.testimonialQuote}>
-              &ldquo;We deliver what Kent needs now - and we are growing
-              responsibly for what Kent will need next.&rdquo;
-            </blockquote>
-            <div className={styles.testimonialAuthor}>
-              <div className={styles.testimonialAvatar}>
-                <Image src="/team/george-ball.jpg" alt="George Ball"
-                       fill sizes="56px" className={styles.testimonialAvatarImg} />
-              </div>
-              <div>
-                <p className={styles.testimonialName}>George Ball</p>
-                <p className={styles.testimonialRole}>Co-Director</p>
-              </div>
+          {/* Card 1: Dark navy - Ofsted wordmark left, text + View Report right */}
+          <div className={styles.ofstedCard}>
+            <div className={styles.ofstedCardLeft}>
+              <Image
+                src="/ofsted-raw-no-frame.png"
+                alt="Ofsted"
+                width={160}
+                height={72}
+                style={{ objectFit: "contain", objectPosition: "left center" }}
+              />
+            </div>
+            <div className={styles.ofstedCardRight}>
+              <p className={styles.ofstedCardText}>
+                Our model has been intentionally designed around the real referral
+                patterns we receive providing stability, structure and relational
+                consistency for children with complex emotional and neurodiverse needs.
+              </p>
+              <Link href="/ofsted" className={styles.cardBtn}>
+                View Report
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                     xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M3 9h12M9 3l6 6-6 6" stroke="currentColor"
+                        strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </Link>
             </div>
           </div>
 
-          {/* Box 2: referral stats */}
-          <div className={styles.infoCard}>
-            <p className={styles.infoCardStat}>481</p>
-            <p className={styles.infoCardLabel}>
-              Referrals received from Kent County Council since opening in May 2025.
-            </p>
-          </div>
-
-          {/* Box 3: Ofsted */}
-          <div className={styles.ofstedInfoCard}>
-            <Image src="/ofsted.png" alt="Ofsted Good Provider"
-                   width={120} height={80}
-                   style={{ objectFit: "contain", objectPosition: "left" }} />
-            <p className={styles.ofstedInfoText}>
-              Registered with Ofsted. Committed to outstanding outcomes for every child in our care.
-            </p>
+          {/* Card 2: Brand blue - NNC logo, girl bg image, Make a referral */}
+          <div className={styles.nncCard}>
+            <Image
+              src="/girlpointblue.jpg"
+              alt=""
+              fill
+              sizes="(min-width: 768px) 400px, 100vw"
+              className={styles.nncCardBg}
+            />
+            <div className={styles.nncCardOverlay} />
+            <div className={styles.nncCardContent}>
+              <Image
+                src="/header-logo.svg"
+                alt="Nurturing Nests"
+                width={100}
+                height={56}
+                className={styles.nncCardLogo}
+              />
+              <p className={styles.nncCardText}>
+                Our model has been intentionally designed around the real referral
+                patterns we receive providing stability, structure and relational
+                consistency for children with complex emotional and neurodiverse needs.
+              </p>
+              <Link href="/contact" className={styles.cardBtnOutline}>
+                Make a referral
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                     xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M3 9h12M9 3l6 6-6 6" stroke="currentColor"
+                        strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </Link>
+            </div>
           </div>
 
         </div>
