@@ -1,5 +1,13 @@
 import type { Metadata } from 'next'
 import { BUSINESS } from '../lib/business'
+import { localBusinessSchema } from '../lib/schema'
+import HeroVideo from './components/home/HeroVideo'
+import ProductTiles from './components/home/ProductTiles'
+import TryMeDays from './components/home/TryMeDays'
+import WorkplaceSection from './components/home/WorkplaceSection'
+import TestimonialsSection from './components/home/TestimonialsSection'
+import TeamSection from './components/home/TeamSection'
+import MediaAndTrustBar from './components/home/MediaAndTrustBar'
 
 export const metadata: Metadata = {
   title: 'Adapt Ability - Self-Balancing Mobility Vehicles',
@@ -13,15 +21,19 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      {/* Homepage sections built from spec blocks in Phase 3 */}
-      {/* Hero */}
-      {/* Product tiles (Omeo / Hoss) */}
-      {/* Try Me Days section */}
-      {/* Mission / ethos section */}
-      {/* Testimonials */}
-      {/* Team */}
-      {/* Media logos */}
-      {/* CTA / contact strip */}
+      {/* LocalBusiness JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema()) }}
+      />
+
+      <HeroVideo />
+      <ProductTiles />
+      <TryMeDays />
+      <WorkplaceSection />
+      <TestimonialsSection />
+      <TeamSection />
+      <MediaAndTrustBar />
     </>
   )
 }
