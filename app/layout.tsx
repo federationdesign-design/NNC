@@ -45,15 +45,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           >
             Skip to main content
           </a>
-          <header role="banner">
-          </header>
           <main id="main-content" role="main">
-            
-          <main>{children}</main>
-          <SiteFooter />
+            {children}
           </main>
-          <footer role="contentinfo">
-          </footer>
+          <SiteFooter />
           {/* <CookieBanner /> */}
         </ConsentProvider>
       </body>
