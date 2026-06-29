@@ -181,7 +181,7 @@ export default function HomeHeroV2() {
                 {/* Ofsted Good Provider card - compact */}
                 <div className={styles.ofstedCard}>
                   <Image src="/ofsted.png" alt="Ofsted Good Provider"
-                         fill style={{ objectFit: "contain", padding: "12px" }}
+                         fill style={{ objectFit: "contain", objectPosition: "center", padding: "8px" }}
                          sizes="160px" />
                 </div>
 

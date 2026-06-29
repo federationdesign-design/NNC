@@ -3,17 +3,16 @@
 .section {
   background: var(--color-surface);
   border-top: 1px solid var(--color-line);
-  /* NO overflow:hidden - that clips the scroll track */
+  /* critical: no overflow:hidden here - clips the scroll track */
 }
 
 .inner {
   display: flex;
   flex-direction: column;
   width: 100%;
-  min-width: 0;
 }
 
-/* Left header - 50% wider than before (was 300px, now 450px on desktop) */
+/* Left header */
 .header {
   padding: var(--space-6) 20px var(--space-4);
   display: flex;
@@ -52,15 +51,16 @@
 
 .arrowCta:hover { color: var(--color-brand); }
 
-/* Full-bleed scrolling track */
+/* Scrolling track - critical properties for scroll to work */
 .track {
   display: flex;
   flex-direction: row;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
+  overflow-x: scroll;
   -webkit-overflow-scrolling: touch;
   touch-action: pan-x;
   scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+  /* must NOT have overflow:hidden anywhere up the tree */
 }
 
 .track::-webkit-scrollbar { display: none; }
@@ -69,49 +69,21 @@
 .card {
   flex-shrink: 0;
   width: 300px;
+  min-width: 300px;
   padding: var(--space-5);
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: 10px;
   scroll-snap-align: start;
   border-right: 1px solid var(--color-line);
   border-top: 1px solid var(--color-line);
 }
 
-/* Contact icons */
-.contactIcons {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  margin-top: 6px;
-}
-
-.iconBtn {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  font-family: var(--font-jakarta), system-ui, sans-serif;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--color-brand);
-  text-decoration: none;
-  transition: color var(--t-fast);
-}
-
-.iconBtn:hover { color: var(--color-brand-dark); }
-
-.iconBtn span {
-  border-bottom: 1px solid transparent;
-  transition: border-color var(--t-fast);
-}
-
-.iconBtn:hover span { border-color: var(--color-brand-dark); }
-
 /* Avatar + name/role side by side */
 .identity {
   display: flex;
-  align-items: center;
-  gap: 14px;
+  align-items: flex-start;
+  gap: 12px;
 }
 
 .avatar {
@@ -131,6 +103,7 @@
   display: flex;
   flex-direction: column;
   gap: 2px;
+  flex: 1;
 }
 
 .name {
@@ -148,13 +121,41 @@
   margin: 0;
 }
 
+/* Contact icons - below role */
+.contactIcons {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-top: 6px;
+}
+
+.iconBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--color-brand);
+  text-decoration: none;
+  transition: color var(--t-fast);
+}
+
+.iconBtn:hover { color: var(--color-brand-dark); }
+
+.iconBtn span {
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--t-fast);
+}
+
+.iconBtn:hover span { border-color: var(--color-brand-dark); }
+
 .bio {
   font-family: var(--font-jakarta), system-ui, sans-serif;
   font-size: 0.85rem;
   line-height: 1.6;
   color: var(--color-ink);
   margin: 0;
-  /* no flex:1 - was pushing viewBtn to the bottom */
 }
 
 .viewBtn {
@@ -169,6 +170,7 @@
   border: 1.5px solid var(--color-ink);
   padding: 10px 20px;
   border-radius: 999px;
+  margin-top: 12px;
   transition: background var(--t-fast), color var(--t-fast);
   align-self: flex-start;
 }
@@ -178,28 +180,33 @@
   color: #fff;
 }
 
+/* Desktop: side by side, full bleed */
 @media (min-width: 900px) {
-  .inner { flex-direction: row; align-items: stretch; }
+  .inner {
+    flex-direction: row;
+    align-items: stretch;
+    /* critical: no overflow:hidden */
+  }
 
   .header {
-    width: 450px;
-    min-width: 420px;
+    width: 420px;
+    min-width: 380px;
     flex-shrink: 0;
     padding: var(--space-6) var(--space-5) var(--space-6) 60px;
     border-bottom: none;
     border-right: 1px solid var(--color-line);
     justify-content: flex-start;
-    align-self: stretch;
   }
 
-  .card {
-    padding-top: var(--space-6);
+  .track {
+    flex: 1;
+    min-width: 0;
+    border-top: none;
   }
-
-  .track { flex: 1; border-top: none; }
 
   .card {
     width: 320px;
+    min-width: 320px;
     border-top: none;
     padding: var(--space-6) var(--space-5);
   }

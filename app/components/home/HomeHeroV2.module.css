@@ -235,12 +235,13 @@
   position: relative;
   width: 160px;
   min-width: 160px;
-  height: auto;
-  align-self: stretch;
+  /* stretch via heroBottomRow align-items:stretch */
   background: transparent;
   border-radius: var(--radius-lg);
   overflow: hidden;
   flex-shrink: 0;
+  /* explicit min-height as fallback */
+  min-height: 100px;
 }
 
 /* CTA row */
