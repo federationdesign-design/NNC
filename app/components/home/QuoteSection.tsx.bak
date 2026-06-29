@@ -29,8 +29,10 @@ export default function QuoteSection() {
           </div>
         </div>
 
-        {/* Right: testimonial card */}
+        {/* Right: three stacked boxes */}
         <div className={styles.right}>
+
+          {/* Box 1: George Ball quote */}
           <div className={styles.testimonialCard}>
             <blockquote className={styles.testimonialQuote}>
               &ldquo;We deliver what Kent needs now - and we are growing
@@ -38,13 +40,8 @@ export default function QuoteSection() {
             </blockquote>
             <div className={styles.testimonialAuthor}>
               <div className={styles.testimonialAvatar}>
-                <Image
-                  src="/team/george-ball.jpg"
-                  alt="George Ball"
-                  fill
-                  sizes="64px"
-                  className={styles.testimonialAvatarImg}
-                />
+                <Image src="/team/george-ball.jpg" alt="George Ball"
+                       fill sizes="56px" className={styles.testimonialAvatarImg} />
               </div>
               <div>
                 <p className={styles.testimonialName}>George Ball</p>
@@ -52,8 +49,26 @@ export default function QuoteSection() {
               </div>
             </div>
           </div>
-        </div>
 
+          {/* Box 2: referral stats */}
+          <div className={styles.infoCard}>
+            <p className={styles.infoCardStat}>481</p>
+            <p className={styles.infoCardLabel}>
+              Referrals received from Kent County Council since opening in May 2025.
+            </p>
+          </div>
+
+          {/* Box 3: Ofsted */}
+          <div className={styles.ofstedInfoCard}>
+            <Image src="/ofsted.png" alt="Ofsted Good Provider"
+                   width={120} height={80}
+                   style={{ objectFit: "contain", objectPosition: "left" }} />
+            <p className={styles.ofstedInfoText}>
+              Registered with Ofsted. Committed to outstanding outcomes for every child in our care.
+            </p>
+          </div>
+
+        </div>
       </div>
     </section>
   );

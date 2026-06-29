@@ -61,7 +61,7 @@
 
 /* Box 1: testimonial */
 .testimonialCard {
-  background: var(--color-brand);
+  background: #1e1e4a;
   border-radius: var(--radius-lg);
   padding: var(--space-5);
   display: flex;
@@ -116,7 +116,7 @@
 
 /* Box 2: stats */
 .infoCard {
-  background: var(--color-brand);
+  background: #1e1e4a;
   border-radius: var(--radius-lg);
   padding: var(--space-5);
   display: flex;
@@ -143,7 +143,7 @@
 
 /* Box 3: Ofsted */
 .ofstedInfoCard {
-  background: var(--color-brand);
+  background: #1e1e4a;
   border-radius: var(--radius-lg);
   padding: var(--space-5);
   display: flex;

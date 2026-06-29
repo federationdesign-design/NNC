@@ -52,111 +52,140 @@
   margin: 0;
 }
 
-/* Right: three stacked boxes */
+/* Right column */
 .right {
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
 }
 
-/* Box 1: testimonial */
-.testimonialCard {
+/* Card 1: Dark navy Ofsted card - logo left, text+button right */
+.ofstedCard {
   background: #1e1e4a;
   border-radius: var(--radius-lg);
-  padding: var(--space-5);
+  padding: 32px;
   display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
+  flex-direction: row;
+  gap: 28px;
+  align-items: flex-start;
+  min-height: 200px;
 }
 
-.testimonialQuote {
-  font-family: var(--font-mali), cursive;
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  font-weight: 600;
-  line-height: 1.45;
-  color: #fff;
-  margin: 0;
-  quotes: none;
-}
-
-.testimonialAuthor {
+.ofstedCardLeft {
+  flex-shrink: 0;
+  width: 160px;
   display: flex;
   align-items: center;
-  gap: 14px;
-  border-top: 1px solid rgba(255,255,255,0.25);
-  padding-top: var(--space-3);
+  padding-top: 8px;
 }
 
-.testimonialAvatar {
-  position: relative;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 2px solid rgba(255,255,255,0.4);
-  flex-shrink: 0;
-}
-
-.testimonialAvatarImg { object-fit: cover; }
-
-.testimonialName {
-  font-family: var(--font-mali), cursive;
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #fff;
-  margin: 0;
-}
-
-.testimonialRole {
-  font-family: var(--font-jakarta), system-ui, sans-serif;
-  font-size: 0.8rem;
-  color: rgba(255,255,255,0.75);
-  margin: 0;
-}
-
-/* Box 2: stats */
-.infoCard {
-  background: #1e1e4a;
-  border-radius: var(--radius-lg);
-  padding: var(--space-5);
+.ofstedCardRight {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: 20px;
 }
 
-.infoCardStat {
-  font-family: var(--font-mali), cursive;
-  font-size: 3rem;
-  font-weight: 700;
-  color: #fff;
-  margin: 0;
-  line-height: 1;
-}
-
-.infoCardLabel {
+.ofstedCardText {
   font-family: var(--font-jakarta), system-ui, sans-serif;
   font-size: 0.9rem;
-  line-height: 1.55;
+  line-height: 1.65;
   color: rgba(255,255,255,0.85);
   margin: 0;
 }
 
-/* Box 3: Ofsted */
-.ofstedInfoCard {
-  background: #1e1e4a;
+/* Card 2: Brand blue with girl background image */
+.nncCard {
+  position: relative;
   border-radius: var(--radius-lg);
-  padding: var(--space-5);
+  overflow: hidden;
+  min-height: 360px;
+  background: var(--color-brand);
+}
+
+.nncCardBg {
+  object-fit: cover;
+  object-position: right center;
+}
+
+.nncCardOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(27, 90, 160, 0.72);
+}
+
+.nncCardContent {
+  position: relative;
+  z-index: 1;
+  padding: 32px;
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
+  gap: 20px;
+  height: 100%;
 }
 
-.ofstedInfoText {
+.nncCardLogo {
+  filter: brightness(0) invert(1);
+  height: 52px;
+  width: auto;
+  object-fit: contain;
+  object-position: left;
+}
+
+.nncCardText {
   font-family: var(--font-jakarta), system-ui, sans-serif;
-  font-size: 0.88rem;
-  line-height: 1.6;
-  color: rgba(255,255,255,0.85);
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.9);
   margin: 0;
+  max-width: 40ch;
+}
+
+/* Shared pill buttons */
+.cardBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  border: 1.5px solid rgba(255,255,255,0.5);
+  padding: 14px 24px;
+  border-radius: 999px;
+  transition: border-color var(--t-fast), background var(--t-fast);
+  align-self: flex-start;
+  min-width: 200px;
+}
+
+.cardBtn:hover {
+  border-color: #fff;
+  background: rgba(255,255,255,0.1);
+}
+
+.cardBtnOutline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  border: 1.5px solid rgba(255,255,255,0.6);
+  padding: 14px 24px;
+  border-radius: 999px;
+  transition: border-color var(--t-fast), background var(--t-fast);
+  align-self: flex-start;
+  min-width: 200px;
+}
+
+.cardBtnOutline:hover {
+  border-color: #fff;
+  background: rgba(255,255,255,0.15);
 }
 
 /* Desktop */
