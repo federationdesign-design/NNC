@@ -3,12 +3,14 @@
 .section {
   background: var(--color-surface);
   border-top: 1px solid var(--color-line);
+  /* NO overflow:hidden - that clips the scroll track */
 }
 
 .inner {
   display: flex;
   flex-direction: column;
   width: 100%;
+  min-width: 0;
 }
 
 /* Left header - 50% wider than before (was 300px, now 450px on desktop) */
@@ -80,7 +82,8 @@
 .contactIcons {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 3px;
+  margin-top: 6px;
 }
 
 .iconBtn {

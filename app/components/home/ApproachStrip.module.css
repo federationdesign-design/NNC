@@ -19,33 +19,40 @@
 
 .links {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0;
   align-items: center;
   list-style: none;
   margin: 0;
   padding: 0;
+  gap: 0;
 }
 
 .link {
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
   color: rgba(255,255,255,0.9);
   text-decoration: none;
   padding: 14px 20px;
-  border-right: 1px solid rgba(255,255,255,0.2);
   transition: color var(--t-fast), background var(--t-fast);
-  display: block;
-}
-
-.link:first-child {
-  border-left: 1px solid rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 
 .link:hover {
   color: #fff;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.08);
+}
+
+/* Pipe divider - same vertical padding as text, not full height */
+.link + .link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 14px;       /* matches link padding-top */
+  bottom: 14px;    /* matches link padding-bottom */
+  width: 1px;
+  background: rgba(255,255,255,0.3);
 }
 
 @media (min-width: 900px) {
