@@ -78,6 +78,7 @@
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
   padding-bottom: var(--space-3);
   /* hide scrollbar visually */
   scrollbar-width: none;
