@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -32,6 +34,7 @@
   --color-line:        #e2e8f0;
   --font-display:      var(--font-mali), cursive;
   --font-body:         var(--font-mali), cursive;
+  --font-jakarta:      'Plus Jakarta Sans', system-ui, sans-serif;
 }
 
 @media (min-width: 768px)  { :root { --nav-height: 64px; } }

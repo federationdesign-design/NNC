@@ -1,0 +1,126 @@
+/* QuoteSection.module.css */
+
+.section {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-line);
+  padding: var(--space-7) 0;
+}
+
+.inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+/* Left column */
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.pullQuote {
+  font-family: var(--font-mali), cursive;
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-ink);
+  margin: 0;
+  quotes: none;
+}
+
+.divider {
+  height: 1px;
+  background: var(--color-line);
+  width: 100%;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.body p {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: clamp(0.9rem, 1.4vw, 1rem);
+  line-height: 1.75;
+  color: var(--color-ink);
+  margin: 0;
+}
+
+/* Right testimonial card */
+.right {
+  display: flex;
+  align-items: flex-start;
+}
+
+.testimonialCard {
+  background: var(--color-brand);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+.testimonialQuote {
+  font-family: var(--font-mali), cursive;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 600;
+  line-height: 1.45;
+  color: #fff;
+  margin: 0;
+  quotes: none;
+}
+
+.testimonialAuthor {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-top: 1px solid rgba(255,255,255,0.25);
+  padding-top: var(--space-3);
+}
+
+.testimonialAvatar {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(255,255,255,0.4);
+  flex-shrink: 0;
+}
+
+.testimonialAvatarImg { object-fit: cover; }
+
+.testimonialName {
+  font-family: var(--font-mali), cursive;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.testimonialRole {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.75);
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .inner {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--space-7);
+    padding: 0 60px;
+  }
+
+  .left { flex: 1.2; }
+  .right { flex: 0.8; }
+}

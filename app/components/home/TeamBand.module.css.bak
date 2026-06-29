@@ -1,18 +1,18 @@
-/* TeamBand.module.css - ANT-style horizontal scroll band */
+/* TeamBand.module.css - full bleed, ANT-style */
 
 .section {
   background: var(--color-surface);
   border-top: 1px solid var(--color-line);
+  overflow: hidden;
 }
 
 .inner {
-  max-width: var(--container);
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
-/* ---- Left pinned header ---- */
+/* Left header */
 .header {
   padding: var(--space-6) 20px var(--space-4);
   display: flex;
@@ -50,11 +50,9 @@
   transition: color var(--t-fast);
 }
 
-.arrowCta:hover {
-  color: var(--color-brand);
-}
+.arrowCta:hover { color: var(--color-brand); }
 
-/* ---- Scrolling track ---- */
+/* Full-bleed scrolling track */
 .track {
   display: flex;
   flex-direction: row;
@@ -63,46 +61,71 @@
   -webkit-overflow-scrolling: touch;
   touch-action: pan-x;
   scrollbar-width: none;
+  /* No padding - cards go edge to edge */
 }
 
-.track::-webkit-scrollbar {
-  display: none;
-}
+.track::-webkit-scrollbar { display: none; }
 
-/* ---- Individual card ---- */
+/* Cards */
 .card {
   flex-shrink: 0;
-  width: 280px;
-  padding: var(--space-5) var(--space-5);
+  width: 300px;
+  padding: var(--space-5);
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
   scroll-snap-align: start;
+  border-right: 1px solid var(--color-line);
   border-top: 1px solid var(--color-line);
 }
 
-.cardTop {
+/* Contact icons */
+.contactIcons {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
   margin-bottom: var(--space-2);
 }
 
+.iconBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-brand);
+  text-decoration: none;
+  transition: color var(--t-fast);
+}
+
+.iconBtn:hover { color: var(--color-brand-dark); }
+
+.iconBtn span {
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--t-fast);
+}
+
+.iconBtn:hover span { border-color: var(--color-brand-dark); }
+
+/* Avatar */
 .avatar {
   position: relative;
-  width: 72px;
-  height: 72px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   overflow: hidden;
   background: var(--color-brand-light);
   border: 2px solid var(--color-line);
   flex-shrink: 0;
+  margin-top: var(--space-1);
 }
 
-.avatarImg {
-  object-fit: cover;
-}
+.avatarImg { object-fit: cover; }
 
 .name {
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--color-ink);
   margin: 0;
@@ -124,7 +147,6 @@
   flex: 1;
 }
 
-/* Pill button matching ANT style */
 .viewBtn {
   display: inline-flex;
   align-items: center;
@@ -147,7 +169,7 @@
   color: #fff;
 }
 
-/* ---- Desktop: side by side ---- */
+/* Desktop: side by side, full bleed */
 @media (min-width: 900px) {
   .inner {
     flex-direction: row;
@@ -158,29 +180,32 @@
     width: 300px;
     min-width: 280px;
     flex-shrink: 0;
-    padding: var(--space-7) var(--space-5);
+    padding: var(--space-7) var(--space-5) var(--space-7) 60px;
     border-bottom: none;
     border-right: 1px solid var(--color-line);
     justify-content: flex-start;
     position: sticky;
-    top: var(--nav-height);
+    top: 0;
     align-self: flex-start;
   }
 
   .track {
     flex: 1;
     border-top: none;
-    border-left: none;
   }
 
   .card {
-    width: 300px;
+    width: 320px;
     border-top: none;
     padding: var(--space-7) var(--space-5);
+  }
+
+  /* First card no left border - goes to edge */
+  .card:first-child {
+    border-left: none;
   }
 }
 
 @media (min-width: 1024px) {
-  .header { width: 320px; padding: var(--space-7) var(--space-6); }
-  .card   { width: 320px; padding: var(--space-7) var(--space-5); }
+  .card { width: 340px; }
 }
