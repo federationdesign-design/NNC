@@ -26,7 +26,15 @@ export default function SiteNav({ transparent = false }: SiteNavProps) {
       setSolid(true);
       return;
     }
-    const onScroll = () => setSolid(window.scrollY > 60);
+    // Read solid state from hero scroll-fade (HomeHero writes dataset.heroSolid)
+    const onScroll = () => {
+      const heroSolid = document.documentElement.dataset.heroSolid;
+      if (heroSolid !== undefined) {
+        setSolid(heroSolid === "1");
+      } else {
+        setSolid(window.scrollY > 60);
+      }
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -43,9 +51,9 @@ export default function SiteNav({ transparent = false }: SiteNavProps) {
     <nav className={`${styles.nav} ${solid ? styles.solid : styles.transparent}`}
          aria-label="Main navigation">
       <div className={styles.inner}>
-        <Link href="/" className={styles.logo} aria-label="Nurturing Nests home">
+        <Link href="/" className={`${styles.logo} ${!solid ? styles.logoHidden : ""}`} aria-label="Nurturing Nests home">
           <Image
-            src="/header-logo.jpg"
+            src="/header-logo.svg"
             alt="Nurturing Nests"
             width={120}
             height={56}

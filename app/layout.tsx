@@ -48,7 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <header role="banner">
           </header>
           <main id="main-content" role="main">
-            <SiteNav />
+            <SiteNav transparent={true} />
           <main>{children}</main>
           <SiteFooter />
           </main>

@@ -193,3 +193,5 @@
 @media (min-width: 1024px) {
   .inner { padding: 0 60px; }
 }
+
+.logoHidden { visibility: hidden; pointer-events: none; }

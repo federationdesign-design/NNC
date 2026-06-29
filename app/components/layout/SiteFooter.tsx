@@ -30,7 +30,7 @@ export default function SiteFooter() {
         <div className={styles.brand}>
           <Link href="/" aria-label="Nurturing Nests home">
             <Image
-              src="/header-logo.jpg"
+              src="/header-logo.svg"
               alt="Nurturing Nests"
               width={120}
               height={56}

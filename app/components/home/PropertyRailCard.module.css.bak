@@ -1,0 +1,121 @@
+/* PropertyRailCard.module.css */
+
+.card {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-3);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  text-decoration: none;
+  transition: background var(--t-fast), border-color var(--t-fast);
+  cursor: pointer;
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.media {
+  position: relative;
+  width: 90px;
+  min-width: 90px;
+  height: 72px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.img {
+  object-fit: cover;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.status {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 20px;
+  align-self: flex-start;
+}
+
+.statusOpen {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.statusProposed {
+  background: rgba(43, 158, 212, 0.3);
+  color: #e8f5fb;
+}
+
+.statusDev {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255,255,255,0.7);
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.location {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.65);
+  margin: 0;
+}
+
+.spec {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: 2px;
+}
+
+.specItem {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.specLabel {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+}
+
+.specValue {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+}
+
+.highlight {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  color: var(--color-brand-light);
+  margin: 0;
+  margin-top: 2px;
+}

@@ -1,23 +1,13 @@
-import styles from "./page.module.css";
+import HomeHero from "./components/home/HomeHero";
+import ApproachStrip from "./components/home/ApproachStrip";
+import TeamBand from "./components/home/TeamBand";
 
 export default function HomePage() {
   return (
     <>
-      {/* Hero placeholder - Phase 3 will replace this */}
-      <section className={styles.heroPlaceholder}>
-        <div className={styles.heroInner}>
-          <h1 className={styles.heroHeading}>
-            A safe place to grow.
-          </h1>
-          <p className={styles.heroSub}>
-            Specialist residential care for children and young people
-            with complex needs, based in Kent.
-          </p>
-          <a href="/homes" className={styles.heroCta}>
-            Our homes
-          </a>
-        </div>
-      </section>
+      <HomeHero />
+      <ApproachStrip />
+      <TeamBand />
     </>
   );
 }
