@@ -41,7 +41,7 @@ const PROPERTIES: PropertyData[] = [
 ];
 
 const HERO_IMAGES = [
-  "/hero/hero-desktop.jpg",
+  "/hero/image2.jpg",
   "/hero/image2.jpg",
 
 ];
