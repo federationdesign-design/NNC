@@ -51,7 +51,7 @@ export default function SiteNav({ transparent = false }: SiteNavProps) {
     <nav className={`${styles.nav} ${solid ? styles.solid : styles.transparent}`}
          aria-label="Main navigation">
       <div className={styles.inner}>
-        <Link href="/" className={styles.logo} aria-label="Nurturing Nests home">
+        <Link href="/" className={`${styles.logo} ${!solid ? styles.logoHidden : ""}`} aria-label="Nurturing Nests home">
           <Image
             src="/header-logo.svg"
             alt="Nurturing Nests"

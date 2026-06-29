@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import styles from "./PropertyRailCard.module.css";
 
 export interface PropertyData {
@@ -7,18 +6,19 @@ export interface PropertyData {
   name: string;
   location: string;
   beds: number;
-  type: string;        // e.g. "Children's Home"
-  status: string;      // e.g. "Open" | "Proposed" | "In Development"
+  type: string;
+  status: string;
   summary: string;
-  image: string;       // path relative to /public
-  highlight?: string;  // e.g. "Solo placement available"
+  image: string;
+  highlight?: string;
 }
 
 interface PropertyRailCardProps {
   property: PropertyData;
+  onClick: (property: PropertyData) => void;
 }
 
-export default function PropertyRailCard({ property }: PropertyRailCardProps) {
+export default function PropertyRailCard({ property, onClick }: PropertyRailCardProps) {
   const statusClass =
     property.status === "Open"
       ? styles.statusOpen
@@ -27,13 +27,17 @@ export default function PropertyRailCard({ property }: PropertyRailCardProps) {
       : styles.statusDev;
 
   return (
-    <Link href={`/homes/${property.slug}`} className={styles.card}>
+    <button
+      className={styles.card}
+      onClick={() => onClick(property)}
+      type="button"
+    >
       <div className={styles.media}>
         <Image
           src={property.image}
           alt={property.name}
           fill
-          sizes="(max-width: 900px) 90px, 120px"
+          sizes="80px"
           className={styles.img}
         />
       </div>
@@ -57,6 +61,6 @@ export default function PropertyRailCard({ property }: PropertyRailCardProps) {
           <p className={styles.highlight}>{property.highlight}</p>
         )}
       </div>
-    </Link>
+    </button>
   );
 }

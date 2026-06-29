@@ -6,11 +6,12 @@ import Image from "next/image";
 import styles from "./SiteNav.module.css";
 
 const NAV_LINKS = [
-  { label: "Our Homes",    href: "/homes" },
-  { label: "Our Approach", href: "/approach" },
-  { label: "Senior Team",  href: "/team" },
-  { label: "News",         href: "/news" },
-  { label: "Contact",      href: "/contact" },
+  { label: "Home",     href: "/" },
+  { label: "Our Homes", href: "/homes" },
+  { label: "Team",     href: "/team" },
+  { label: "About",    href: "/about" },
+  { label: "Contact",  href: "/contact" },
+  { label: "Policies", href: "/policies" },
 ];
 
 interface SiteNavProps {
