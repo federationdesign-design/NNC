@@ -58,7 +58,7 @@
 .brandOverlay {
   position: absolute;
   inset: 0;
-  background: rgba(15, 55, 90, 0.5);
+  background: rgba(15, 55, 90, 0.45);
   z-index: 1;
 }
 
@@ -80,18 +80,17 @@
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid rgba(255,255,255,0.15);
-  flex-wrap: wrap;
 }
 
 .heroNavLinks { display: flex; align-items: stretch; }
 
 .heroNavLink {
   font-family: var(--font-jakarta), system-ui, sans-serif;
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   font-weight: 500;
-  color: rgba(255,255,255,0.88);
+  color: rgba(255,255,255,0.9);
   text-decoration: none;
-  padding: 16px 22px;
+  padding: 18px 24px;
   transition: color var(--t-fast), background var(--t-fast);
   display: flex;
   align-items: center;
@@ -114,11 +113,11 @@
   align-items: center;
   gap: 8px;
   font-family: var(--font-jakarta), system-ui, sans-serif;
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--color-ink);
   background: #fff;
-  padding: 10px 20px;
+  padding: 11px 22px;
   border-radius: 999px;
   text-decoration: none;
   transition: background var(--t-fast);
@@ -132,11 +131,11 @@
   align-items: center;
   gap: 6px;
   font-family: var(--font-jakarta), system-ui, sans-serif;
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   font-weight: 500;
-  color: rgba(255,255,255,0.88);
+  color: rgba(255,255,255,0.9);
   text-decoration: none;
-  padding: 10px 14px;
+  padding: 11px 16px;
   transition: color var(--t-fast);
   white-space: nowrap;
 }
@@ -151,20 +150,21 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 40px 40px 48px;
+  padding: 36px 48px 48px;
 }
 
-.heroTopLeft { align-self: flex-start; max-width: 340px; }
-
+/* Top-left subtitle */
 .heroSubtitle {
   font-family: var(--font-jakarta), system-ui, sans-serif;
   font-size: clamp(0.95rem, 1.5vw, 1.1rem);
-  font-weight: 500;
-  line-height: 1.65;
-  color: rgba(255,255,255,0.82);
+  font-weight: 400;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.8);
   margin: 0;
+  max-width: 340px;
 }
 
+/* Bottom */
 .heroBottom {
   display: flex;
   flex-direction: column;
@@ -181,127 +181,67 @@
   text-align: right;
 }
 
+/* Cards row */
 .heroBottomRow {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 16px;
+  align-items: stretch;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
-/* ===== STACKED OVERLAY CARDS ===== */
-.stackedCards {
+/* White referral stats card */
+.whiteCard {
+  background: rgba(255,255,255,0.95);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  max-width: 520px;
+  gap: 16px;
+  flex: 1;
+  min-width: 260px;
+  max-width: 400px;
 }
 
-/* Card 1 - dark navy Ofsted card */
+.whiteCardText {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--color-ink);
+  margin: 0;
+  font-weight: 500;
+}
+
+.whiteCardLogos {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logoSep {
+  width: 1px;
+  height: 36px;
+  background: var(--color-line);
+  flex-shrink: 0;
+}
+
+/* Ofsted Good Provider - compact square */
 .ofstedCard {
+  position: relative;
+  width: 160px;
+  min-width: 160px;
+  height: 140px;
   background: #1e1e4a;
   border-radius: var(--radius-lg);
-  padding: 28px 32px;
-  display: flex;
-  flex-direction: row;
-  gap: 28px;
-  align-items: flex-start;
-}
-
-.ofstedCardLeft {
+  overflow: hidden;
   flex-shrink: 0;
+}
+
+/* CTA row */
+.ctaRow {
   display: flex;
-  align-items: center;
-  min-width: 130px;
+  justify-content: flex-end;
 }
 
-.ofstedCardRight {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.ofstedCardText {
-  font-family: var(--font-jakarta), system-ui, sans-serif;
-  font-size: 0.88rem;
-  line-height: 1.6;
-  color: rgba(255,255,255,0.85);
-  margin: 0;
-}
-
-/* Card 2 - brand blue NNC card */
-.nncCard {
-  background: var(--color-brand);
-  border-radius: var(--radius-lg);
-  padding: 28px 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.nncCardLogo {
-  filter: brightness(0) invert(1);
-  height: 44px;
-  width: auto;
-  object-fit: contain;
-  object-position: left;
-}
-
-.nncCardText {
-  font-family: var(--font-jakarta), system-ui, sans-serif;
-  font-size: 0.88rem;
-  line-height: 1.6;
-  color: rgba(255,255,255,0.88);
-  margin: 0;
-}
-
-/* Shared card pill buttons */
-.cardBtn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  font-family: var(--font-jakarta), system-ui, sans-serif;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #fff;
-  text-decoration: none;
-  border: 1.5px solid rgba(255,255,255,0.5);
-  padding: 14px 24px;
-  border-radius: 999px;
-  transition: border-color var(--t-fast), background var(--t-fast);
-  min-width: 200px;
-}
-
-.cardBtn:hover {
-  border-color: #fff;
-  background: rgba(255,255,255,0.1);
-}
-
-.cardBtnOutline {
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  font-family: var(--font-jakarta), system-ui, sans-serif;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #fff;
-  text-decoration: none;
-  border: 1.5px solid rgba(255,255,255,0.5);
-  padding: 14px 24px;
-  border-radius: 999px;
-  transition: border-color var(--t-fast), background var(--t-fast);
-  align-self: flex-start;
-  min-width: 200px;
-}
-
-.cardBtnOutline:hover {
-  border-color: #fff;
-  background: rgba(255,255,255,0.15);
-}
-
-/* Main CTA */
 .ctaBtn {
   display: inline-flex;
   align-items: center;
@@ -316,7 +256,6 @@
   border-radius: 999px;
   transition: border-color var(--t-fast), background var(--t-fast);
   white-space: nowrap;
-  align-self: flex-end;
 }
 
 .ctaBtn:hover {
@@ -328,7 +267,7 @@
 .slideIndicators {
   position: absolute;
   bottom: 20px;
-  right: 40px;
+  right: 48px;
   z-index: 10;
   display: flex;
   gap: 8px;
@@ -370,12 +309,10 @@
     min-height: 100dvh;
   }
 
-  .heroContent { padding: 40px 56px 52px; }
-  .heroTopLeft { max-width: 360px; }
+  .heroContent { padding: 36px 56px 52px; }
 }
 
 @media (min-width: 1240px) {
   .panel { width: 460px; }
-  .heroContent { padding: 40px 72px 60px; }
-  .stackedCards { max-width: 560px; }
+  .heroContent { padding: 36px 72px 56px; }
 }
