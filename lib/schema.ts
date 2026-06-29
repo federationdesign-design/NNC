@@ -36,7 +36,7 @@ export function localBusinessSchema() {
     sameAs: Object.values(BUSINESS.social).filter(Boolean) as string[],
     memberOf: {
       '@type': 'Organization',
-      name: BUSINESS.memberOf,
+      name: BUSINESS.ofsted,
     },
   }
 }

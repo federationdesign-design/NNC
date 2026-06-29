@@ -8,13 +8,20 @@
 import { type ConsentPreferences } from './types'
 import { CONSENT_DEFAULTS } from '../../../lib/gtm'
 
+declare global {
+  interface Window {
+    dataLayer: Record<string, unknown>[]
+    gtag: (...args: unknown[]) => void
+  }
+}
+
 function ensureDataLayer() {
   window.dataLayer = window.dataLayer || []
 }
 
 export function pushConsentDefaults() {
   ensureDataLayer()
-  window.dataLayer!.push({
+  window.dataLayer.push({
     event: 'consent_default',
     ...CONSENT_DEFAULTS,
   })
@@ -22,7 +29,7 @@ export function pushConsentDefaults() {
 
 export function pushConsentUpdate(prefs: ConsentPreferences) {
   ensureDataLayer()
-  window.dataLayer!.push({
+  window.dataLayer.push({
     event: 'consent_update',
     ad_storage:              prefs.marketing   ? 'granted' : 'denied',
     analytics_storage:       prefs.analytics   ? 'granted' : 'denied',
