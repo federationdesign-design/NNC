@@ -5,7 +5,7 @@
   position: relative;
   /* height set dynamically via inline calc on mobile fallback below;
      on desktop the JS uses offsetHeight so this just needs to be tall enough */
-  height: 220vh;
+  height: 140vh;
 }
 
 /* Sticky inner - pins to viewport while section scrolls past */
