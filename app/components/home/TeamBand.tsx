@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./TeamBand.module.css";
@@ -75,6 +76,46 @@ const LinkedInIcon = () => (
 );
 
 export default function TeamBand() {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const isDown = useRef(false);
+  const startX = useRef(0);
+  const scrollLeft = useRef(0);
+
+  const onMouseDown = (e: React.MouseEvent) => {
+    if (!trackRef.current) return;
+    isDown.current = true;
+    trackRef.current.style.cursor = "grabbing";
+    startX.current = e.pageX - trackRef.current.offsetLeft;
+    scrollLeft.current = trackRef.current.scrollLeft;
+  };
+
+  const onMouseLeave = () => {
+    isDown.current = false;
+    if (trackRef.current) trackRef.current.style.cursor = "grab";
+  };
+
+  const onMouseUp = () => {
+    isDown.current = false;
+    if (trackRef.current) trackRef.current.style.cursor = "grab";
+  };
+
+  const onMouseMove = (e: React.MouseEvent) => {
+    if (!isDown.current || !trackRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - trackRef.current.offsetLeft;
+    const walk = (x - startX.current) * 1.5;
+    trackRef.current.scrollLeft = scrollLeft.current - walk;
+  };
+
+  const onWheel = (e: React.WheelEvent) => {
+    if (!trackRef.current) return;
+    // Forward vertical wheel/trackpad scroll as horizontal movement
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+      trackRef.current.scrollLeft += e.deltaY;
+      e.preventDefault();
+    }
+  };
+
   return (
     <section className={styles.section}>
       <div className={styles.inner}>
@@ -95,7 +136,15 @@ export default function TeamBand() {
         </div>
 
         {/* Scrolling cards */}
-        <div className={styles.track}>
+        <div
+          ref={trackRef}
+          className={styles.track}
+          onMouseDown={onMouseDown}
+          onMouseLeave={onMouseLeave}
+          onMouseUp={onMouseUp}
+          onMouseMove={onMouseMove}
+          onWheel={onWheel}
+        >
           {TEAM.map((member) => (
             <div key={member.slug} className={styles.card}>
               {/* Avatar + name/role side by side */}
