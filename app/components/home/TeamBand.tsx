@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./TeamBand.module.css";
@@ -66,123 +66,96 @@ const EmailIcon = () => (
   </svg>
 );
 
-const LinkedInIcon = () => (
-  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
-       xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect x="1" y="1" width="12" height="12" rx="2" stroke="currentColor" strokeWidth="1.2"/>
-    <path d="M3.5 5.5V10.5M3.5 3.5v.5M6.5 10.5V8a1.5 1.5 0 013 0v2.5M6.5 7.5v3"
-          stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
-  </svg>
-);
-
 export default function TeamBand() {
+  const sectionRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
-  const isDown = useRef(false);
-  const startX = useRef(0);
-  const scrollLeft = useRef(0);
 
-  const onMouseDown = (e: React.MouseEvent) => {
-    if (!trackRef.current) return;
-    isDown.current = true;
-    trackRef.current.style.cursor = "grabbing";
-    startX.current = e.pageX - trackRef.current.offsetLeft;
-    scrollLeft.current = trackRef.current.scrollLeft;
-  };
+  useEffect(() => {
+    const section = sectionRef.current;
+    const track = trackRef.current;
+    if (!section || !track) return;
 
-  const onMouseLeave = () => {
-    isDown.current = false;
-    if (trackRef.current) trackRef.current.style.cursor = "grab";
-  };
+    const onScroll = () => {
+      const rect = section.getBoundingClientRect();
+      const viewportH = window.innerHeight;
 
-  const onMouseUp = () => {
-    isDown.current = false;
-    if (trackRef.current) trackRef.current.style.cursor = "grab";
-  };
+      // Total scrollable distance within the pinned section
+      const sectionHeight = section.offsetHeight;
+      const pinnedDistance = sectionHeight - viewportH;
 
-  const onMouseMove = (e: React.MouseEvent) => {
-    if (!isDown.current || !trackRef.current) return;
-    e.preventDefault();
-    const x = e.pageX - trackRef.current.offsetLeft;
-    const walk = (x - startX.current) * 1.5;
-    trackRef.current.scrollLeft = scrollLeft.current - walk;
-  };
+      if (pinnedDistance <= 0) return;
 
-  const onWheel = (e: React.WheelEvent) => {
-    if (!trackRef.current) return;
-    // Forward vertical wheel/trackpad scroll as horizontal movement
-    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-      trackRef.current.scrollLeft += e.deltaY;
-      e.preventDefault();
-    }
-  };
+      // Progress: 0 when section top reaches viewport top, 1 when fully scrolled through
+      const scrolled = -rect.top;
+      const progress = Math.min(Math.max(scrolled / pinnedDistance, 0), 1);
+
+      // Translate track horizontally based on progress
+      const maxTranslate = track.scrollWidth - track.clientWidth;
+      if (maxTranslate > 0) {
+        track.style.transform = `translateX(-${progress * maxTranslate}px)`;
+      }
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
 
   return (
-    <section className={styles.section}>
-      <div className={styles.inner}>
-        {/* Pinned left header - 50% wider */}
-        <div className={styles.header}>
-          <p className={styles.eyebrow}>The people behind the homes</p>
-          <h2 className={styles.heading}>
-            Our senior team are widely experienced in children's residential care.
-          </h2>
-          <Link href="/team" className={styles.arrowCta} aria-label="Meet the team">
-            <svg width="44" height="44" viewBox="0 0 44 44" fill="none"
-                 xmlns="http://www.w3.org/2000/svg">
-              <circle cx="22" cy="22" r="21" stroke="currentColor" strokeWidth="1.5"/>
-              <path d="M15 22h14M22 15l7 7-7 7" stroke="currentColor"
-                    strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </Link>
-        </div>
+    <section ref={sectionRef} className={styles.pinSection}>
+      <div className={styles.sticky}>
+        <div className={styles.inner}>
 
-        {/* Scrolling cards */}
-        <div
-          ref={trackRef}
-          className={styles.track}
-          onMouseDown={onMouseDown}
-          onMouseLeave={onMouseLeave}
-          onMouseUp={onMouseUp}
-          onMouseMove={onMouseMove}
-          onWheel={onWheel}
-        >
-          {TEAM.map((member) => (
-            <div key={member.slug} className={styles.card}>
-              {/* Avatar + name/role side by side */}
-              <div className={styles.identity}>
-                <div className={styles.avatar}>
-                  <Image src={member.image} alt={member.name} fill
-                         sizes="72px" className={styles.avatarImg} />
-                </div>
-                <div className={styles.identityText}>
-                  <h3 className={styles.name}>{member.name}</h3>
-                  <p className={styles.role}>{member.role}</p>
-                  {/* Contact icons below role */}
-                  <div className={styles.contactIcons}>
-                    {member.email && (
-                      <a href={`mailto:${member.email}`} className={styles.iconBtn}
-                         title={`Email ${member.name}`}>
-                        <EmailIcon />
-                        <span>Email {member.name.split(" ")[0]}</span>
-                      </a>
-                    )}
-                    {member.linkedin && (
-                      <a href={member.linkedin} target="_blank" rel="noopener noreferrer"
-                         className={styles.iconBtn}>
-                        <LinkedInIcon />
-                        <span>LinkedIn</span>
-                      </a>
-                    )}
+          {/* Pinned left header */}
+          <div className={styles.header}>
+            <p className={styles.eyebrow}>The people behind the homes</p>
+            <h2 className={styles.heading}>
+              Our senior team are widely experienced in children's residential care.
+            </h2>
+            <Link href="/team" className={styles.arrowCta} aria-label="Meet the team">
+              <svg width="44" height="44" viewBox="0 0 44 44" fill="none"
+                   xmlns="http://www.w3.org/2000/svg">
+                <circle cx="22" cy="22" r="21" stroke="currentColor" strokeWidth="1.5"/>
+                <path d="M15 22h14M22 15l7 7-7 7" stroke="currentColor"
+                      strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </Link>
+          </div>
+
+          {/* Track - moved via JS transform, not native scroll */}
+          <div className={styles.trackViewport}>
+            <div ref={trackRef} className={styles.track}>
+              {TEAM.map((member) => (
+                <div key={member.slug} className={styles.card}>
+                  <div className={styles.identity}>
+                    <div className={styles.avatar}>
+                      <Image src={member.image} alt={member.name} fill
+                             sizes="64px" className={styles.avatarImg} />
+                    </div>
+                    <div className={styles.identityText}>
+                      <h3 className={styles.name}>{member.name}</h3>
+                      <p className={styles.role}>{member.role}</p>
+                      {member.email && (
+                        <a href={`mailto:${member.email}`} className={styles.iconBtn}>
+                          <EmailIcon />
+                          <span>Email {member.name.split(" ")[0]}</span>
+                        </a>
+                      )}
+                    </div>
                   </div>
+                  <p className={styles.bio}>{member.bio}</p>
+                  <Link href={`/team/${member.slug}`} className={styles.viewBtn}>
+                    View profile &rarr;
+                  </Link>
                 </div>
-              </div>
-
-              <p className={styles.bio}>{member.bio}</p>
-
-              <Link href={`/team/${member.slug}`} className={styles.viewBtn}>
-                View profile &rarr;
-              </Link>
+              ))}
             </div>
-          ))}
+          </div>
+
         </div>
       </div>
     </section>
