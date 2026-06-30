@@ -1,15 +1,30 @@
-/* TeamBand.module.css */
+/* TeamBand.module.css - scroll-pinned horizontal section (block 004 pattern) */
 
-.section {
+/* Outer section - tall, creates the scroll runway */
+.pinSection {
+  position: relative;
+  /* height set dynamically via inline calc on mobile fallback below;
+     on desktop the JS uses offsetHeight so this just needs to be tall enough */
+  height: 220vh;
+}
+
+/* Sticky inner - pins to viewport while section scrolls past */
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
   background: var(--color-surface);
   border-top: 1px solid var(--color-line);
-  overflow: visible;
+  display: flex;
+  align-items: center;
 }
 
 .inner {
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 100%;
 }
 
 /* Left header */
@@ -19,6 +34,7 @@
   flex-direction: column;
   gap: var(--space-3);
   border-bottom: 1px solid var(--color-line);
+  flex-shrink: 0;
 }
 
 .eyebrow {
@@ -51,19 +67,20 @@
 
 .arrowCta:hover { color: var(--color-brand); }
 
-/* Scrolling track - critical properties for scroll to work */
+/* Track viewport - clips the track, no native scroll */
+.trackViewport {
+  flex: 1;
+  overflow: hidden;
+  height: 100%;
+}
+
+/* Track - moved via JS transform: translateX() */
 .track {
   display: flex;
   flex-direction: row;
-  overflow-x: scroll;
-  -webkit-overflow-scrolling: touch;
-  touch-action: pan-x;
-  scrollbar-width: none;
-  scroll-snap-type: x mandatory;
-  /* must NOT have overflow:hidden anywhere up the tree */
+  height: 100%;
+  will-change: transform;
 }
-
-.track::-webkit-scrollbar { display: none; }
 
 /* Cards */
 .card {
@@ -74,12 +91,10 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  scroll-snap-align: start;
   border-right: 1px solid var(--color-line);
-  border-top: 1px solid var(--color-line);
+  justify-content: center;
 }
 
-/* Avatar + name/role side by side */
 .identity {
   display: flex;
   align-items: flex-start;
@@ -121,14 +136,6 @@
   margin: 0;
 }
 
-/* Contact icons - below role */
-.contactIcons {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  margin-top: 6px;
-}
-
 .iconBtn {
   display: inline-flex;
   align-items: center;
@@ -138,17 +145,11 @@
   font-weight: 500;
   color: var(--color-brand);
   text-decoration: none;
+  margin-top: 6px;
   transition: color var(--t-fast);
 }
 
 .iconBtn:hover { color: var(--color-brand-dark); }
-
-.iconBtn span {
-  border-bottom: 1px solid transparent;
-  transition: border-color var(--t-fast);
-}
-
-.iconBtn:hover span { border-color: var(--color-brand-dark); }
 
 .bio {
   font-family: var(--font-jakarta), system-ui, sans-serif;
@@ -180,14 +181,8 @@
   color: #fff;
 }
 
-/* Desktop: side by side, full bleed */
+/* Desktop */
 @media (min-width: 900px) {
-  .inner {
-    flex-direction: row;
-    align-items: stretch;
-    /* critical: no overflow:hidden */
-  }
-
   .header {
     width: 420px;
     min-width: 380px;
@@ -195,21 +190,18 @@
     padding: var(--space-6) var(--space-5) var(--space-6) 60px;
     border-bottom: none;
     border-right: 1px solid var(--color-line);
-    justify-content: flex-start;
+    justify-content: center;
   }
 
-  .track {
-    flex: 1;
-    min-width: 0;
+  .inner { flex-direction: row; }
 
-    border-top: none;
-    overflow-x: scroll;
-  }
+  .card { width: 320px; min-width: 320px; }
+}
 
-  .card {
-    width: 320px;
-    min-width: 320px;
-    border-top: none;
-    padding: var(--space-6) var(--space-5);
-  }
+/* Mobile fallback: disable scroll-pin, use normal horizontal scroll */
+@media (max-width: 899px) {
+  .pinSection { height: auto; }
+  .sticky { position: relative; height: auto; overflow: visible; }
+  .trackViewport { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .track { transform: none !important; }
 }
