@@ -59,6 +59,7 @@ export default function HomeHeroV2() {
   const [activeProperty, setActiveProperty] = useState<PropertyData | null>(null);
   const [slideIndex, setSlideIndex] = useState(0);
   const [referralOpen, setReferralOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [ofstedOpen, setOfstedOpen] = useState(false);
 
   useEffect(() => {
@@ -122,6 +123,13 @@ export default function HomeHeroV2() {
 
           {/* Header nav */}
           <nav className={styles.heroNav} aria-label="Main navigation">
+            {/* Mobile logo - only visible on mobile */}
+            <Link href="/" className={styles.mobileLogoWrap} aria-label="Nurturing Nests home">
+              <Image src="/header-logo.svg" alt="Nurturing Nests" width={140} height={64}
+                     style={{ objectFit: "contain", objectPosition: "left" }} priority />
+            </Link>
+
+            {/* Desktop nav links */}
             <div className={styles.heroNavLinks}>
               {NAV_LINKS.map((l) => (
                 l.href === "#ofsted" ? (
@@ -135,6 +143,7 @@ export default function HomeHeroV2() {
                 )
               ))}
             </div>
+
             <div className={styles.heroNavActions}>
               <button type="button" onClick={() => setReferralOpen(true)} className={styles.referralBtn}>
                 Make a referral
@@ -148,8 +157,37 @@ export default function HomeHeroV2() {
                 <Image src="/phone-iocn.svg" alt="" width={18} height={18} />
                 Call us
               </a>
+              {/* Mobile burger */}
+              <button
+                className={styles.burger}
+                onClick={() => setMenuOpen(!menuOpen)}
+                aria-label="Open menu"
+              >
+                <span /><span /><span />
+              </button>
             </div>
           </nav>
+
+          {/* Mobile menu overlay */}
+          {menuOpen && (
+            <div className={styles.mobileMenu}>
+              <button className={styles.mobileMenuClose} onClick={() => setMenuOpen(false)} aria-label="Close menu">&times;</button>
+              {NAV_LINKS.map((l) => (
+                l.href === "#ofsted" ? (
+                  <button key={l.href} onClick={() => { setOfstedOpen(true); setMenuOpen(false); }} className={styles.mobileMenuLink}>
+                    {l.label}
+                  </button>
+                ) : (
+                  <Link key={l.href} href={l.href} className={styles.mobileMenuLink} onClick={() => setMenuOpen(false)}>
+                    {l.label}
+                  </Link>
+                )
+              ))}
+              <button type="button" onClick={() => { setReferralOpen(true); setMenuOpen(false); }} className={styles.mobileMenuCta}>
+                Make a referral
+              </button>
+            </div>
+          )}
 
           {/* Hero content */}
           <div className={styles.heroContent}>

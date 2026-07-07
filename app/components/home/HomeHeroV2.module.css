@@ -297,6 +297,19 @@
 
 .slideDotActive { background: #fff; }
 
+/* ===== MOBILE OVERRIDES ===== */
+@media (max-width: 899px) {
+  .mobileLogoWrap { display: flex; }
+  .heroNavLinks { display: none; }
+  .callBtn { display: none; }
+  .referralBtn { display: none; }
+  .burger { display: flex; }
+  .heroHeading {
+    text-align: center;
+    font-size: clamp(2.4rem, 8vw, 3.5rem);
+  }
+}
+
 /* ===== DESKTOP ===== */
 @media (min-width: 900px) {
   .root {
@@ -322,10 +335,89 @@
     order: 2;
   }
 
+  .mobileLogoWrap { display: none; }
   .heroContent { padding: 36px 56px 52px 24px; }
 }
 
 @media (min-width: 1240px) {
   .panel { width: 460px; }
   .heroContent { padding: 36px 72px 56px 24px; }
+}
+
+/* Mobile logo - shown in hero nav on mobile */
+.mobileLogoWrap {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* Burger button - mobile only */
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 8px;
+}
+.burger span {
+  width: 24px;
+  height: 2px;
+  background: #fff;
+  display: block;
+  border-radius: 2px;
+}
+
+/* Mobile menu overlay */
+.mobileMenu {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(15, 28, 46, 0.97);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 40px 24px;
+}
+
+.mobileMenuClose {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  background: none;
+  border: 0;
+  color: #fff;
+  font-size: 2.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.mobileMenuLink {
+  font-family: var(--font-mali), cursive;
+  font-size: clamp(1.8rem, 6vw, 2.8rem);
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 8px 0;
+  text-align: center;
+}
+.mobileMenuLink:hover { color: var(--color-brand); }
+
+.mobileMenuCta {
+  margin-top: 16px;
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--color-brand);
+  border: none;
+  border-radius: 999px;
+  padding: 14px 32px;
+  cursor: pointer;
 }
