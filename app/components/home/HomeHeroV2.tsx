@@ -44,7 +44,7 @@ const PROPERTIES: PropertyData[] = [
 
 const HERO_IMAGES = [
   "/hero/image2.jpg",
-  "/hero/portrait-of-smiling-african-boy copy.jpg",
+  "/hero/hero-boy.jpg",
 ];
 
 const NAV_LINKS = [

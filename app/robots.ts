@@ -6,15 +6,9 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: [
-          '/api/',
-          '/checkout/',
-          '/cart/',
-          '/orders/',
-          '/declaration/',
-        ],
+        disallow: ['/api/'],
       },
     ],
-    sitemap: 'https://myadaptability.co.uk/sitemap.xml',
+    sitemap: 'https://nurturingnests.co.uk/sitemap.xml',
   }
 }
