@@ -1,4 +1,4 @@
-import VacanciesPage from "../../components/home/VacanciesPage";
+import VacanciesPage from "../components/home/VacanciesPage";
 
 export const metadata = {
   title: "Vacancies | Nurturing Nests Care",
