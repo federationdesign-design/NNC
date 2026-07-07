@@ -9,10 +9,12 @@
   border-top: 1px solid var(--color-line);
 }
 
-/* Pin: sticky, but NO height set — content height only, same as ANT .pin */
+/* Pin: sticky, fills the viewport below the nav — exactly as ANT HomeStage does */
 .pin {
   position: sticky;
   top: var(--nav-height);
+  height: calc(100vh - var(--nav-height));
+  overflow: hidden;
 }
 
 /* Band: on mobile scrolls natively; on desktop is clipped and JS drives track */
