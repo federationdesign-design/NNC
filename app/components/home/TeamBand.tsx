@@ -77,15 +77,20 @@ export default function TeamBand() {
     if (!section || !track) return;
 
     const recalculate = () => {
-      const maxTranslate = track.scrollWidth - track.clientWidth;
-      if (maxTranslate > 0) {
-        // Section height = one viewport (for the sticky frame) + the travel distance
-        setSectionHeight(`calc(100vh + ${maxTranslate}px)`);
-      }
+      // Use scrollWidth measurement but with multiple retries to catch
+      // late-loading images. Also enforce a minimum based on card count.
+      const measured = track.scrollWidth - track.clientWidth;
+      // 5 cards * 320px + gaps — safe floor so height is never under-counted
+      const floor = TEAM.length * 320;
+      const maxTranslate = Math.max(measured, floor);
+      setSectionHeight(`calc(100vh + ${maxTranslate}px)`);
     };
 
-    // Small delay to allow fonts/images to settle before measuring
-    const timer = setTimeout(recalculate, 100);
+    // Measure immediately, then again after images settle
+    recalculate();
+    const t1 = setTimeout(recalculate, 300);
+    const t2 = setTimeout(recalculate, 800);
+    const t3 = setTimeout(recalculate, 1500);
 
     const onScroll = () => {
       const rect = section.getBoundingClientRect();
@@ -113,7 +118,9 @@ export default function TeamBand() {
     window.addEventListener("resize", onResize, { passive: true });
 
     return () => {
-      clearTimeout(timer);
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);
     };
