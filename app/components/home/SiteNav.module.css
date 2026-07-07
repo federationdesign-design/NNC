@@ -8,9 +8,7 @@
 }
 
 .inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 clamp(20px, 4vw, 60px);
+  padding: 0 clamp(32px, 5vw, 80px);
   height: 64px;
   display: flex;
   align-items: center;
