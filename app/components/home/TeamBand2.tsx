@@ -18,7 +18,6 @@ const TEAM: TeamMember[] = [
   { name: "George Ball", role: "Director", image: "/team/george-ball.jpg", slug: "george-ball", bio: "Co-founder of Nurturing Nests with extensive experience in children's residential care governance and strategic development across Kent.", email: "info@nurturingnests.co.uk" },
   { name: "Hannah Neeworth", role: "Director", image: "/team/hannah-neeworth.jpg", slug: "hannah-neeworth", bio: "Co-founder and Director, leading on quality assurance, regulatory compliance and the development of the Nurturing Nests model of care.", email: "info@nurturingnests.co.uk" },
   { name: "Jahvanne Wilson", role: "Responsible Individual", image: "/team/jahvanne-wilson.jpg", slug: "jahvanne-wilson", bio: "Responsible Individual with a deep background in therapeutic and relational practice, overseeing the quality and welfare of all homes.", email: "info@nurturingnests.co.uk" },
-  { name: "Christopher Campbell", role: "Registered Manager", image: "/team/christopher-campbell.jpg", slug: "christopher-campbell", bio: "Registered Manager bringing hands-on leadership to daily operations, safeguarding and the delivery of consistent, high-quality care.", email: "chris.campbell@nurturingnests.co.uk" },
   { name: "James Brennard", role: "Deputy Manager", image: "/team/james-brennard.jpg", slug: "james-brennard", bio: "Deputy Manager supporting the registered manager across both homes, ensuring strong routines, staff consistency and child wellbeing.", email: "info@nurturingnests.co.uk" },
 ];
 

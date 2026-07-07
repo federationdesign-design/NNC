@@ -49,7 +49,7 @@ const HERO_IMAGES = [
 const NAV_LINKS = [
   { label: "Our Homes", href: "/homes" },
   { label: "Vacancies", href: "/vacancies" },
-  { label: "Ofsted",    href: "/ofsted" },
+  { label: "Ofsted",    href: "/Ivy Cottage CH Full 10442530 FINAL.pdf" },
   { label: "Contact",   href: "/contact" },
 ];
 
@@ -180,7 +180,7 @@ export default function HomeHeroV2() {
                 </div>
 
                 {/* Ofsted Good Provider card - links to report */}
-                <Link href="/ofsted" className={styles.ofstedCard}>
+                <Link href="/Ivy%20Cottage%20CH%20Full%2010442530%20FINAL.pdf" target="_blank" className={styles.ofstedCard}>
                   <Image src="/ofsted.png" alt="Ofsted Good Provider"
                          fill style={{ objectFit: "cover" }}
                          sizes="160px" />
@@ -198,7 +198,7 @@ export default function HomeHeroV2() {
                           strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </Link>
-                <Link href="/ofsted" className={styles.ctaBtn}>
+                <Link href="/Ivy%20Cottage%20CH%20Full%2010442530%20FINAL.pdf" target="_blank" className={styles.ctaBtn}>
                   View Ofsted report
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">

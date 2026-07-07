@@ -70,14 +70,11 @@ export default function ReferralModal({ open, onClose }: Props) {
                   <input name="email" type="email" required placeholder="Email address" className={styles.input} />
                   <input name="tel" type="tel" required placeholder="Phone number" className={styles.input} />
                   <input name="council" type="text" required placeholder="Local authority / council" className={styles.input} />
-                  <input name="county" type="text" required placeholder="County" className={styles.input} />
                 </div>
 
                 {/* Right column — referral details */}
                 <div className={styles.col}>
                   <p className={styles.sectionLabel}>Referral details</p>
-                  <input name="numberOfCases" type="number" min={1} required placeholder="Number of cases" className={styles.input} />
-                  <input name="dateRequired" type="date" required className={styles.input} />
                   <textarea
                     name="specialNotes"
                     rows={7}
