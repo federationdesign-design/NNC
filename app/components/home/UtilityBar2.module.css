@@ -1,0 +1,35 @@
+.bar {
+  position: sticky;
+  top: var(--nav-height);
+  z-index: 40;
+  height: var(--strip-height);
+  background: var(--color-brand);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  font-size: 0.72rem;
+}
+
+.group {
+  display: flex;
+  align-items: center;
+}
+
+.group a {
+  color: #fff;
+  opacity: 0.95;
+  padding: 0 12px;
+  position: relative;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.group a:not(:first-child)::before {
+  content: "|";
+  position: absolute;
+  left: 0;
+  opacity: 0.45;
+}
+
+.group a:hover { opacity: 1; }
