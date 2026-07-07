@@ -67,13 +67,13 @@ const EmailIcon = () => (
 
 export default function TeamBand() {
   const sectionRef = useRef<HTMLElement>(null);
-  const pinRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
+  const pinRef    = useRef<HTMLDivElement>(null);
+  const trackRef  = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const section = sectionRef.current;
-    const pin = pinRef.current;
-    const track = trackRef.current;
+    const pin     = pinRef.current;
+    const track   = trackRef.current;
     if (!section || !pin || !track) return;
 
     const motionOk = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -97,10 +97,10 @@ export default function TeamBand() {
         distance = 0;
         return;
       }
-      // Exact same formula as ANT HomeStage — distance + pinned div height
-      // Subtract the header column width (420px desktop) from available width
-      const headerWidth = window.innerWidth >= 900 ? 420 : 0;
-      distance = Math.max(0, track.scrollWidth - (pin.clientWidth - headerWidth));
+      // ANT HomeStage formula exactly:
+      // distance = how far the track needs to travel
+      // section height = travel distance + pin's natural content height
+      distance = Math.max(0, track.scrollWidth - track.parentElement!.clientWidth);
       section.style.height = `${distance + pin.offsetHeight}px`;
       update();
     }
@@ -116,13 +116,13 @@ export default function TeamBand() {
   }, []);
 
   return (
-    <section ref={sectionRef} className={styles.pinSection}>
-      <div ref={pinRef} className={styles.sticky}>
-        <div className={styles.inner}>
+    <section ref={sectionRef} className={styles.section}>
+      <div ref={pinRef} className={styles.pin}>
 
-          <div className={styles.header}>
+        <div className={styles.band}>
+          <div className={styles.heading}>
             <p className={styles.eyebrow}>The people behind the homes</p>
-            <h2 className={styles.heading}>
+            <h2 className={styles.title}>
               Our senior team are widely experienced in children&apos;s residential care.
             </h2>
             <Link href="/team" className={styles.arrowCta} aria-label="Meet the team">
@@ -161,8 +161,8 @@ export default function TeamBand() {
               </div>
             ))}
           </div>
-
         </div>
+
       </div>
     </section>
   );

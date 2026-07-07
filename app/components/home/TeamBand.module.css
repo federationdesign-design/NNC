@@ -1,37 +1,38 @@
-/* TeamBand.module.css - scroll-pinned horizontal section */
-/* Height is set dynamically via JS using the same formula as ANT HomeStage:
-   section.style.height = distance + pin.offsetHeight */
+/* TeamBand.module.css
+   Direct transplant of ANT HomeStage pattern.
+   Section height is set by JS: distance + pin.offsetHeight
+   Pin is sticky but has NO fixed height — it's only as tall as its content. */
 
-.pinSection {
+.section {
   position: relative;
   background: var(--color-surface);
-}
-
-/* Sticky pin — exact same pattern as ANT HomeStage .pin */
-.sticky {
-  position: sticky;
-  top: 0;
-  height: calc(100vh - var(--nav-height));
-  overflow: hidden;
   border-top: 1px solid var(--color-line);
-  display: flex;
-  flex-direction: column;
 }
 
-.inner {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+/* Pin: sticky, but NO height set — content height only, same as ANT .pin */
+.pin {
+  position: sticky;
+  top: var(--nav-height);
 }
 
-/* ── Header ── */
-.header {
-  padding: var(--space-6) 20px var(--space-4);
+/* Band: on mobile scrolls natively; on desktop is clipped and JS drives track */
+.band {
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: var(--space-6) 20px;
+}
+.band::-webkit-scrollbar { display: none; }
+
+/* Heading column */
+.heading {
+  flex: 0 0 300px;
+  padding-right: 24px;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   gap: var(--space-3);
-  border-bottom: 1px solid var(--color-line);
-  flex-shrink: 0;
 }
 
 .eyebrow {
@@ -42,10 +43,9 @@
   text-transform: uppercase;
   color: var(--color-brand);
   margin: 0;
-  line-height: 1.3;
 }
 
-.heading {
+.title {
   font-family: var(--font-mali), cursive;
   font-size: clamp(1.3rem, 3vw, 1.75rem);
   font-weight: 700;
@@ -64,26 +64,21 @@
 }
 .arrowCta:hover { color: var(--color-brand); }
 
-/* ── Track ── */
+/* Track: flex row of cards, JS drives translateX on desktop */
 .track {
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+  align-items: stretch;
   will-change: transform;
 }
 
-/* ── Cards ── */
+/* Cards */
 .card {
-  flex-shrink: 0;
-  width: 300px;
-  min-width: 300px;
-  padding: var(--space-5);
-  margin-top: var(--space-6);
+  flex: 0 0 300px;
+  border-left: 1px solid var(--color-line);
+  padding: 0 var(--space-5);
   display: flex;
   flex-direction: column;
   gap: 10px;
-  border-right: 1px solid var(--color-line);
-  justify-content: flex-start;
 }
 
 .identity {
@@ -149,6 +144,7 @@
   line-height: 1.3;
   color: var(--color-ink);
   margin: 0;
+  flex-grow: 1;
 }
 
 .viewBtn {
@@ -173,47 +169,41 @@
   color: #fff;
 }
 
-/* ── Desktop ── */
+/* ── Desktop: clip band, JS drives track ── */
 @media (min-width: 900px) {
-  .sticky {
-    top: var(--nav-height);
-    height: calc(100vh - var(--nav-height));
+  .band {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    padding: var(--space-6) 0;
   }
 
-  .inner {
-    flex-direction: row;
-    align-items: stretch;
-  }
-
-  .header {
-    width: 420px;
-    min-width: 380px;
-    flex-shrink: 0;
+  .heading {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 380px;
+    z-index: 3;
+    background: var(--color-surface);
     padding: var(--space-6) var(--space-5) var(--space-6) 60px;
-    border-bottom: none;
+    justify-content: center;
     border-right: 1px solid var(--color-line);
-    justify-content: flex-start;
   }
 
   .track {
-    padding-left: 0;
+    padding-left: 380px;
     align-items: flex-start;
   }
 
-  .card { width: 320px; min-width: 320px; }
+  .card {
+    flex: 0 0 320px;
+  }
 }
 
-/* ── Mobile: native horizontal scroll, no JS pin ── */
+/* ── Mobile: native scroll, no JS ── */
 @media (max-width: 899px) {
-  .pinSection { height: auto !important; }
-  .sticky {
-    position: relative;
-    height: auto;
-    overflow: visible;
-  }
-  .track {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    transform: none !important;
-  }
+  .section { height: auto !important; }
+  .pin { position: relative; top: 0; }
+  .track { transform: none !important; }
 }
