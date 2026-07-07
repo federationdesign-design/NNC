@@ -66,49 +66,47 @@ const EmailIcon = () => (
 );
 
 export default function TeamBand() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const pinRef    = useRef<HTMLDivElement>(null);
-  const trackRef  = useRef<HTMLDivElement>(null);
+  const stageRef = useRef<HTMLElement>(null);
+  const pinRef   = useRef<HTMLDivElement>(null);
+  const bandRef  = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const section = sectionRef.current;
-    const pin     = pinRef.current;
-    const track   = trackRef.current;
-    if (!section || !pin || !track) return;
+    const stage = stageRef.current;
+    const pin   = pinRef.current;
+    const band  = bandRef.current;
+    const track = trackRef.current;
+    if (!stage || !pin || !band || !track) return;
 
     const motionOk = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let distance = 0;
-
-    const active = () =>
-      window.matchMedia("(min-width: 900px)").matches && motionOk;
+    const active = () => window.matchMedia("(min-width: 900px)").matches && motionOk;
 
     function update() {
-      if (!section || !track || !active() || distance === 0) return;
-      const rect = section.getBoundingClientRect();
+      if (!stage || !track || !active() || distance === 0) return;
+      const rect = stage.getBoundingClientRect();
       const progress = Math.min(Math.max(-rect.top / distance, 0), 1);
       track.style.transform = `translate3d(${-distance * progress}px, 0, 0)`;
     }
 
     function measure() {
-      if (!section || !pin || !track) return;
+      if (!stage || !pin || !band || !track) return;
       if (!active()) {
-        section.style.height = "";
+        stage.style.height = "";
         track.style.transform = "";
         distance = 0;
         return;
       }
-      // ANT HomeStage formula exactly:
-      // distance = how far the track needs to travel
-      // section height = travel distance + pin's natural content height
-      distance = Math.max(0, track.scrollWidth - track.parentElement!.clientWidth);
-      section.style.height = `${distance + pin.offsetHeight}px`;
+      // Exact ANT formula: distance = track scroll width minus band width
+      // stage height = distance + pin's full rendered height (which is 100vh - nav - strip)
+      distance = Math.max(0, track.scrollWidth - band.clientWidth);
+      stage.style.height = `${distance + pin.offsetHeight}px`;
       update();
     }
 
     measure();
     window.addEventListener("scroll", update, { passive: true });
     window.addEventListener("resize", measure);
-
     return () => {
       window.removeEventListener("scroll", update);
       window.removeEventListener("resize", measure);
@@ -116,10 +114,10 @@ export default function TeamBand() {
   }, []);
 
   return (
-    <section ref={sectionRef} className={styles.section}>
+    <section ref={stageRef} className={styles.stage} aria-label="Our senior team">
       <div ref={pinRef} className={styles.pin}>
+        <div ref={bandRef} className={styles.band}>
 
-        <div className={styles.band}>
           <div className={styles.heading}>
             <p className={styles.eyebrow}>The people behind the homes</p>
             <h2 className={styles.title}>
@@ -137,32 +135,32 @@ export default function TeamBand() {
 
           <div ref={trackRef} className={styles.track}>
             {TEAM.map((member) => (
-              <div key={member.slug} className={styles.card}>
-                <div className={styles.identity}>
+              <article key={member.slug} className={styles.card}>
+                <div className={styles.cardTop}>
                   <div className={styles.avatar}>
                     <Image src={member.image} alt={member.name} fill
-                           sizes="64px" className={styles.avatarImg} />
+                           sizes="84px" style={{ objectFit: "cover" }} />
                   </div>
-                  <div className={styles.identityText}>
-                    <h3 className={styles.name}>{member.name}</h3>
-                    <p className={styles.role}>{member.role}</p>
+                  <div className={styles.links}>
                     {member.email && (
-                      <a href={`mailto:${member.email}`} className={styles.iconBtn}>
+                      <a href={`mailto:${member.email}`} className={`${styles.link} ${styles.linkBtn}`}>
                         <EmailIcon />
                         <span>Email {member.name.split(" ")[0]}</span>
                       </a>
                     )}
                   </div>
                 </div>
+                <h3 className={styles.name}>{member.name}</h3>
+                <p className={styles.role}>{member.role}</p>
                 <p className={styles.bio}>{member.bio}</p>
                 <Link href={`/team/${member.slug}`} className={styles.viewBtn}>
                   View profile &rarr;
                 </Link>
-              </div>
+              </article>
             ))}
           </div>
-        </div>
 
+        </div>
       </div>
     </section>
   );
