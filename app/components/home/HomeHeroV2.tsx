@@ -151,7 +151,7 @@ export default function HomeHeroV2() {
                 <Image src="/phone-iocn.svg" alt="" width={18} height={18} />
                 Call us
               </a>
-              {/* Mobile burger */}
+              {/* Mobile burger - rightmost */}
               <button
                 className={styles.burger}
                 onClick={() => setMenuOpen(!menuOpen)}
@@ -185,13 +185,6 @@ export default function HomeHeroV2() {
 
           {/* Hero content */}
           <div className={styles.heroContent}>
-
-            {/* Top-left subtitle */}
-            <p className={styles.heroSubtitle}>
-              Our model has been intentionally designed around the real referral
-              patterns we receive providing stability, structure and relational
-              consistency for children with complex emotional and neurodiverse needs.
-            </p>
 
             {/* Bottom section */}
             <div className={styles.heroBottom}>
@@ -248,6 +241,13 @@ export default function HomeHeroV2() {
                 </button>
               </div>
             </div>
+
+            {/* Subtitle - below heading on mobile, top-left on desktop */}
+            <p className={styles.heroSubtitle}>
+              Our model has been intentionally designed around the real referral
+              patterns we receive providing stability, structure and relational
+              consistency for children with complex emotional and neurodiverse needs.
+            </p>
           </div>
 
           {/* Slide indicators */}

@@ -299,14 +299,91 @@
 
 /* ===== MOBILE OVERRIDES ===== */
 @media (max-width: 899px) {
-  .mobileLogoWrap { display: flex; }
+  /* Nav */
   .heroNavLinks { display: none; }
-  .callBtn { display: none; }
-  .referralBtn { display: none; }
+  .callBtn { display: flex; }
+  .referralBtn { display: flex; }
   .burger { display: flex; }
+
+  /* Fix nav layout - burger on right */
+  .heroNav {
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 12px 16px;
+  }
+
+  /* H1 - centred, bigger */
   .heroHeading {
     text-align: center;
     font-size: clamp(2.4rem, 8vw, 3.5rem);
+    line-height: 1.1;
+  }
+
+  /* Subtitle - move below H1, centred */
+  .heroContent {
+    padding: 16px 20px 24px;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .heroBottom {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* Subtitle below heading */
+  .heroSubtitle {
+    order: 2;
+    text-align: center;
+    max-width: 100%;
+    font-size: 0.9rem;
+    margin-top: 12px;
+  }
+
+  .heroBottom { order: 1; }
+
+  /* Cards - side by side in 2 columns */
+  .heroBottomRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .whiteCard {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    padding: 14px 16px;
+  }
+
+  .whiteCardText { font-size: 0.78rem; }
+
+  /* Ofsted badge - full square, no clipping */
+  .ofstedCard {
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    border-radius: 0;
+  }
+
+  /* CTA buttons - smaller, fit on screen */
+  .ctaRow {
+    flex-direction: row;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .ctaBtn {
+    font-size: 0.78rem;
+    padding: 10px 16px;
+    gap: 6px;
+    flex: 1;
+    justify-content: center;
   }
 }
 
@@ -500,13 +577,90 @@
 }
 
 @media (max-width: 899px) {
-  .mobileLogoWrap { display: flex; }
+  /* Nav */
   .heroNavLinks { display: none; }
-  .callBtn { display: none; }
-  .referralBtn { display: none; }
+  .callBtn { display: flex; }
+  .referralBtn { display: flex; }
   .burger { display: flex; }
+
+  /* Fix nav layout - burger on right */
+  .heroNav {
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 12px 16px;
+  }
+
+  /* H1 - centred, bigger */
   .heroHeading {
     text-align: center;
     font-size: clamp(2.4rem, 8vw, 3.5rem);
+    line-height: 1.1;
+  }
+
+  /* Subtitle - move below H1, centred */
+  .heroContent {
+    padding: 16px 20px 24px;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .heroBottom {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* Subtitle below heading */
+  .heroSubtitle {
+    order: 2;
+    text-align: center;
+    max-width: 100%;
+    font-size: 0.9rem;
+    margin-top: 12px;
+  }
+
+  .heroBottom { order: 1; }
+
+  /* Cards - side by side in 2 columns */
+  .heroBottomRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .whiteCard {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    padding: 14px 16px;
+  }
+
+  .whiteCardText { font-size: 0.78rem; }
+
+  /* Ofsted badge - full square, no clipping */
+  .ofstedCard {
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    border-radius: 0;
+  }
+
+  /* CTA buttons - smaller, fit on screen */
+  .ctaRow {
+    flex-direction: row;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .ctaBtn {
+    font-size: 0.78rem;
+    padding: 10px 16px;
+    gap: 6px;
+    flex: 1;
+    justify-content: center;
   }
 }
