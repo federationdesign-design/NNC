@@ -98,7 +98,9 @@ export default function TeamBand() {
         return;
       }
       // Exact same formula as ANT HomeStage — distance + pinned div height
-      distance = Math.max(0, track.scrollWidth - pin.clientWidth);
+      // Subtract the header column width (420px desktop) from available width
+      const headerWidth = window.innerWidth >= 900 ? 420 : 0;
+      distance = Math.max(0, track.scrollWidth - (pin.clientWidth - headerWidth));
       section.style.height = `${distance + pin.offsetHeight}px`;
       update();
     }
