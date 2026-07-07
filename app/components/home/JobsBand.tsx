@@ -13,7 +13,7 @@ const jobs = [
     tag: "Flexible",
     summary:
       "Support our homes on a flexible, as-required basis covering sickness, annual leave, and periods of increased need. Work to the same professional standards as permanent staff.",
-    url: "https://www.indeed.co.uk",
+    url: "https://www.indeed.co.uk", // replace with actual link
   },
   {
     title: "Residential Support Worker",
@@ -24,7 +24,7 @@ const jobs = [
     tag: "Full-time",
     summary:
       "Play a vital role in supporting children's daily wellbeing in a safe, nurturing environment. Build independence skills, act as a key worker, and develop professional relationships.",
-    url: "https://www.indeed.co.uk",
+    url: "https://www.indeed.co.uk", // replace with actual link
   },
   {
     title: "Senior Residential Support Worker",
@@ -35,7 +35,7 @@ const jobs = [
     tag: "Senior",
     summary:
       "Lead day-to-day care operations, oversee safeguarding compliance, and mentor a team of support workers. A leadership role making a real difference to children's lives.",
-    url: "https://www.indeed.co.uk",
+    url: "https://www.indeed.co.uk", // replace with actual link
   },
 ];
 
@@ -82,13 +82,13 @@ export default function JobsBand() {
                   </li>
                 </ul>
                 <p className={styles.summary}>{job.summary}</p>
-                
+                <a
                   href={job.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.applyBtn}
                 >
-                  Apply now
+                  Apply now &rarr;
                 </a>
               </article>
             ))}
