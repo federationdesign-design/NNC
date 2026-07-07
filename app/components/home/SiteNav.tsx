@@ -19,7 +19,7 @@ export default function SiteNav() {
     <header className={styles.nav}>
       <div className={styles.inner}>
         <Link href="/" className={styles.logo}>
-          <Image src="/header-logo.svg" alt="Nurturing Nests" width={120} height={48} style={{ objectFit: "contain", objectPosition: "left" }} />
+          <Image src="/long logo copy.svg" alt="Nurturing Nests" width={180} height={36} style={{ objectFit: "contain", objectPosition: "left" }} />
         </Link>
 
         <nav className={styles.links} aria-label="Main navigation">
