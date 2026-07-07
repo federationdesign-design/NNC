@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./TeamBand.module.css";
@@ -66,43 +66,58 @@ const EmailIcon = () => (
 );
 
 export default function TeamBand() {
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const pinRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
-  // Dynamically calculated section height: 100vh + however far the track needs to travel
 
   useEffect(() => {
     const section = sectionRef.current;
+    const pin = pinRef.current;
     const track = trackRef.current;
-    if (!section || !track) return;
+    if (!section || !pin || !track) return;
 
-    const onScroll = () => {
+    const motionOk = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let distance = 0;
+
+    const active = () =>
+      window.matchMedia("(min-width: 900px)").matches && motionOk;
+
+    function update() {
+      if (!section || !track || !active() || distance === 0) return;
       const rect = section.getBoundingClientRect();
-      const pinnedDistance = section.offsetHeight - window.innerHeight;
-      if (pinnedDistance <= 0) return;
-      const progress = Math.min(Math.max(-rect.top / pinnedDistance, 0), 1);
-      const maxTranslate = track.scrollWidth - track.clientWidth;
-      if (maxTranslate > 0) {
-        track.style.transform = `translateX(-${progress * maxTranslate}px)`;
-      }
-    };
+      const progress = Math.min(Math.max(-rect.top / distance, 0), 1);
+      track.style.transform = `translate3d(${-distance * progress}px, 0, 0)`;
+    }
 
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll, { passive: true });
+    function measure() {
+      if (!section || !pin || !track) return;
+      if (!active()) {
+        section.style.height = "";
+        track.style.transform = "";
+        distance = 0;
+        return;
+      }
+      // Exact same formula as ANT HomeStage — distance + pinned div height
+      distance = Math.max(0, track.scrollWidth - pin.clientWidth);
+      section.style.height = `${distance + pin.offsetHeight}px`;
+      update();
+    }
+
+    measure();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", measure);
+
     return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", measure);
     };
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className={styles.pinSection}
-    >
-      <div className={styles.sticky}>
+    <section ref={sectionRef} className={styles.pinSection}>
+      <div ref={pinRef} className={styles.sticky}>
         <div className={styles.inner}>
 
-          {/* Pinned left header */}
           <div className={styles.header}>
             <p className={styles.eyebrow}>The people behind the homes</p>
             <h2 className={styles.heading}>
@@ -118,34 +133,31 @@ export default function TeamBand() {
             </Link>
           </div>
 
-          {/* Track - moved via JS transform */}
-          <div className={styles.trackViewport}>
-            <div ref={trackRef} className={styles.track}>
-              {TEAM.map((member) => (
-                <div key={member.slug} className={styles.card}>
-                  <div className={styles.identity}>
-                    <div className={styles.avatar}>
-                      <Image src={member.image} alt={member.name} fill
-                             sizes="64px" className={styles.avatarImg} />
-                    </div>
-                    <div className={styles.identityText}>
-                      <h3 className={styles.name}>{member.name}</h3>
-                      <p className={styles.role}>{member.role}</p>
-                      {member.email && (
-                        <a href={`mailto:${member.email}`} className={styles.iconBtn}>
-                          <EmailIcon />
-                          <span>Email {member.name.split(" ")[0]}</span>
-                        </a>
-                      )}
-                    </div>
+          <div ref={trackRef} className={styles.track}>
+            {TEAM.map((member) => (
+              <div key={member.slug} className={styles.card}>
+                <div className={styles.identity}>
+                  <div className={styles.avatar}>
+                    <Image src={member.image} alt={member.name} fill
+                           sizes="64px" className={styles.avatarImg} />
                   </div>
-                  <p className={styles.bio}>{member.bio}</p>
-                  <Link href={`/team/${member.slug}`} className={styles.viewBtn}>
-                    View profile &rarr;
-                  </Link>
+                  <div className={styles.identityText}>
+                    <h3 className={styles.name}>{member.name}</h3>
+                    <p className={styles.role}>{member.role}</p>
+                    {member.email && (
+                      <a href={`mailto:${member.email}`} className={styles.iconBtn}>
+                        <EmailIcon />
+                        <span>Email {member.name.split(" ")[0]}</span>
+                      </a>
+                    )}
+                  </div>
                 </div>
-              ))}
-            </div>
+                <p className={styles.bio}>{member.bio}</p>
+                <Link href={`/team/${member.slug}`} className={styles.viewBtn}>
+                  View profile &rarr;
+                </Link>
+              </div>
+            ))}
           </div>
 
         </div>

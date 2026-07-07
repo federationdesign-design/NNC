@@ -1,31 +1,31 @@
-/* TeamBand.module.css - scroll-pinned horizontal section (block 004 pattern) */
+/* TeamBand.module.css - scroll-pinned horizontal section */
+/* Height is set dynamically via JS using the same formula as ANT HomeStage:
+   section.style.height = distance + pin.offsetHeight */
 
-/* Outer section - height set via inline style in TSX based on track width */
 .pinSection {
   position: relative;
-  height: 100vh;
+  background: var(--color-surface);
 }
 
-/* Sticky inner - pins to viewport while section scrolls past */
+/* Sticky pin — exact same pattern as ANT HomeStage .pin */
 .sticky {
   position: sticky;
   top: 0;
-  height: 100vh;
+  height: calc(100vh - var(--nav-height));
   overflow: hidden;
-  background: var(--color-surface);
   border-top: 1px solid var(--color-line);
   display: flex;
-  align-items: flex-start;
-  padding-top: var(--nav-height);
+  flex-direction: column;
 }
 
 .inner {
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 100%;
 }
 
-/* Left header */
+/* ── Header ── */
 .header {
   padding: var(--space-6) 20px var(--space-4);
   display: flex;
@@ -36,7 +36,6 @@
 }
 
 .eyebrow {
-  line-height: 1.3;
   font-family: var(--font-jakarta), system-ui, sans-serif;
   font-size: 0.78rem;
   font-weight: 700;
@@ -44,6 +43,7 @@
   text-transform: uppercase;
   color: var(--color-brand);
   margin: 0;
+  line-height: 1.3;
 }
 
 .heading {
@@ -63,30 +63,22 @@
   height: 44px;
   transition: color var(--t-fast);
 }
-
 .arrowCta:hover { color: var(--color-brand); }
 
-/* Track viewport - clips the track, no native scroll */
-.trackViewport {
-  flex: 1;
-  overflow: hidden;
-}
-
-/* Track - moved via JS transform: translateX() */
+/* ── Track ── */
 .track {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   will-change: transform;
+  flex: 1;
 }
 
-/* Cards */
+/* ── Cards ── */
 .card {
   flex-shrink: 0;
   width: 300px;
   min-width: 300px;
-  height: 320px;
-  max-height: 320px;
   padding: var(--space-5);
   margin-top: var(--space-6);
   display: flex;
@@ -94,7 +86,6 @@
   gap: 10px;
   border-right: 1px solid var(--color-line);
   justify-content: flex-start;
-  overflow: hidden;
 }
 
 .identity {
@@ -113,7 +104,6 @@
   border: 2px solid var(--color-line);
   flex-shrink: 0;
 }
-
 .avatarImg { object-fit: cover; }
 
 .identityText {
@@ -124,24 +114,23 @@
 }
 
 .name {
-  line-height: 1.3;
   font-family: var(--font-mali), cursive;
   font-size: 1rem;
   font-weight: 700;
   color: var(--color-ink);
   margin: 0;
+  line-height: 1.3;
 }
 
 .role {
-  line-height: 1.3;
   font-family: var(--font-jakarta), system-ui, sans-serif;
   font-size: 0.8rem;
   color: var(--color-muted);
   margin: 0;
+  line-height: 1.3;
 }
 
 .iconBtn {
-  line-height: 1.3;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -151,9 +140,9 @@
   color: var(--color-brand);
   text-decoration: none;
   margin-top: 6px;
+  line-height: 1.3;
   transition: color var(--t-fast);
 }
-
 .iconBtn:hover { color: var(--color-brand-dark); }
 
 .bio {
@@ -165,7 +154,6 @@
 }
 
 .viewBtn {
-  line-height: 1.3;
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
@@ -178,17 +166,27 @@
   padding: 10px 20px;
   border-radius: 999px;
   margin-top: 12px;
+  line-height: 1.3;
   transition: background var(--t-fast), color var(--t-fast);
   align-self: flex-start;
 }
-
 .viewBtn:hover {
   background: var(--color-ink);
   color: #fff;
 }
 
-/* Desktop */
+/* ── Desktop ── */
 @media (min-width: 900px) {
+  .sticky {
+    top: var(--nav-height);
+    height: calc(100vh - var(--nav-height));
+  }
+
+  .inner {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
   .header {
     width: 420px;
     min-width: 380px;
@@ -199,15 +197,25 @@
     justify-content: flex-start;
   }
 
-  .inner { flex-direction: row; align-items: flex-start; }
+  .track {
+    padding-left: 0;
+    align-items: flex-start;
+  }
 
   .card { width: 320px; min-width: 320px; }
 }
 
-/* Mobile fallback: disable scroll-pin, use normal horizontal scroll */
+/* ── Mobile: native horizontal scroll, no JS pin ── */
 @media (max-width: 899px) {
   .pinSection { height: auto !important; }
-  .sticky { position: relative; height: auto; overflow: visible; }
-  .trackViewport { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .track { transform: none !important; }
+  .sticky {
+    position: relative;
+    height: auto;
+    overflow: visible;
+  }
+  .track {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    transform: none !important;
+  }
 }
