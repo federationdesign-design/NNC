@@ -126,8 +126,14 @@ export default function TeamBand2() {
               <div key={i} className={styles.peekJob}>
                 <span className={styles.peekTag}>{job.tag}</span>
                 <h4 className={styles.peekJobTitle}>{job.title}</h4>
-                <p className={styles.peekJobMeta}>{job.location} · {job.pay}</p>
-                <a href={job.url} target="_blank" rel="noopener noreferrer" className={styles.peekApply}>Apply &rarr;</a>
+                <ul className={styles.peekMeta}>
+                  <li><span className={styles.peekMetaLabel}>Location</span>{job.location}</li>
+                  <li><span className={styles.peekMetaLabel}>Contract</span>{job.type}</li>
+                  <li><span className={styles.peekMetaLabel}>Pay</span>{job.pay}</li>
+                  <li><span className={styles.peekMetaLabel}>Sleep-ins</span>{job.sleepIn}</li>
+                </ul>
+                <p className={styles.peekJobSummary}>{job.summary}</p>
+                <a href={job.url} target="_blank" rel="noopener noreferrer" className={styles.peekApply}>Apply now &rarr;</a>
               </div>
             ))}
           </div>
