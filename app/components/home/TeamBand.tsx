@@ -69,56 +69,28 @@ export default function TeamBand() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   // Dynamically calculated section height: 100vh + however far the track needs to travel
-  const [sectionHeight, setSectionHeight] = useState("140vh");
 
   useEffect(() => {
     const section = sectionRef.current;
     const track = trackRef.current;
     if (!section || !track) return;
 
-    const recalculate = () => {
-      const maxTranslate = track.scrollWidth - track.clientWidth;
-      // Only extend section height if the track actually needs to scroll
-      if (maxTranslate > 10) {
-        setSectionHeight(`calc(100vh + ${maxTranslate}px)`);
-      } else {
-        setSectionHeight("100vh");
-      }
-    };
-
     const onScroll = () => {
       const rect = section.getBoundingClientRect();
-      const sectionH = section.offsetHeight;
-      const pinnedDistance = sectionH - window.innerHeight;
-
+      const pinnedDistance = section.offsetHeight - window.innerHeight;
       if (pinnedDistance <= 0) return;
-
-      const scrolled = -rect.top;
-      const progress = Math.min(Math.max(scrolled / pinnedDistance, 0), 1);
+      const progress = Math.min(Math.max(-rect.top / pinnedDistance, 0), 1);
       const maxTranslate = track.scrollWidth - track.clientWidth;
-
       if (maxTranslate > 0) {
         track.style.transform = `translateX(-${progress * maxTranslate}px)`;
       }
     };
 
-    const onResize = () => {
-      recalculate();
-      onScroll();
-    };
-
-    const t1 = setTimeout(recalculate, 200);
-    const t2 = setTimeout(recalculate, 800);
-
-    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onResize, { passive: true });
-
+    window.addEventListener("resize", onScroll, { passive: true });
     return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onResize);
+      window.removeEventListener("resize", onScroll);
     };
   }, []);
 
@@ -126,7 +98,6 @@ export default function TeamBand() {
     <section
       ref={sectionRef}
       className={styles.pinSection}
-      style={{ height: sectionHeight }}
     >
       <div className={styles.sticky}>
         <div className={styles.inner}>

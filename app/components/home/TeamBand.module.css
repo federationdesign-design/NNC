@@ -3,6 +3,7 @@
 /* Outer section - height set via inline style in TSX based on track width */
 .pinSection {
   position: relative;
+  height: 100vh;
 }
 
 /* Sticky inner - pins to viewport while section scrolls past */
