@@ -166,7 +166,7 @@
     width: 340px;
     z-index: 3;
     background: var(--color-surface);
-    padding: 0 40px 0 clamp(32px, 4vw, 60px);
+    padding: 24px 40px 24px clamp(32px, 4vw, 60px);
     justify-content: center;
     flex: none;
     border-right: 1px solid var(--color-line);
@@ -217,13 +217,13 @@
     font-weight: 700;
     color: #fff;
     margin: 0;
-    line-height: 1.2;
+    line-height: 1.3;
   }
 
   .peekSub {
     font-family: var(--font-jakarta), system-ui, sans-serif;
     font-size: 0.88rem;
-    line-height: 1.5;
+    line-height: 1.3;
     color: rgba(255,255,255,0.55);
     margin: 0;
     max-width: 360px;
@@ -301,7 +301,7 @@
   .peekJobSummary {
     font-family: var(--font-jakarta), system-ui, sans-serif;
     font-size: 0.88rem;
-    line-height: 1.6;
+    line-height: 1.3;
     color: rgba(255,255,255,0.55);
     margin: 0;
     flex-grow: 1;
