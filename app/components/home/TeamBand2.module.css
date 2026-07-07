@@ -156,6 +156,7 @@
     display: block;
     overflow: hidden;
     padding: 32px 0 32px;
+    min-height: 380px;
   }
 
   .heading {
