@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import JobApplicationModal from "./JobApplicationModal";
 import styles from "./TeamBand2.module.css";
 
 interface TeamMember {
@@ -28,6 +29,7 @@ const JOBS = [
 ];
 
 export default function TeamBand2() {
+  const [applyJob, setApplyJob] = useState<string | null>(null);
   const stageRef = useRef<HTMLElement>(null);
   const pinRef   = useRef<HTMLDivElement>(null);
   const bandRef  = useRef<HTMLDivElement>(null);
@@ -74,6 +76,7 @@ export default function TeamBand2() {
   }, []);
 
   return (
+    <>
     <section ref={stageRef} className={styles.stage}>
       <div ref={pinRef} className={styles.pin}>
 
@@ -132,7 +135,7 @@ export default function TeamBand2() {
                   <li><span className={styles.peekMetaLabel}>Sleep-ins</span>{job.sleepIn}</li>
                 </ul>
                 <p className={styles.peekJobSummary}>{job.summary}</p>
-                <a href={job.url} target="_blank" rel="noopener noreferrer" className={styles.peekApply}>Apply now &rarr;</a>
+                <button onClick={() => setApplyJob(job.title)} className={styles.peekApply}>Apply now &rarr;</button>
               </div>
             ))}
           </div>
@@ -140,5 +143,12 @@ export default function TeamBand2() {
 
       </div>
     </section>
+
+      <JobApplicationModal
+        open={applyJob !== null}
+        onClose={() => setApplyJob(null)}
+        jobTitle={applyJob ?? undefined}
+      />
+    </>
   );
 }
