@@ -105,7 +105,7 @@ export default function TeamBand2() {
                 <h3 className={styles.name}>{member.name}</h3>
                 <p className={styles.role}>{member.role}</p>
                 <p className={styles.bio}>{member.bio}</p>
-                <Link href={`/team/${member.slug}`} className={styles.viewBtn}>View profile &rarr;</Link>
+
               </article>
             ))}
           </div>
