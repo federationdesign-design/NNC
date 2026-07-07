@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import JobApplicationModal from "../JobApplicationModal";
+import JobApplicationModal from "./JobApplicationModal";
 import styles from "./VacanciesPage.module.css";
 
 const JOBS = [
