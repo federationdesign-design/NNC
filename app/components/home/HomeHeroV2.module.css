@@ -14,6 +14,7 @@
   border-right: 1px solid var(--color-line);
   display: flex;
   flex-direction: column;
+  order: 2;
 }
 
 .logoArea {
@@ -42,6 +43,7 @@
   flex-direction: column;
   background: var(--color-brand-dark);
   overflow: hidden;
+  order: 1;
 }
 
 .heroBg { position: absolute; inset: 0; z-index: 0; }
@@ -79,11 +81,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-left: 24px;
 }
 
 
-.heroNavLinks { display: flex; align-items: stretch; }
+.heroNavLinks { display: flex; align-items: stretch; padding-left: 32px; }
 
 .heroNavLink {
   font-family: var(--font-jakarta), system-ui, sans-serif;
@@ -236,15 +237,14 @@
   position: relative;
   width: 160px;
   min-width: 160px;
+  /* stretch via heroBottomRow align-items:stretch */
   background: transparent;
-  border: none;
   border-radius: var(--radius-lg);
   overflow: hidden;
   flex-shrink: 0;
+  /* explicit min-height as fallback */
   min-height: 100px;
   height: 100%;
-  cursor: pointer;
-  padding: 0;
 }
 
 /* CTA row */
@@ -312,19 +312,22 @@
     height: 100dvh;
     overflow-y: auto;
     padding: 32px 28px;
+    order: 1;
   }
 
   .heroArea {
     flex: 1;
     height: 100dvh;
     min-height: 100dvh;
+    order: 2;
   }
 
-  .heroNav { padding-left: 32px; }
+  .heroNavLinks { padding-left: 56px; }
   .heroContent { padding: 36px 56px 52px; }
 }
 
 @media (min-width: 1240px) {
   .panel { width: 460px; }
+  .heroNavLinks { padding-left: 72px; }
   .heroContent { padding: 36px 72px 56px; }
 }
