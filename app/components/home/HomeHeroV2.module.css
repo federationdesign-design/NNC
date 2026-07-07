@@ -327,7 +327,8 @@
     padding: 16px 16px 32px;
     flex-direction: column;
     gap: 0;
-    justify-content: space-between;
+    display: flex;
+    justify-content: flex-end;
   }
 
   .heroBottom {
@@ -346,7 +347,7 @@
     padding: 0 8px;
   }
 
-  .heroBottom { order: 1; margin-top: auto; }
+  .heroBottom { order: 1; }
 
   /* Cards - side by side in 2 columns */
   .heroBottomRow {
@@ -609,7 +610,8 @@
     padding: 16px 16px 32px;
     flex-direction: column;
     gap: 0;
-    justify-content: space-between;
+    display: flex;
+    justify-content: flex-end;
   }
 
   .heroBottom {
@@ -628,7 +630,7 @@
     padding: 0 8px;
   }
 
-  .heroBottom { order: 1; margin-top: auto; }
+  .heroBottom { order: 1; }
 
   /* Cards - side by side in 2 columns */
   .heroBottomRow {
