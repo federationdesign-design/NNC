@@ -1,11 +1,8 @@
 /* TeamBand.module.css - scroll-pinned horizontal section (block 004 pattern) */
 
-/* Outer section - tall, creates the scroll runway */
+/* Outer section - height set via inline style in TSX based on track width */
 .pinSection {
   position: relative;
-  /* height set dynamically via inline calc on mobile fallback below;
-     on desktop the JS uses offsetHeight so this just needs to be tall enough */
-  height: 140vh;
 }
 
 /* Sticky inner - pins to viewport while section scrolls past */
@@ -203,7 +200,7 @@
 
 /* Mobile fallback: disable scroll-pin, use normal horizontal scroll */
 @media (max-width: 899px) {
-  .pinSection { height: auto; }
+  .pinSection { height: auto !important; }
   .sticky { position: relative; height: auto; overflow: visible; }
   .trackViewport { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .track { transform: none !important; }

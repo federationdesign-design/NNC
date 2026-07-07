@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./TeamBand.module.css";
@@ -12,7 +12,6 @@ interface TeamMember {
   slug: string;
   bio: string;
   email?: string;
-  linkedin?: string;
 }
 
 const TEAM: TeamMember[] = [
@@ -69,44 +68,63 @@ const EmailIcon = () => (
 export default function TeamBand() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+  // Dynamically calculated section height: 100vh + however far the track needs to travel
+  const [sectionHeight, setSectionHeight] = useState("140vh");
 
   useEffect(() => {
     const section = sectionRef.current;
     const track = trackRef.current;
     if (!section || !track) return;
 
+    const recalculate = () => {
+      const maxTranslate = track.scrollWidth - track.clientWidth;
+      if (maxTranslate > 0) {
+        // Section height = one viewport (for the sticky frame) + the travel distance
+        setSectionHeight(`calc(100vh + ${maxTranslate}px)`);
+      }
+    };
+
+    // Small delay to allow fonts/images to settle before measuring
+    const timer = setTimeout(recalculate, 100);
+
     const onScroll = () => {
       const rect = section.getBoundingClientRect();
-      const viewportH = window.innerHeight;
-
-      // Total scrollable distance within the pinned section
       const sectionHeight = section.offsetHeight;
-      const pinnedDistance = sectionHeight - viewportH;
+      const pinnedDistance = sectionHeight - window.innerHeight;
 
       if (pinnedDistance <= 0) return;
 
-      // Progress: 0 when section top reaches viewport top, 1 when fully scrolled through
       const scrolled = -rect.top;
       const progress = Math.min(Math.max(scrolled / pinnedDistance, 0), 1);
-
-      // Translate track horizontally based on progress
       const maxTranslate = track.scrollWidth - track.clientWidth;
+
       if (maxTranslate > 0) {
         track.style.transform = `translateX(-${progress * maxTranslate}px)`;
       }
     };
 
+    const onResize = () => {
+      recalculate();
+      onScroll();
+    };
+
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll, { passive: true });
+    window.addEventListener("resize", onResize, { passive: true });
+
     return () => {
+      clearTimeout(timer);
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("resize", onResize);
     };
   }, []);
 
   return (
-    <section ref={sectionRef} className={styles.pinSection}>
+    <section
+      ref={sectionRef}
+      className={styles.pinSection}
+      style={{ height: sectionHeight }}
+    >
       <div className={styles.sticky}>
         <div className={styles.inner}>
 
@@ -114,7 +132,7 @@ export default function TeamBand() {
           <div className={styles.header}>
             <p className={styles.eyebrow}>The people behind the homes</p>
             <h2 className={styles.heading}>
-              Our senior team are widely experienced in children's residential care.
+              Our senior team are widely experienced in children&apos;s residential care.
             </h2>
             <Link href="/team" className={styles.arrowCta} aria-label="Meet the team">
               <svg width="44" height="44" viewBox="0 0 44 44" fill="none"
@@ -126,7 +144,7 @@ export default function TeamBand() {
             </Link>
           </div>
 
-          {/* Track - moved via JS transform, not native scroll */}
+          {/* Track - moved via JS transform */}
           <div className={styles.trackViewport}>
             <div ref={trackRef} className={styles.track}>
               {TEAM.map((member) => (

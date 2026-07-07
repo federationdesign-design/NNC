@@ -1,6 +1,7 @@
 import HomeHeroV2 from "./components/home/HomeHeroV2";
 import ApproachStrip from "./components/home/ApproachStrip";
 import TeamBand from "./components/home/TeamBand";
+import JobsBand from "./components/home/JobsBand";
 import QuoteSection from "./components/home/QuoteSection";
 
 export default function HomePage() {
@@ -9,6 +10,7 @@ export default function HomePage() {
       <HomeHeroV2 />
       <ApproachStrip />
       <TeamBand />
+      <JobsBand />
       <QuoteSection />
     </>
   );
