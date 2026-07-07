@@ -77,25 +77,19 @@ export default function TeamBand() {
     if (!section || !track) return;
 
     const recalculate = () => {
-      // Use scrollWidth measurement but with multiple retries to catch
-      // late-loading images. Also enforce a minimum based on card count.
-      const measured = track.scrollWidth - track.clientWidth;
-      // 5 cards * 320px + gaps — safe floor so height is never under-counted
-      const floor = TEAM.length * 320;
-      const maxTranslate = Math.max(measured, floor);
-      setSectionHeight(`calc(100vh + ${maxTranslate}px)`);
+      const maxTranslate = track.scrollWidth - track.clientWidth;
+      // Only extend section height if the track actually needs to scroll
+      if (maxTranslate > 10) {
+        setSectionHeight(`calc(100vh + ${maxTranslate}px)`);
+      } else {
+        setSectionHeight("100vh");
+      }
     };
-
-    // Measure immediately, then again after images settle
-    recalculate();
-    const t1 = setTimeout(recalculate, 300);
-    const t2 = setTimeout(recalculate, 800);
-    const t3 = setTimeout(recalculate, 1500);
 
     const onScroll = () => {
       const rect = section.getBoundingClientRect();
-      const sectionHeight = section.offsetHeight;
-      const pinnedDistance = sectionHeight - window.innerHeight;
+      const sectionH = section.offsetHeight;
+      const pinnedDistance = sectionH - window.innerHeight;
 
       if (pinnedDistance <= 0) return;
 
@@ -113,6 +107,9 @@ export default function TeamBand() {
       onScroll();
     };
 
+    const t1 = setTimeout(recalculate, 200);
+    const t2 = setTimeout(recalculate, 800);
+
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onResize, { passive: true });
@@ -120,7 +117,6 @@ export default function TeamBand() {
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
-      clearTimeout(t3);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);
     };
