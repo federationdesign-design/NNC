@@ -171,7 +171,6 @@
   .pin {
     position: sticky;
     top: calc(var(--nav-height) + var(--strip-height));
-    height: calc(100vh - var(--nav-height) - var(--strip-height));
     overflow: hidden;
     display: flex;
     flex-direction: column;

@@ -100,7 +100,7 @@ export default function TeamBand() {
       // Exact ANT formula: distance = track scroll width minus band width
       // stage height = distance + pin's full rendered height (which is 100vh - nav - strip)
       distance = Math.max(0, track.scrollWidth - band.clientWidth);
-      stage.style.height = `${distance + pin.offsetHeight}px`;
+      stage.style.height = `${window.innerHeight + distance}px`;
       update();
     }
 
