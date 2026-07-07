@@ -1,3 +1,5 @@
+/* VacanciesPage.module.css - full bleed layout */
+
 .page {
   min-height: 100vh;
   background: var(--color-surface);
@@ -5,7 +7,7 @@
 
 .hero {
   background: #1a1a2e;
-  padding: clamp(60px, 8vw, 100px) clamp(24px, 6vw, 80px) clamp(48px, 6vw, 80px);
+  padding: clamp(48px, 6vw, 80px) clamp(32px, 5vw, 80px);
 }
 
 .eyebrow {
@@ -30,16 +32,14 @@
 .sub {
   font-family: var(--font-jakarta), system-ui, sans-serif;
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1.3;
   color: rgba(255,255,255,0.6);
   margin: 0;
   max-width: 600px;
 }
 
 .list {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: clamp(32px, 5vw, 64px) clamp(24px, 6vw, 80px);
+  padding: clamp(32px, 5vw, 64px) clamp(32px, 5vw, 80px);
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -57,9 +57,7 @@
   transition: box-shadow 0.2s ease;
 }
 
-.card:hover {
-  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
-}
+.card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.07); }
 
 .body {
   display: flex;
@@ -79,10 +77,9 @@
 .desc {
   font-family: var(--font-jakarta), system-ui, sans-serif;
   font-size: 0.95rem;
-  line-height: 1.6;
+  line-height: 1.3;
   color: var(--color-muted);
   margin: 0;
-  max-width: 65ch;
 }
 
 .meta {
@@ -95,13 +92,10 @@
   font-family: var(--font-jakarta), system-ui, sans-serif;
   font-size: 0.85rem;
   color: var(--color-ink);
+  line-height: 1.3;
 }
 
-.side {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
+.side { display: flex; flex-direction: column; align-items: flex-end; }
 
 .applyBtn {
   display: inline-flex;
@@ -116,20 +110,13 @@
   font-weight: 600;
   font-size: 0.95rem;
   white-space: nowrap;
-  text-decoration: none;
+  cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease;
 }
 
-.applyBtn:hover {
-  background: var(--color-ink);
-  color: #fff;
-}
+.applyBtn:hover { background: var(--color-ink); color: #fff; }
 
 @media (max-width: 700px) {
-  .card {
-    grid-template-columns: 1fr;
-  }
-  .side {
-    align-items: flex-start;
-  }
+  .card { grid-template-columns: 1fr; }
+  .side { align-items: flex-start; }
 }
