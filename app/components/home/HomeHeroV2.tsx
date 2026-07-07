@@ -6,6 +6,7 @@ import Link from "next/link";
 import PropertyRailCard, { PropertyData } from "./PropertyRailCard";
 import PropertyModal from "./PropertyModal";
 import ReferralModal from "./ReferralModal";
+import OfstedModal from "./OfstedModal";
 import styles from "./HomeHeroV2.module.css";
 
 const PROPERTIES: PropertyData[] = [
@@ -58,6 +59,7 @@ export default function HomeHeroV2() {
   const [activeProperty, setActiveProperty] = useState<PropertyData | null>(null);
   const [slideIndex, setSlideIndex] = useState(0);
   const [referralOpen, setReferralOpen] = useState(false);
+  const [ofstedOpen, setOfstedOpen] = useState(false);
 
   useEffect(() => {
     if (HERO_IMAGES.length <= 1) return;
@@ -122,9 +124,15 @@ export default function HomeHeroV2() {
           <nav className={styles.heroNav} aria-label="Main navigation">
             <div className={styles.heroNavLinks}>
               {NAV_LINKS.map((l) => (
-                <Link key={l.href} href={l.href} className={styles.heroNavLink}>
-                  {l.label}
-                </Link>
+                l.href === "#ofsted" ? (
+                  <button key={l.href} onClick={() => setOfstedOpen(true)} className={styles.heroNavLink}>
+                    {l.label}
+                  </button>
+                ) : (
+                  <Link key={l.href} href={l.href} className={styles.heroNavLink}>
+                    {l.label}
+                  </Link>
+                )
               ))}
             </div>
             <div className={styles.heroNavActions}>
@@ -180,11 +188,11 @@ export default function HomeHeroV2() {
                 </div>
 
                 {/* Ofsted Good Provider card - links to report */}
-                <Link href="/Ivy%20Cottage%20CH%20Full%2010442530%20FINAL.pdf" target="_blank" className={styles.ofstedCard}>
+                <button onClick={() => setOfstedOpen(true)} className={styles.ofstedCard} aria-label="View Ofsted report">
                   <Image src="/ofsted.png" alt="Ofsted Good Provider"
                          fill style={{ objectFit: "cover" }}
                          sizes="160px" />
-                </Link>
+                </button>
 
               </div>
 
@@ -198,14 +206,14 @@ export default function HomeHeroV2() {
                           strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </Link>
-                <Link href="/Ivy%20Cottage%20CH%20Full%2010442530%20FINAL.pdf" target="_blank" className={styles.ctaBtn}>
+                <button onClick={() => setOfstedOpen(true)} className={styles.ctaBtn}>
                   View Ofsted report
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor"
                           strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                </Link>
+                </button>
               </div>
             </div>
           </div>
@@ -227,6 +235,7 @@ export default function HomeHeroV2() {
 
       <PropertyModal property={activeProperty} onClose={() => setActiveProperty(null)} />
       <ReferralModal open={referralOpen} onClose={() => setReferralOpen(false)} />
+      <OfstedModal open={ofstedOpen} onClose={() => setOfstedOpen(false)} />
     </>
   );
 }

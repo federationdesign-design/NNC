@@ -1,4 +1,7 @@
-import Link from "next/link";
+"use client";
+
+import { useState } from "react";
+import JobApplicationModal from "../JobApplicationModal";
 import styles from "./VacanciesPage.module.css";
 
 const JOBS = [
@@ -10,7 +13,6 @@ const JOBS = [
     pay: "£13.00 – £15.00 per hour",
     sleepIn: "£60 per sleep-in",
     summary: "Support our homes on a flexible, as-required basis covering sickness, annual leave, and periods of increased need. Work to the same professional standards as permanent staff, with full induction and ongoing training provided.",
-    url: "https://www.indeed.co.uk",
   },
   {
     slug: "rsw",
@@ -20,7 +22,6 @@ const JOBS = [
     pay: "£30,500 – £36,500 per year",
     sleepIn: "£60 per sleep-in · avg 5–9/month",
     summary: "Play a vital role in supporting children's daily wellbeing in a safe, nurturing environment. Build independence skills, act as a key worker, and develop professional relationships with children and their families.",
-    url: "https://www.indeed.co.uk",
   },
   {
     slug: "senior-rsw",
@@ -30,11 +31,12 @@ const JOBS = [
     pay: "£36,640 per year",
     sleepIn: "£60 per sleep-in · avg 9/month",
     summary: "Lead day-to-day care operations, oversee safeguarding compliance, and mentor a team of support workers. A senior leadership role making a real difference to children's lives in a well-supported environment.",
-    url: "https://www.indeed.co.uk",
   },
 ];
 
 export default function VacanciesPage() {
+  const [applyJob, setApplyJob] = useState<string | null>(null);
+
   return (
     <main className={styles.page}>
       <div className={styles.hero}>
@@ -57,13 +59,22 @@ export default function VacanciesPage() {
               </div>
             </div>
             <div className={styles.side}>
-              <a href={job.url} target="_blank" rel="noopener noreferrer" className={styles.applyBtn}>
+              <button
+                className={styles.applyBtn}
+                onClick={() => setApplyJob(job.title)}
+              >
                 Apply now →
-              </a>
+              </button>
             </div>
           </article>
         ))}
       </div>
+
+      <JobApplicationModal
+        open={applyJob !== null}
+        onClose={() => setApplyJob(null)}
+        jobTitle={applyJob ?? undefined}
+      />
     </main>
   );
 }

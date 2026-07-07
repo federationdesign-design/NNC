@@ -79,13 +79,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-left: 24px;
 }
 
 
 .heroNavLinks { display: flex; align-items: stretch; }
 
 .heroNavLink {
-  line-height: 1.3;
   font-family: var(--font-jakarta), system-ui, sans-serif;
   font-size: 0.9rem;
   font-weight: 500;
@@ -110,7 +110,6 @@
 }
 
 .referralBtn {
-  line-height: 1.3;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -133,7 +132,6 @@
 }
 
 .callBtn {
-  line-height: 1.3;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -165,7 +163,7 @@
   font-family: var(--font-jakarta), system-ui, sans-serif;
   font-size: clamp(0.95rem, 1.5vw, 1.1rem);
   font-weight: 600;
-  line-height: 1.3;
+  line-height: 1.7;
   color: rgba(255,255,255,0.85);
   margin: 0;
   max-width: 340px;
@@ -182,7 +180,7 @@
   font-family: var(--font-mali), cursive;
   font-size: clamp(2rem, 4.5vw, 4rem);
   font-weight: 700;
-  line-height: 1.3;
+  line-height: 1.05;
   color: #fff;
   margin: 0;
   text-align: right;
@@ -214,7 +212,7 @@
 .whiteCardText {
   font-family: var(--font-jakarta), system-ui, sans-serif;
   font-size: 0.9rem;
-  line-height: 1.3;
+  line-height: 1.55;
   color: var(--color-ink);
   margin: 0;
   font-weight: 500;
@@ -238,14 +236,15 @@
   position: relative;
   width: 160px;
   min-width: 160px;
-  /* stretch via heroBottomRow align-items:stretch */
   background: transparent;
+  border: none;
   border-radius: var(--radius-lg);
   overflow: hidden;
   flex-shrink: 0;
-  /* explicit min-height as fallback */
   min-height: 100px;
   height: 100%;
+  cursor: pointer;
+  padding: 0;
 }
 
 /* CTA row */
@@ -255,7 +254,6 @@
 }
 
 .ctaBtn {
-  line-height: 1.3;
   display: inline-flex;
   align-items: center;
   gap: 12px;
@@ -322,6 +320,7 @@
     min-height: 100dvh;
   }
 
+  .heroNav { padding-left: 32px; }
   .heroContent { padding: 36px 56px 52px; }
 }
 
