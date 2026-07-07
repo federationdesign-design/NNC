@@ -8,7 +8,7 @@ import styles from "./SiteNav.module.css";
 const LINKS = [
   { href: "/homes", label: "Our Homes" },
   { href: "/vacancies", label: "Vacancies" },
-  { href: "/ofsted", label: "Ofsted" },
+  { href: "/Ivy%20Cottage%20CH%20Full%2010442530%20FINAL.pdf", label: "Ofsted", external: true },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -24,7 +24,9 @@ export default function SiteNav() {
 
         <nav className={styles.links} aria-label="Main navigation">
           {LINKS.map((l) => (
-            <Link key={l.href} href={l.href} className={styles.link}>{l.label}</Link>
+            l.external
+              ? <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer" className={styles.link}>{l.label}</a>
+              : <Link key={l.href} href={l.href} className={styles.link}>{l.label}</Link>
           ))}
         </nav>
 

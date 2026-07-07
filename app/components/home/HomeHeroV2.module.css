@@ -84,7 +84,7 @@
 }
 
 
-.heroNavLinks { display: flex; align-items: stretch; padding-left: 32px; }
+.heroNavLinks { display: flex; align-items: stretch; }
 
 .heroNavLink {
   font-family: var(--font-jakarta), system-ui, sans-serif;
@@ -164,7 +164,7 @@
   font-family: var(--font-jakarta), system-ui, sans-serif;
   font-size: clamp(0.95rem, 1.5vw, 1.1rem);
   font-weight: 600;
-  line-height: 1.7;
+  line-height: 1.3;
   color: rgba(255,255,255,0.85);
   margin: 0;
   max-width: 340px;
@@ -322,12 +322,10 @@
     order: 2;
   }
 
-  .heroNavLinks { padding-left: 56px; }
-  .heroContent { padding: 36px 56px 52px; }
+  .heroContent { padding: 36px 56px 52px 24px; }
 }
 
 @media (min-width: 1240px) {
   .panel { width: 460px; }
-  .heroNavLinks { padding-left: 72px; }
-  .heroContent { padding: 36px 72px 56px; }
+  .heroContent { padding: 36px 72px 56px 24px; }
 }
