@@ -123,12 +123,6 @@ export default function HomeHeroV2() {
 
           {/* Header nav */}
           <nav className={styles.heroNav} aria-label="Main navigation">
-            {/* Mobile logo - only visible on mobile */}
-            <Link href="/" className={styles.mobileLogoWrap} aria-label="Nurturing Nests home">
-              <Image src="/header-logo.svg" alt="Nurturing Nests" width={140} height={64}
-                     style={{ objectFit: "contain", objectPosition: "left" }} priority />
-            </Link>
-
             {/* Desktop nav links */}
             <div className={styles.heroNavLinks}>
               {NAV_LINKS.map((l) => (
