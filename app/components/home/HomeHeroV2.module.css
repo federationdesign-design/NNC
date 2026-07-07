@@ -38,7 +38,7 @@
 .heroArea {
   position: relative;
   flex: 1;
-  min-height: 70dvh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   background: var(--color-brand-dark);
@@ -313,16 +313,17 @@
     padding: 12px 16px;
   }
 
-  /* H1 - centred, bigger */
+  /* H1 - centred, bigger, better reflow */
   .heroHeading {
     text-align: center;
-    font-size: clamp(2.4rem, 8vw, 3.5rem);
+    font-size: clamp(2.6rem, 9vw, 3.8rem);
     line-height: 1.1;
+    padding: 0 8px;
   }
 
   /* Subtitle - move below H1, centred */
   .heroContent {
-    padding: 16px 20px 24px;
+    padding: 16px 12px 24px;
     flex-direction: column;
     gap: 0;
   }
@@ -591,16 +592,17 @@
     padding: 12px 16px;
   }
 
-  /* H1 - centred, bigger */
+  /* H1 - centred, bigger, better reflow */
   .heroHeading {
     text-align: center;
-    font-size: clamp(2.4rem, 8vw, 3.5rem);
+    font-size: clamp(2.6rem, 9vw, 3.8rem);
     line-height: 1.1;
+    padding: 0 8px;
   }
 
   /* Subtitle - move below H1, centred */
   .heroContent {
-    padding: 16px 20px 24px;
+    padding: 16px 12px 24px;
     flex-direction: column;
     gap: 0;
   }
