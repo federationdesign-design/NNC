@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import PropertyRailCard, { PropertyData } from "./PropertyRailCard";
 import PropertyModal from "./PropertyModal";
+import ReferralModal from "./ReferralModal";
 import styles from "./HomeHeroV2.module.css";
 
 const PROPERTIES: PropertyData[] = [
@@ -42,8 +43,7 @@ const PROPERTIES: PropertyData[] = [
 
 const HERO_IMAGES = [
   "/hero/image2.jpg",
-  "/hero/image2.jpg",
-
+  "/hero/portrait-of-smiling-african-boy copy.jpg",
 ];
 
 const NAV_LINKS = [
@@ -57,6 +57,7 @@ export default function HomeHeroV2() {
   const overlayRef = useRef<HTMLDivElement>(null);
   const [activeProperty, setActiveProperty] = useState<PropertyData | null>(null);
   const [slideIndex, setSlideIndex] = useState(0);
+  const [referralOpen, setReferralOpen] = useState(false);
 
   useEffect(() => {
     if (HERO_IMAGES.length <= 1) return;
@@ -120,22 +121,21 @@ export default function HomeHeroV2() {
           {/* Header nav */}
           <nav className={styles.heroNav} aria-label="Main navigation">
             <div className={styles.heroNavLinks}>
-              {NAV_LINKS.map((l, i) => (
-                <Link key={l.href} href={l.href} className={styles.heroNavLink}
->
+              {NAV_LINKS.map((l) => (
+                <Link key={l.href} href={l.href} className={styles.heroNavLink}>
                   {l.label}
                 </Link>
               ))}
             </div>
             <div className={styles.heroNavActions}>
-              <Link href="/contact" className={styles.referralBtn}>
+              <button type="button" onClick={() => setReferralOpen(true)} className={styles.referralBtn}>
                 Make a referral
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
                      xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                   <path d="M3 9h12M9 3l6 6-6 6" stroke="currentColor"
                         strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
-              </Link>
+              </button>
               <a href="tel:02083456789" className={styles.callBtn}>
                 <Image src="/phone-iocn.svg" alt="" width={18} height={18} />
                 Call us
@@ -159,7 +159,7 @@ export default function HomeHeroV2() {
                 Specialist residential care in Kent
               </h1>
 
-              {/* Cards row + CTA */}
+              {/* Cards row */}
               <div className={styles.heroBottomRow}>
 
                 {/* White referral card */}
@@ -179,19 +179,27 @@ export default function HomeHeroV2() {
                   </div>
                 </div>
 
-                {/* Ofsted Good Provider card - compact */}
-                <div className={styles.ofstedCard}>
+                {/* Ofsted Good Provider card - links to report */}
+                <Link href="/ofsted" className={styles.ofstedCard}>
                   <Image src="/ofsted.png" alt="Ofsted Good Provider"
                          fill style={{ objectFit: "cover" }}
                          sizes="160px" />
-                </div>
+                </Link>
 
               </div>
 
-              {/* View homes CTA bottom right */}
+              {/* CTAs */}
               <div className={styles.ctaRow}>
                 <Link href="/homes" className={styles.ctaBtn}>
                   View homes
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                       xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor"
+                          strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </Link>
+                <Link href="/ofsted" className={styles.ctaBtn}>
+                  View Ofsted report
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor"
@@ -218,6 +226,7 @@ export default function HomeHeroV2() {
       </div>
 
       <PropertyModal property={activeProperty} onClose={() => setActiveProperty(null)} />
+      <ReferralModal open={referralOpen} onClose={() => setReferralOpen(false)} />
     </>
   );
 }
