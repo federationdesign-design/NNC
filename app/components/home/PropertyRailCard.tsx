@@ -4,6 +4,7 @@ import styles from "./PropertyRailCard.module.css";
 export interface PropertyData {
   slug: string;
   name: string;
+  urn?: string;
   location: string;
   beds: number;
   type: string;
@@ -36,6 +37,14 @@ const LOCATION_ICON = (
   </svg>
 );
 
+const URN_ICON = (
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+       xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect x="1" y="2" width="12" height="10" rx="1.5" stroke="currentColor" strokeWidth="1.2"/>
+    <path d="M4 5h6M4 7.5h4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+  </svg>
+);
+
 export default function PropertyRailCard({ property, onClick }: PropertyRailCardProps) {
   const statusClass =
     property.status === "Open"
@@ -58,7 +67,6 @@ export default function PropertyRailCard({ property, onClick }: PropertyRailCard
           />
           <span className={`${styles.status} ${statusClass}`}>{property.status}</span>
         </div>
-
         {/* Text below image */}
         <div className={styles.info}>
           <h3 className={styles.name}>{property.name}</h3>
@@ -71,6 +79,12 @@ export default function PropertyRailCard({ property, onClick }: PropertyRailCard
               {BED_ICON}
               {property.beds} bed
             </span>
+            {property.urn && (
+              <span className={styles.metaItem}>
+                {URN_ICON}
+                URN: {property.urn}
+              </span>
+            )}
           </div>
           <p className={styles.summary}>{property.summary}</p>
         </div>
