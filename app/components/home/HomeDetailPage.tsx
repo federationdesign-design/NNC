@@ -24,6 +24,7 @@ interface HomeData {
   image: string;
   ofstedReportUrl: string | null;
   gallery?: string[];
+  vimeoUrl?: string;
 }
 
 export default function HomeDetailPage({ home }: { home: HomeData }) {
@@ -128,6 +129,23 @@ export default function HomeDetailPage({ home }: { home: HomeData }) {
 
           </div>
         </div>
+      {home.vimeoUrl && (
+        <div className={styles.videoSection}>
+          <div className={styles.videoHeader}>
+            <h2 className={styles.sectionTitle}>See inside {home.name}</h2>
+          </div>
+          <div className={styles.videoWrap}>
+            <iframe
+              src={home.vimeoUrl}
+              className={styles.video}
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+              title={`${home.name} video`}
+            />
+          </div>
+        </div>
+      )}
+
       <HomeMap area={home.location} />
 
       {home.gallery && home.gallery.length > 0 && (
