@@ -39,8 +39,9 @@ export function generateStaticParams() {
   return HOMES.map((h) => ({ slug: h.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }) {
-  const home = HOMES.find((h) => h.slug === params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const home = HOMES.find((h) => h.slug === slug);
   if (!home) return {};
   return {
     title: `${home.name} | Nurturing Nests Care`,
@@ -48,8 +49,9 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
   };
 }
 
-export default function Page({ params }: { params: { slug: string } }) {
-  const home = HOMES.find((h) => h.slug === params.slug);
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const home = HOMES.find((h) => h.slug === slug);
   if (!home) notFound();
   return (
     <>
