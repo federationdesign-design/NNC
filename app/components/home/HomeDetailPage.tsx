@@ -39,7 +39,6 @@ export default function HomeDetailPage({ home }: { home: HomeData }) {
         <div className={styles.hero}>
           <div className={styles.heroImg}>
             <Image src={home.image} alt={home.name} fill style={{ objectFit: "cover" }} priority sizes="100vw" />
-            <div className={styles.heroOverlay} />
           </div>
           <div className={styles.heroContent}>
             <Link href="/homes" className={styles.backLink}>← Our homes</Link>
