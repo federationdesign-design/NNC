@@ -18,7 +18,6 @@ interface TeamMember {
 const TEAM: TeamMember[] = [
   { name: "George Ball", role: "Director", image: "/team/george-ball.jpg", slug: "george-ball", bio: "Co-founder of Nurturing Nests with extensive experience in children's residential care governance and strategic development across Kent.", email: "info@nurturingnests.co.uk" },
   { name: "Hannah Neeworth", role: "Director", image: "/team/hannah-neeworth.jpg", slug: "hannah-neeworth", bio: "Co-founder and Director, leading on quality assurance, regulatory compliance and the development of the Nurturing Nests model of care.", email: "info@nurturingnests.co.uk" },
-  { name: "Jahvanne Wilson", role: "Responsible Individual", image: "/team/jahvanne-wilson.jpg", slug: "jahvanne-wilson", bio: "Responsible Individual with a deep background in therapeutic and relational practice, overseeing the quality and welfare of all homes.", email: "info@nurturingnests.co.uk" },
 ];
 
 const JOBS = [
