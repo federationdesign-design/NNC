@@ -32,6 +32,9 @@ const HOMES = [
     description: "Holly Tree Cottage operates as a single-placement home in East Kent, designed for children who benefit from a calm, low-arousal environment with a dedicated team. This model allows for a highly individualised approach to care, with staff focused entirely on the needs of one child. Holly Tree Cottage is particularly suited to children with higher-complexity presentations who thrive with consistency, reduced stimulation and intensive relational support.",
     image: "/homes/holly-tree-cottage.jpg",
     ofstedReportUrl: null,
+    gallery: Array.from({ length: 21 }, (_, i) =>
+      `/homes/holly/Holy Tree Cottage-${i + 1}.jpg`
+    ),
   },
 ];
 

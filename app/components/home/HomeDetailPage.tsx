@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import ReferralModal from "./ReferralModal";
 import OfstedModal from "./OfstedModal";
+import HomeGallery from "./HomeGallery";
 import styles from "./HomeDetailPage.module.css";
 
 interface HomeData {
@@ -21,6 +22,7 @@ interface HomeData {
   description: string;
   image: string;
   ofstedReportUrl: string | null;
+  gallery?: string[];
 }
 
 export default function HomeDetailPage({ home }: { home: HomeData }) {
@@ -125,6 +127,14 @@ export default function HomeDetailPage({ home }: { home: HomeData }) {
 
           </div>
         </div>
+      {home.gallery && home.gallery.length > 0 && (
+        <div className={styles.gallerySection}>
+          <div className={styles.gallerySectionHeader}>
+            <h2 className={styles.sectionTitle}>Photo gallery</h2>
+          </div>
+          <HomeGallery images={home.gallery} homeName={home.name} />
+        </div>
+      )}
       </main>
 
       <ReferralModal open={referralOpen} onClose={() => setReferralOpen(false)} />

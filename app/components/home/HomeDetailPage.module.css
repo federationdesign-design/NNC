@@ -236,3 +236,13 @@
   }
   .sidebar { position: static; }
 }
+
+/* Gallery section */
+.gallerySection {
+  border-top: 1px solid var(--color-line);
+  padding-top: 0;
+}
+
+.gallerySectionHeader {
+  padding: clamp(32px, 5vw, 48px) clamp(32px, 5vw, 80px) 0;
+}
