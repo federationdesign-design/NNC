@@ -6,6 +6,7 @@ import { useState } from "react";
 import ReferralModal from "./ReferralModal";
 import OfstedModal from "./OfstedModal";
 import HomeGallery from "./HomeGallery";
+import HomeMap from "./HomeMap";
 import styles from "./HomeDetailPage.module.css";
 
 interface HomeData {
@@ -127,6 +128,8 @@ export default function HomeDetailPage({ home }: { home: HomeData }) {
 
           </div>
         </div>
+      <HomeMap area={home.location} />
+
       {home.gallery && home.gallery.length > 0 && (
         <div className={styles.gallerySection}>
           <div className={styles.gallerySectionHeader}>

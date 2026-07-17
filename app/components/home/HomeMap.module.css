@@ -1,0 +1,43 @@
+.wrap {
+  border-top: 1px solid var(--color-line);
+}
+
+.header {
+  padding: clamp(32px, 5vw, 48px) clamp(32px, 5vw, 80px) 24px;
+}
+
+.title {
+  font-family: var(--font-mali), cursive;
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  font-weight: 700;
+  color: var(--color-ink);
+  margin: 0 0 8px;
+}
+
+.sub {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  margin: 0;
+  line-height: 1.3;
+  max-width: 600px;
+}
+
+.contactLink {
+  color: var(--color-brand);
+  text-decoration: none;
+}
+.contactLink:hover { text-decoration: underline; }
+
+.mapWrap {
+  position: relative;
+  width: 100%;
+  height: 420px;
+}
+
+.map {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
