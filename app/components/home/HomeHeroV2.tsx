@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import PropertyRailCard from "./PropertyRailCard";
+import PropertyRailCard, { PropertyData } from "./PropertyRailCard";
 import ReferralModal from "./ReferralModal";
 import OfstedModal from "./OfstedModal";
 import styles from "./HomeHeroV2.module.css";
