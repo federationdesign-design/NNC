@@ -6,27 +6,23 @@ const HOMES_LINKS = [
   { label: "Ivy Cottage",        href: "/homes/ivy-cottage" },
   { label: "Holly Tree Cottage", href: "/homes/holly-tree-cottage" },
 ];
-
 const ABOUT_LINKS = [
   { label: "Our Approach", href: "/approach" },
   { label: "Senior Team",  href: "/team" },
   { label: "News",         href: "/news" },
   { label: "Contact",      href: "/contact" },
 ];
-
 const LEGAL_LINKS = [
-  { label: "Privacy Policy",      href: "/privacy" },
-  { label: "Cookie Policy",       href: "/cookies" },
-  { label: "Complaints Procedure",href: "/complaints" },
+  { label: "Privacy Policy",       href: "/privacy" },
+  { label: "Cookie Policy",        href: "/cookies" },
+  { label: "Complaints Procedure", href: "/complaints" },
 ];
 
 export default function SiteFooter() {
   const year = new Date().getFullYear();
-
   return (
     <footer className={styles.footer}>
       <div className={styles.inner}>
-
         <div className={styles.brand}>
           <Link href="/" aria-label="Nurturing Nests home">
             <Image
@@ -41,8 +37,16 @@ export default function SiteFooter() {
             Specialist residential care for children and young people in Kent.
           </p>
           <p className={styles.ofsted}>Registered with Ofsted</p>
+          <div className={styles.badges}>
+            <Image
+              src="/dc_badge1.png"
+              alt="Disability Confident Committed"
+              width={160}
+              height={60}
+              style={{ objectFit: "contain", objectPosition: "left" }}
+            />
+          </div>
         </div>
-
         <div className={styles.col}>
           <h3 className={styles.colHead}>Our Homes</h3>
           <ul className={styles.colList} role="list">
@@ -53,7 +57,6 @@ export default function SiteFooter() {
             ))}
           </ul>
         </div>
-
         <div className={styles.col}>
           <h3 className={styles.colHead}>About Us</h3>
           <ul className={styles.colList} role="list">
@@ -64,7 +67,6 @@ export default function SiteFooter() {
             ))}
           </ul>
         </div>
-
         <div className={styles.col}>
           <h3 className={styles.colHead}>Contact</h3>
           <address className={styles.address}>
@@ -75,9 +77,7 @@ export default function SiteFooter() {
             Company No. 11223861
           </p>
         </div>
-
       </div>
-
       <div className={styles.legal}>
         <div className={styles.legalInner}>
           <span>&copy; {year} Nurturing Nests Ltd. All rights reserved.</span>
