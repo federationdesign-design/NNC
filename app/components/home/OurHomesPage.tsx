@@ -2,10 +2,24 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./OurHomesPage.module.css";
 
-const HOMES = [
+interface Home {
+  slug: string;
+  name: string;
+  urn?: string;
+  location: string;
+  beds: number;
+  type: string;
+  status: string;
+  ofstedRating: string | null;
+  summary: string;
+  image: string;
+}
+
+const HOMES: Home[] = [
   {
     slug: "ivy-cottage",
     name: "Ivy Cottage",
+    urn: "2827996",
     location: "East Kent",
     beds: 2,
     type: "Children's Home",
@@ -17,6 +31,7 @@ const HOMES = [
   {
     slug: "holly-tree-cottage",
     name: "Holly Tree Cottage",
+    urn: "2827997",
     location: "East Kent",
     beds: 1,
     type: "Solo Home",
@@ -25,17 +40,7 @@ const HOMES = [
     summary: "Operating as a solo placement for higher-complexity children who benefit from a dedicated, low-arousal environment. Holly Tree Cottage provides intensive, consistent support with a single-child focus.",
     image: "/homes/holly-tree-cottage.jpg",
   },
-  {
-    slug: "deal",
-    name: "Deal Home",
-    location: "Deal, Kent",
-    beds: 3,
-    type: "Purpose-Built",
-    status: "Proposed",
-    ofstedRating: null,
-    summary: "A proposed 3-bed purpose-built home at Wallers Field, Deal, designed for stabilisation and step-down support for young people. Subject to planning approval.",
-    image: "/homes/deal.jpg",
-  },
+
 ];
 
 export default function OurHomesPage() {
@@ -68,6 +73,9 @@ export default function OurHomesPage() {
                 <span className={styles.metaItem}>🏠 {home.type}</span>
                 {home.ofstedRating && (
                   <span className={styles.metaItem}>⭐ Ofsted: {home.ofstedRating}</span>
+                )}
+                {home.urn && (
+                  <span className={styles.metaItem}>🔢 URN: {home.urn}</span>
                 )}
               </div>
             </div>

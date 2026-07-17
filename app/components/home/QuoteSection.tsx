@@ -44,17 +44,16 @@ export default function QuoteSection() {
             {/* Card 1: George Ball testimonial quote */}
             <div className={styles.testimonialCard}>
               <blockquote className={styles.testimonialQuote}>
-                &ldquo;We deliver what Kent needs now - and we are growing
-                responsibly for what Kent will need next.&rdquo;
+                &ldquo;The staff create a nurturing environment in which children can progress. They keep children at the forefront of their practice and continue to build strong, supportive relationships with them.&rdquo;
               </blockquote>
               <div className={styles.testimonialAuthor}>
                 <div className={styles.testimonialAvatar}>
-                  <Image src="/team/george-ball.jpg" alt="George Ball"
+                  <Image src="/ofsted.png" alt="Ofsted"
                          fill sizes="52px" className={styles.testimonialAvatarImg} />
                 </div>
                 <div>
-                  <p className={styles.testimonialName}>George Ball</p>
-                  <p className={styles.testimonialRole}>Co-Director</p>
+                  <p className={styles.testimonialName}>Ofsted Inspection Report</p>
+                  <p className={styles.testimonialRole}>Ivy Cottage — Rated Good, May 2026</p>
                 </div>
               </div>
             </div>

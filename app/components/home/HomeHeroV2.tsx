@@ -13,6 +13,7 @@ const PROPERTIES: PropertyData[] = [
   {
     slug: "ivy-cottage",
     name: "Ivy Cottage",
+    urn: "2827996",
     location: "East Kent",
     beds: 2,
     type: "Children's Home",
@@ -23,6 +24,7 @@ const PROPERTIES: PropertyData[] = [
   {
     slug: "holly-tree-cottage",
     name: "Holly Tree Cottage",
+    urn: "2827997",
     location: "East Kent",
     beds: 1,
     type: "Solo Home",
@@ -30,21 +32,12 @@ const PROPERTIES: PropertyData[] = [
     summary: "Operating as a solo placement for higher-complexity children who benefit from a dedicated, low-arousal environment.",
     image: "/homes/holly-tree-cottage.jpg",
   },
-  {
-    slug: "deal",
-    name: "Deal Home",
-    location: "Deal, Kent",
-    beds: 3,
-    type: "Purpose-Built",
-    status: "Proposed",
-    summary: "A proposed 3-bed purpose-built home at Wallers Field, Deal, designed for stabilisation and step-down support for young people.",
-    image: "/homes/deal.jpg",
-  },
+
 ];
 
 const HERO_IMAGES = [
   "/hero/image2.jpg",
-  "/hero/hero-boy.jpg",
+  "/hero/portrait-of-smiling-african-boy copy.jpg",
 ];
 
 const NAV_LINKS = [

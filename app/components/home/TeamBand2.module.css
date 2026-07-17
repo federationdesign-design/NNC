@@ -57,7 +57,7 @@
 .track { display: flex; align-items: stretch; }
 
 .card {
-  flex: 0 0 300px;
+  flex: 0 0 480px;
   border-left: 1px solid var(--color-line);
   padding: 4px 28px;
   display: flex;
@@ -156,7 +156,6 @@
     display: block;
     overflow: hidden;
     padding: 32px 0 32px;
-    min-height: 380px;
   }
 
   .heading {
@@ -164,7 +163,7 @@
     left: 0;
     top: 0;
     bottom: 0;
-    width: 340px;
+    width: 520px;
     z-index: 3;
     background: var(--color-surface);
     padding: 24px 40px 24px clamp(32px, 4vw, 60px);
@@ -179,7 +178,7 @@
     will-change: transform;
   }
 
-  .card { flex: 0 0 280px; }
+  .card { flex: 0 0 420px; }
 
   /* Peek fills remaining space - exact ANT pattern */
   .peek {
