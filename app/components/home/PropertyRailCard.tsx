@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./PropertyRailCard.module.css";
 
 export interface PropertyData {
@@ -16,7 +17,7 @@ export interface PropertyData {
 
 interface PropertyRailCardProps {
   property: PropertyData;
-  onClick: (property: PropertyData) => void;
+  onClick?: (property: PropertyData) => void;
 }
 
 const BED_ICON = (
@@ -45,7 +46,8 @@ const URN_ICON = (
   </svg>
 );
 
-export default function PropertyRailCard({ property, onClick }: PropertyRailCardProps) {
+export default function PropertyRailCard({ property }: PropertyRailCardProps) {
+  const href = `/homes/${property.slug}`;
   const statusClass =
     property.status === "Open"
       ? styles.statusOpen
@@ -55,8 +57,7 @@ export default function PropertyRailCard({ property, onClick }: PropertyRailCard
 
   return (
     <div className={styles.cardWrapper}>
-      <button className={styles.card} onClick={() => onClick(property)} type="button">
-        {/* Full-width image with rounded corners */}
+      <Link href={href} className={styles.card}>
         <div className={styles.media}>
           <Image
             src={property.image}
@@ -67,7 +68,6 @@ export default function PropertyRailCard({ property, onClick }: PropertyRailCard
           />
           <span className={`${styles.status} ${statusClass}`}>{property.status}</span>
         </div>
-        {/* Text below image */}
         <div className={styles.info}>
           <h3 className={styles.name}>{property.name}</h3>
           <div className={styles.meta}>
@@ -88,12 +88,11 @@ export default function PropertyRailCard({ property, onClick }: PropertyRailCard
           </div>
           <p className={styles.summary}>{property.summary}</p>
         </div>
-      </button>
-      {/* View home button outside the main click target */}
+      </Link>
       <div className={styles.viewHomeRow}>
-        <button className={styles.viewHomeBtn} onClick={() => onClick(property)} type="button">
+        <Link href={href} className={styles.viewHomeBtn}>
           View home &rarr;
-        </button>
+        </Link>
       </div>
       <div className={styles.divider} />
     </div>

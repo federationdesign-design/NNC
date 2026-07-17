@@ -1,0 +1,238 @@
+.page {
+  min-height: 100vh;
+  background: var(--color-surface);
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  height: 60vh;
+  min-height: 420px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.heroImg {
+  position: absolute;
+  inset: 0;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,20,40,0.85) 0%, rgba(10,20,40,0.2) 60%, transparent 100%);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 10;
+  padding: clamp(32px, 5vw, 60px) clamp(32px, 5vw, 80px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.backLink {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  transition: color var(--t-fast);
+  align-self: flex-start;
+}
+.backLink:hover { color: #fff; }
+
+.heroMeta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.statusBadge, .ofstedBadge {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  padding: 4px 14px;
+}
+
+.statusBadge {
+  background: rgba(43,158,212,0.2);
+  color: #7dd3fc;
+  border: 1px solid rgba(43,158,212,0.4);
+}
+
+.ofstedBadge {
+  background: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.9);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.heading {
+  font-family: var(--font-mali), cursive;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.sub {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  color: rgba(255,255,255,0.8);
+  margin: 0;
+  max-width: 600px;
+  line-height: 1.3;
+}
+
+/* Content */
+.content {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 60px;
+  padding: clamp(40px, 6vw, 80px) clamp(32px, 5vw, 80px);
+  align-items: start;
+}
+
+/* Details grid */
+.detailsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0;
+  border: 1px solid var(--color-line);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+.detail {
+  padding: 20px 24px;
+  border-right: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.detail:last-child { border-right: none; }
+
+.detailLabel {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.detailValue {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+/* Description */
+.sectionTitle {
+  font-family: var(--font-mali), cursive;
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  font-weight: 700;
+  color: var(--color-ink);
+  margin: 0 0 16px;
+}
+
+.description p {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.3;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+/* Sidebar */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: sticky;
+  top: 80px;
+}
+
+.sideCard {
+  background: #f7f8fa;
+  border: 1px solid var(--color-line);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sideCardTitle {
+  font-family: var(--font-mali), cursive;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  margin: 0;
+}
+
+.sideCardText {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.3;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+.primaryBtn {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--color-brand);
+  border: none;
+  border-radius: 999px;
+  padding: 13px 24px;
+  cursor: pointer;
+  text-align: center;
+  transition: background var(--t-fast);
+  text-decoration: none;
+  display: block;
+}
+.primaryBtn:hover { background: var(--color-brand-dark); }
+
+.secondaryBtn {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  background: none;
+  border: 1.5px solid var(--color-line);
+  border-radius: 999px;
+  padding: 13px 24px;
+  cursor: pointer;
+  text-align: center;
+  transition: border-color var(--t-fast);
+  text-decoration: none;
+  display: block;
+}
+.secondaryBtn:hover { border-color: var(--color-ink); }
+
+.ofstedBadgeCard {
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+}
+
+@media (max-width: 900px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+  .sidebar { position: static; }
+}

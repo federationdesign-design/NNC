@@ -3,8 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import PropertyRailCard, { PropertyData } from "./PropertyRailCard";
-import PropertyModal from "./PropertyModal";
+import PropertyRailCard from "./PropertyRailCard";
 import ReferralModal from "./ReferralModal";
 import OfstedModal from "./OfstedModal";
 import styles from "./HomeHeroV2.module.css";
@@ -49,7 +48,6 @@ const NAV_LINKS = [
 
 export default function HomeHeroV2() {
   const overlayRef = useRef<HTMLDivElement>(null);
-  const [activeProperty, setActiveProperty] = useState<PropertyData | null>(null);
   const [slideIndex, setSlideIndex] = useState(0);
   const [referralOpen, setReferralOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -94,7 +92,7 @@ export default function HomeHeroV2() {
           </div>
           <div className={styles.cards}>
             {PROPERTIES.map((p) => (
-              <PropertyRailCard key={p.slug} property={p} onClick={setActiveProperty} />
+              <PropertyRailCard key={p.slug} property={p} />
             ))}
           </div>
         </aside>
@@ -259,7 +257,6 @@ export default function HomeHeroV2() {
         </div>
       </div>
 
-      <PropertyModal property={activeProperty} onClose={() => setActiveProperty(null)} />
       <ReferralModal open={referralOpen} onClose={() => setReferralOpen(false)} />
       <OfstedModal open={ofstedOpen} onClose={() => setOfstedOpen(false)} />
     </>
