@@ -34,12 +34,13 @@ const PROPERTIES: PropertyData[] = [
 ];
 
 const HERO_VIDEOS = [
-  "/tramp-vid-opt.mp4",
+  "/kids-play-ps3.mp4",
   "/kids-play-ps3.mp4",
 ];
 
 const NAV_LINKS = [
   { label: "Our Homes", href: "/homes" },
+  { label: "About", href: "/about" },
   { label: "Vacancies", href: "/vacancies" },
   { label: "Ofsted",    href: "#ofsted" },
   { label: "Contact",   href: "/contact" },
