@@ -114,7 +114,6 @@ export default function HomeHeroV2() {
               />
             ))}
             <div className={styles.brandOverlay} />
-            <div ref={overlayRef} className={styles.scrollOverlay} />
           </div>
 
           {/* Header nav */}
