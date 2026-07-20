@@ -23,7 +23,7 @@ const PROPERTIES: PropertyData[] = [
   {
     slug: "holly-tree-cottage",
     name: "Holly Tree Cottage",
-    urn: "2827997",
+    urn: "2827926",
     location: "East Kent",
     beds: 1,
     type: "Solo Home",
@@ -31,37 +31,27 @@ const PROPERTIES: PropertyData[] = [
     summary: "Operating as a solo placement for higher-complexity children who benefit from a dedicated, low-arousal environment.",
     image: "/homes/holly-tree-cottage.jpg",
   },
-
 ];
 
-const HERO_VIDEO = "/tramp-vid-opt.mp4";
-const HERO_IMAGES = [
-  "/hero/image2.jpg",
-  "/hero/portrait-of-smiling-african-boy copy.jpg",
+const HERO_VIDEOS = [
+  "/tramp-vid-opt.mp4",
+  "/kids-play-ps3.mp4",
 ];
 
 const NAV_LINKS = [
   { label: "Our Homes", href: "/homes" },
   { label: "Vacancies", href: "/vacancies" },
-  { label: "Ofsted",    href: "/Ivy Cottage CH Full 10442530 FINAL.pdf" },
+  { label: "Ofsted",    href: "#ofsted" },
   { label: "Contact",   href: "/contact" },
 ];
 
 export default function HomeHeroV2() {
   const overlayRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [slideIndex, setSlideIndex] = useState(0);
   const [referralOpen, setReferralOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [ofstedOpen, setOfstedOpen] = useState(false);
-
-  useEffect(() => {
-    // Video plays first (slideIndex 0), then cycles through images
-    if (slideIndex === 0) return; // video handles its own timing
-    const interval = setInterval(() => {
-      setSlideIndex((i) => i >= HERO_IMAGES.length ? 1 : i + 1);
-    }, 10000);
-    return () => clearInterval(interval);
-  }, [slideIndex]);
 
   useEffect(() => {
     const overlay = overlayRef.current;
@@ -79,6 +69,10 @@ export default function HomeHeroV2() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  function handleVideoEnded() {
+    setSlideIndex((i) => (i + 1) % HERO_VIDEOS.length);
+  }
 
   return (
     <>
@@ -102,21 +96,18 @@ export default function HomeHeroV2() {
         {/* RIGHT HERO */}
         <div className={styles.heroArea}>
 
-          {/* Hero background — video first, image second */}
+          {/* Hero background — two videos cycling */}
           <div className={styles.heroBg}>
-            <video
-              className={`${styles.heroBgVideo} ${slideIndex === 0 ? styles.heroBgImgActive : ""}`}
-              src={HERO_VIDEO}
-              autoPlay
-              muted
-              loop
-              playsInline
-              onEnded={() => setSlideIndex(1)}
-            />
-            {HERO_IMAGES.map((src, i) => (
-              <Image key={src} src={src} alt="" fill priority={false}
-                sizes="(min-width: 900px) calc(100vw - 420px), 100vw"
-                className={`${styles.heroBgImg} ${slideIndex === i + 1 ? styles.heroBgImgActive : ""}`}
+            {HERO_VIDEOS.map((src, i) => (
+              <video
+                key={src}
+                ref={i === slideIndex ? videoRef : undefined}
+                className={`${styles.heroBgVideo} ${i === slideIndex ? styles.heroBgImgActive : ""}`}
+                src={src}
+                autoPlay={i === slideIndex}
+                muted
+                playsInline
+                onEnded={handleVideoEnded}
               />
             ))}
             <div className={styles.brandOverlay} />
@@ -125,7 +116,6 @@ export default function HomeHeroV2() {
 
           {/* Header nav */}
           <nav className={styles.heroNav} aria-label="Main navigation">
-            {/* Desktop nav links */}
             <div className={styles.heroNavLinks}>
               {NAV_LINKS.map((l) => (
                 l.href === "#ofsted" ? (
@@ -153,7 +143,6 @@ export default function HomeHeroV2() {
                 <Image src="/phone-iocn.svg" alt="" width={18} height={18} />
                 Call us
               </a>
-              {/* Mobile burger - rightmost */}
               <button
                 className={styles.burger}
                 onClick={() => setMenuOpen(!menuOpen)}
@@ -188,13 +177,6 @@ export default function HomeHeroV2() {
           {/* Hero content */}
           <div className={styles.heroContent}>
 
-            {/* Top-left subtitle */}
-            <p className={styles.heroSubtitle}>
-              Our model has been intentionally designed around the real referral
-              patterns we receive providing stability, structure and relational
-              consistency for children with complex emotional and neurodiverse needs.
-            </p>
-
             {/* Bottom section */}
             <div className={styles.heroBottom}>
               <h1 className={styles.heroHeading}>
@@ -207,7 +189,7 @@ export default function HomeHeroV2() {
                 {/* White referral card */}
                 <div className={styles.whiteCard}>
                   <p className={styles.whiteCardText}>
-                    Since opening in May '25, we have received 481 referrals from Local County Councils.
+                    Since opening in May &apos;25, we have received 481 referrals from Local County Councils.
                   </p>
                   <div className={styles.whiteCardLogos}>
                     <Image src="/header-logo.svg" alt="Nurturing Nests"
@@ -224,7 +206,7 @@ export default function HomeHeroV2() {
                   </div>
                 </div>
 
-                {/* Ofsted Good Provider card - links to report */}
+                {/* Ofsted Good Provider card */}
                 <button onClick={() => setOfstedOpen(true)} className={styles.ofstedCard} aria-label="View Ofsted report">
                   <Image src="/ofsted.png" alt="Ofsted Good Provider"
                          fill style={{ objectFit: "cover" }}
@@ -254,20 +236,22 @@ export default function HomeHeroV2() {
               </div>
             </div>
 
+            {/* Subtitle */}
+            <p className={styles.heroSubtitle}>
+              Our model has been intentionally designed around the real referral
+              patterns we receive providing stability, structure and relational
+              consistency for children with complex emotional and neurodiverse needs.
+            </p>
+
           </div>
 
           {/* Slide indicators */}
           <div className={styles.slideIndicators}>
-            <button
-              className={`${styles.slideDot} ${slideIndex === 0 ? styles.slideDotActive : ""}`}
-              onClick={() => setSlideIndex(0)}
-              aria-label="Video"
-            />
-            {HERO_IMAGES.map((_, i) => (
+            {HERO_VIDEOS.map((_, i) => (
               <button key={i}
-                className={`${styles.slideDot} ${slideIndex === i + 1 ? styles.slideDotActive : ""}`}
-                onClick={() => setSlideIndex(i + 1)}
-                aria-label={`Slide ${i + 2}`}
+                className={`${styles.slideDot} ${i === slideIndex ? styles.slideDotActive : ""}`}
+                onClick={() => setSlideIndex(i)}
+                aria-label={`Video ${i + 1}`}
               />
             ))}
           </div>
