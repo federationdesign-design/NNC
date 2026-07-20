@@ -138,7 +138,7 @@ export default function HomeHeroV2() {
                         strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </button>
-              <a href="tel:02083456789" className={styles.callBtn}>
+              <a href="tel:01233427012" className={styles.callBtn}>
                 <Image src="/phone-iocn.svg" alt="" width={18} height={18} />
                 Call us
               </a>

@@ -38,7 +38,7 @@ export default function ContactPage() {
         <div className={styles.details}>
           <div className={styles.detailBlock}>
             <h2 className={styles.detailTitle}>Call us</h2>
-            <a href="tel:07714310464" className={styles.detailLink}>07714 310 464</a>
+            <a href="tel:01233427012" className={styles.detailLink}>01233 427012</a>
             <p className={styles.detailNote}>Monday to Friday, 9am – 5pm</p>
           </div>
 

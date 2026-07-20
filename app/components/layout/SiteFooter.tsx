@@ -86,7 +86,7 @@ export default function SiteFooter() {
           <h3 className={styles.colHead}>Contact</h3>
           <address className={styles.address}>
             <p>info@nurturingnests.co.uk</p>
-            <p>0208 345 678</p>
+            <p>01233 427012</p>
           </address>
           <p className={styles.regNote}>
             Company No. 11223861
