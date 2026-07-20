@@ -53,13 +53,6 @@ export default function SiteFooter() {
               height={52}
               style={{ objectFit: "contain", objectPosition: "left" }}
             />
-            <Image
-              src="/Lewisham-Council-logo-black.png.webp"
-              alt="London Borough of Lewisham"
-              width={100}
-              height={52}
-              style={{ objectFit: "contain", objectPosition: "left", filter: "brightness(0) invert(1)" }}
-            />
           </div>
         </div>
         <div className={styles.col}>

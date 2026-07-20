@@ -196,8 +196,7 @@ export default function HomeHeroV2() {
                 {/* White referral card */}
                 <div className={styles.whiteCard}>
                   <p className={styles.whiteCardText}>
-                    Since opening in May &apos;25, we have received 481 referrals
-                    from Kent County Council.
+                    Since opening in May '25, we have received 481 referrals from Local County Councils.
                   </p>
                   <div className={styles.whiteCardLogos}>
                     <Image src="/header-logo.svg" alt="Nurturing Nests"
@@ -205,7 +204,11 @@ export default function HomeHeroV2() {
                            style={{ objectFit: "contain", objectPosition: "left" }} />
                     <div className={styles.logoSep} />
                     <Image src="/kent-council.png" alt="Kent County Council"
-                           width={80} height={40}
+                           width={60} height={32}
+                           style={{ objectFit: "contain" }} />
+                    <div className={styles.logoSep} />
+                    <Image src="/Lewisham-Council-logo-black.png.webp" alt="London Borough of Lewisham"
+                           width={60} height={32}
                            style={{ objectFit: "contain" }} />
                   </div>
                 </div>

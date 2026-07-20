@@ -418,11 +418,13 @@
   }
 
   .mobileLogoWrap { display: none; }
+  .heroNavLinks { padding-left: 24px; }
   .heroContent { padding: 36px 56px 52px 24px; }
 }
 
 @media (min-width: 1240px) {
   .panel { width: 460px; }
+  .heroNavLinks { padding-left: 24px; }
   .heroContent { padding: 36px 72px 56px 24px; }
 }
 
