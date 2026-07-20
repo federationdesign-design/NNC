@@ -35,7 +35,7 @@ const PROPERTIES: PropertyData[] = [
 
 const HERO_VIDEOS = [
   "/kids-play-ps3.mp4",
-  "/kids-play-ps3.mp4",
+  "/tramp-vid-2boys-opt.mp4",
 ];
 
 const NAV_LINKS = [
