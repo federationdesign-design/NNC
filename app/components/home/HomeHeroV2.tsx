@@ -109,11 +109,9 @@ export default function HomeHeroV2() {
             {HERO_VIDEOS.map((src, i) => (
               <video
                 key={src}
-                ref={i === slideIndex ? videoRef : undefined}
+                ref={(el) => { videoRefs.current[i] = el; }}
                 className={`${styles.heroBgVideo} ${i === slideIndex ? styles.heroBgImgActive : ""}`}
                 src={src}
-                autoPlay={i === slideIndex}
-                onLoadedData={(e) => { if (i === slideIndex) (e.target as HTMLVideoElement).play(); }}
                 muted
                 playsInline
                 onEnded={handleVideoEnded}
