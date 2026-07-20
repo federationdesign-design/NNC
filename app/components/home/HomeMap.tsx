@@ -55,6 +55,13 @@ export default function HomeMap({ area }: Props) {
           if (layer.type === "line" && layer.id.includes("road")) {
             map.setPaintProperty(layer.id, "line-color", "#2B9ED4");
           }
+          if (layer.type === "symbol" && layer.layout && (layer.layout as any)["text-field"]) {
+            try {
+              map.setPaintProperty(layer.id, "text-color", "#ffffff");
+              map.setPaintProperty(layer.id, "text-halo-color", "#1a1a2e");
+              map.setPaintProperty(layer.id, "text-halo-width", 1.5);
+            } catch {}
+          }
         });
 
         // Add a soft marker for the general area
