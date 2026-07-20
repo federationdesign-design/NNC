@@ -109,6 +109,7 @@ export default function HomeHeroV2() {
                 muted
                 playsInline
                 preload="auto"
+                preload="auto"
                 onEnded={handleVideoEnded}
               />
             ))}
