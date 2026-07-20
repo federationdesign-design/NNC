@@ -42,9 +42,23 @@ export default function SiteFooter() {
             <Image
               src="/dc_badge1.png"
               alt="Disability Confident Committed"
-              width={160}
-              height={60}
+              width={140}
+              height={52}
               style={{ objectFit: "contain", objectPosition: "left" }}
+            />
+            <Image
+              src="/LW_Employer.png"
+              alt="Living Wage Employer"
+              width={80}
+              height={52}
+              style={{ objectFit: "contain", objectPosition: "left" }}
+            />
+            <Image
+              src="/Lewisham-Council-logo-black.png.webp"
+              alt="London Borough of Lewisham"
+              width={100}
+              height={52}
+              style={{ objectFit: "contain", objectPosition: "left", filter: "brightness(0) invert(1)" }}
             />
           </div>
         </div>

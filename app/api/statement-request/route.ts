@@ -8,7 +8,7 @@ export async function POST(req: Request) {
   try {
     await resend.emails.send({
       from: "Nurturing Nests <no-reply@nurturingnests.co.uk>",
-      to: ["info@nurturingnests.co.uk"],
+      to: ["admin@nurturingnests.co.uk"],
       replyTo: email,
       subject: `Statement of Purpose request — ${homeName} — ${name}`,
       html: `

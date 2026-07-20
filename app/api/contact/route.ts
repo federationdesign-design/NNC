@@ -9,7 +9,7 @@ export async function POST(req: Request) {
   try {
     await resend.emails.send({
       from: "Nurturing Nests <no-reply@nurturingnests.co.uk>",
-      to: ["info@nurturingnests.co.uk"],
+      to: ["admin@nurturingnests.co.uk"],
       replyTo: email,
       subject: `New message from ${name}${organisation ? ` — ${organisation}` : ""}`,
       html: `
