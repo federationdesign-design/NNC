@@ -1,16 +1,12 @@
 // lib/business.ts
-// Single source of truth for all Nurturing Nests business identity data.
-// Footer, contact page, LocalBusiness JSON-LD and schema all import from here.
-// Change a value once and it updates everywhere.
-
 export const BUSINESS = {
   name: 'Nurturing Nests',
-  legalName: 'Nurturing Nests',
+  legalName: 'Nurturing Nests Care Limited',
   companyNumber: '11223861',
   url: 'https://www.nurturingnests.co.uk',
-  email: 'info@nurturingnests.co.uk',
-  telephone: '+44 20 8345 678',
-  telephoneDisplay: '0208 345 678',
+  email: 'admin@nurturingnests.co.uk',
+  telephone: '+44 1233 427012',
+  telephoneDisplay: '01233 427012',
   address: {
     street: 'Office 5 Belgravia House, Grosvenor Street',
     locality: 'Mold',
