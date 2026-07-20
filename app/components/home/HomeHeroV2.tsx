@@ -108,8 +108,6 @@ export default function HomeHeroV2() {
                 onLoadedData={(e) => { if (i === slideIndex) (e.target as HTMLVideoElement).play(); }}
                 muted
                 playsInline
-                preload="auto"
-                preload="auto"
                 onEnded={handleVideoEnded}
               />
             ))}
