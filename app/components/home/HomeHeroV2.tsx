@@ -36,6 +36,7 @@ const PROPERTIES: PropertyData[] = [
 const HERO_VIDEOS = [
   "/kids-play-ps3.mp4",
   "/tramp-vid-2boys-opt.mp4",
+  "/inside-run-opt.mp4",
 ];
 
 const NAV_LINKS = [
@@ -184,6 +185,13 @@ export default function HomeHeroV2() {
           {/* Hero content */}
           <div className={styles.heroContent}>
 
+            {/* Top subtitle */}
+            <p className={styles.heroSubtitle}>
+              Our model has been intentionally designed around the real referral
+              patterns we receive providing stability, structure and relational
+              consistency for children with complex emotional and neurodiverse needs.
+            </p>
+
             {/* Bottom section */}
             <div className={styles.heroBottom}>
               <h1 className={styles.heroHeading}>
@@ -243,12 +251,7 @@ export default function HomeHeroV2() {
               </div>
             </div>
 
-            {/* Subtitle */}
-            <p className={styles.heroSubtitle}>
-              Our model has been intentionally designed around the real referral
-              patterns we receive providing stability, structure and relational
-              consistency for children with complex emotional and neurodiverse needs.
-            </p>
+
 
           </div>
 
