@@ -47,7 +47,7 @@ const NAV_LINKS = [
 
 export default function HomeHeroV2() {
   const overlayRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const [slideIndex, setSlideIndex] = useState(0);
   const [referralOpen, setReferralOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -69,6 +69,14 @@ export default function HomeHeroV2() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    const video = videoRefs.current[slideIndex];
+    if (video) {
+      video.currentTime = 0;
+      video.play().catch(() => {});
+    }
+  }, [slideIndex]);
 
   function handleVideoEnded() {
     setSlideIndex((i) => (i + 1) % HERO_VIDEOS.length);
