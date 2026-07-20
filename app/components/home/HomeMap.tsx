@@ -3,8 +3,6 @@
 import { useEffect, useRef } from "react";
 import styles from "./HomeMap.module.css";
 
-const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || "";
-
 // Sellindge, Kent - coordinates
 const SELLINDGE = { lat: 51.0833, lng: 0.9833 };
 
@@ -18,6 +16,8 @@ export default function HomeMap({ area }: Props) {
 
   useEffect(() => {
     if (mapRef.current || !mapContainer.current) return;
+    const token = mapContainer.current.closest("[data-token]")?.getAttribute("data-token") || "";
+    if (!token) { console.warn("Mapbox token missing"); return; }
 
     const link = document.createElement("link");
     link.rel = "stylesheet";
@@ -29,7 +29,7 @@ export default function HomeMap({ area }: Props) {
     script.async = true;
     script.onload = () => {
       const mapboxgl = (window as any).mapboxgl;
-      mapboxgl.accessToken = MAPBOX_TOKEN;
+      mapboxgl.accessToken = token;
 
       const map = new mapboxgl.Map({
         container: mapContainer.current,
@@ -73,8 +73,10 @@ export default function HomeMap({ area }: Props) {
     };
   }, []);
 
+  const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || "";
+
   return (
-    <div className={styles.wrap}>
+    <div className={styles.wrap} data-token={token}>
       <div className={styles.header}>
         <h2 className={styles.title}>Location</h2>
         <p className={styles.sub}>
