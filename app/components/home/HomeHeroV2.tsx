@@ -252,6 +252,8 @@ export default function HomeHeroV2() {
 
           </div>
 
+          {/* Actors disclaimer */}
+          <p className={styles.actorsNote}>All imagery features professional actors. No children in our care are depicted.</p>
           {/* Slide indicators */}
           <div className={styles.slideIndicators}>
             {HERO_VIDEOS.map((_, i) => (
