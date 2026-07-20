@@ -34,6 +34,7 @@ const PROPERTIES: PropertyData[] = [
 
 ];
 
+const HERO_VIDEO = "/tramp-vid-opt.mp4";
 const HERO_IMAGES = [
   "/hero/image2.jpg",
   "/hero/portrait-of-smiling-african-boy copy.jpg",
