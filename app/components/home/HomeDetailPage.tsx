@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import ReferralModal from "./ReferralModal";
 import OfstedModal from "./OfstedModal";
+import StatementRequestModal from "./StatementRequestModal";
 import HomeGallery from "./HomeGallery";
 import HomeMap from "./HomeMap";
 import styles from "./HomeDetailPage.module.css";
@@ -23,6 +24,8 @@ interface HomeData {
   description: string;
   image: string;
   ofstedReportUrl: string | null;
+  registrationCertUrl?: string | null;
+  ofstedPageUrl?: string;
   gallery?: string[];
   vimeoUrl?: string;
 }
@@ -30,6 +33,8 @@ interface HomeData {
 export default function HomeDetailPage({ home }: { home: HomeData }) {
   const [referralOpen, setReferralOpen] = useState(false);
   const [ofstedOpen, setOfstedOpen] = useState(false);
+  const [certOpen, setCertOpen] = useState(false);
+  const [sopOpen, setSopOpen] = useState(false);
 
   return (
     <>
@@ -39,6 +44,7 @@ export default function HomeDetailPage({ home }: { home: HomeData }) {
         <div className={styles.hero}>
           <div className={styles.heroImg}>
             <Image src={home.image} alt={home.name} fill style={{ objectFit: "cover" }} priority sizes="100vw" />
+            <div className={styles.heroOverlay} />
           </div>
           <div className={styles.heroContent}>
             <Link href="/homes" className={styles.backLink}>← Our homes</Link>
@@ -128,15 +134,29 @@ export default function HomeDetailPage({ home }: { home: HomeData }) {
               </Link>
             </div>
 
-            {home.ofstedReportUrl && (
-              <div className={styles.sideCard}>
-                <h3 className={styles.sideCardTitle}>Ofsted report</h3>
-                <p className={styles.sideCardText}>View the full Ofsted inspection report for {home.name}.</p>
-                <button onClick={() => setOfstedOpen(true)} className={styles.secondaryBtn}>
-                  View report →
+            <div className={styles.sideCard}>
+              <h3 className={styles.sideCardTitle}>Documents</h3>
+              <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                <button onClick={() => setSopOpen(true)} className={styles.primaryBtn}>
+                  Request Statement of Purpose
                 </button>
+                {home.ofstedReportUrl && (
+                  <button onClick={() => setOfstedOpen(true)} className={styles.secondaryBtn}>
+                    View Ofsted report →
+                  </button>
+                )}
+                {home.registrationCertUrl && (
+                  <button onClick={() => setCertOpen(true)} className={styles.secondaryBtn}>
+                    View registration certificate →
+                  </button>
+                )}
+                {home.ofstedPageUrl && (
+                  <a href={home.ofstedPageUrl} target="_blank" rel="noopener noreferrer" className={styles.secondaryBtn}>
+                    View on Ofsted website ↗
+                  </a>
+                )}
               </div>
-            )}
+            </div>
 
             <div className={styles.ofstedBadgeCard}>
               <Image src="/ofsted.png" alt="Ofsted Good Provider" width={120} height={120} style={{ objectFit: "contain" }} />
@@ -158,8 +178,12 @@ export default function HomeDetailPage({ home }: { home: HomeData }) {
 
       <ReferralModal open={referralOpen} onClose={() => setReferralOpen(false)} />
       {home.ofstedReportUrl && (
-        <OfstedModal open={ofstedOpen} onClose={() => setOfstedOpen(false)} />
+        <OfstedModal open={ofstedOpen} onClose={() => setOfstedOpen(false)} pdfUrl={home.ofstedReportUrl} />
       )}
+      {home.registrationCertUrl && (
+        <OfstedModal open={certOpen} onClose={() => setCertOpen(false)} pdfUrl={home.registrationCertUrl} />
+      )}
+      <StatementRequestModal open={sopOpen} onClose={() => setSopOpen(false)} homeName={home.name} />
     </>
   );
 }
