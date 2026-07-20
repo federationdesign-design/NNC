@@ -55,6 +55,17 @@
   transition: opacity 2s ease;
 }
 
+.heroBgVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+
 .heroBgImgActive { opacity: 1; }
 
 .brandOverlay {

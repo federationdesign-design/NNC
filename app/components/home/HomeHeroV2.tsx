@@ -54,12 +54,13 @@ export default function HomeHeroV2() {
   const [ofstedOpen, setOfstedOpen] = useState(false);
 
   useEffect(() => {
-    if (HERO_IMAGES.length <= 1) return;
+    // Video plays first (slideIndex 0), then cycles through images
+    if (slideIndex === 0) return; // video handles its own timing
     const interval = setInterval(() => {
-      setSlideIndex((i) => (i + 1) % HERO_IMAGES.length);
+      setSlideIndex((i) => i >= HERO_IMAGES.length ? 1 : i + 1);
     }, 10000);
     return () => clearInterval(interval);
-  }, []);
+  }, [slideIndex]);
 
   useEffect(() => {
     const overlay = overlayRef.current;
@@ -100,12 +101,21 @@ export default function HomeHeroV2() {
         {/* RIGHT HERO */}
         <div className={styles.heroArea}>
 
-          {/* Slideshow */}
+          {/* Hero background — video first, image second */}
           <div className={styles.heroBg}>
+            <video
+              className={`${styles.heroBgVideo} ${slideIndex === 0 ? styles.heroBgImgActive : ""}`}
+              src={HERO_VIDEO}
+              autoPlay
+              muted
+              loop
+              playsInline
+              onEnded={() => setSlideIndex(1)}
+            />
             {HERO_IMAGES.map((src, i) => (
-              <Image key={src} src={src} alt="" fill priority={i === 0}
+              <Image key={src} src={src} alt="" fill priority={false}
                 sizes="(min-width: 900px) calc(100vw - 420px), 100vw"
-                className={`${styles.heroBgImg} ${i === slideIndex ? styles.heroBgImgActive : ""}`}
+                className={`${styles.heroBgImg} ${slideIndex === i + 1 ? styles.heroBgImgActive : ""}`}
               />
             ))}
             <div className={styles.brandOverlay} />
@@ -246,17 +256,20 @@ export default function HomeHeroV2() {
           </div>
 
           {/* Slide indicators */}
-          {HERO_IMAGES.length > 1 && (
-            <div className={styles.slideIndicators}>
-              {HERO_IMAGES.map((_, i) => (
-                <button key={i}
-                  className={`${styles.slideDot} ${i === slideIndex ? styles.slideDotActive : ""}`}
-                  onClick={() => setSlideIndex(i)}
-                  aria-label={`Slide ${i + 1}`}
-                />
-              ))}
-            </div>
-          )}
+          <div className={styles.slideIndicators}>
+            <button
+              className={`${styles.slideDot} ${slideIndex === 0 ? styles.slideDotActive : ""}`}
+              onClick={() => setSlideIndex(0)}
+              aria-label="Video"
+            />
+            {HERO_IMAGES.map((_, i) => (
+              <button key={i}
+                className={`${styles.slideDot} ${slideIndex === i + 1 ? styles.slideDotActive : ""}`}
+                onClick={() => setSlideIndex(i + 1)}
+                aria-label={`Slide ${i + 2}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
 
