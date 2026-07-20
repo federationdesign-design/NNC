@@ -9,7 +9,7 @@
   height: 70vh;
   min-height: 500px;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   overflow: hidden;
 }
 
@@ -18,16 +18,12 @@
   inset: 0;
 }
 
-.heroOverlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(10,20,40,0.85) 0%, rgba(10,20,40,0.3) 50%, transparent 100%);
-}
+/* No overlay — removed gradient */
 
 .heroContent {
   position: relative;
   z-index: 10;
-  padding: clamp(32px, 5vw, 60px) clamp(32px, 5vw, 80px);
+  padding: 50px clamp(32px, 5vw, 80px) clamp(32px, 5vw, 60px);
   width: 100%;
 }
 
@@ -53,7 +49,7 @@
 .sub {
   font-family: var(--font-jakarta), system-ui, sans-serif;
   font-size: clamp(1rem, 1.5vw, 1.15rem);
-  color: rgba(255,255,255,0.8);
+  color: rgba(255,255,255,0.85);
   margin: 0;
   max-width: 640px;
   line-height: 1.3;
@@ -74,8 +70,26 @@
   padding: clamp(56px, 8vw, 100px) clamp(32px, 5vw, 80px);
 }
 
+/* ── OUR STORY — two col grid ── */
 .sectionInner {
-  max-width: 1200px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+}
+
+@media (min-width: 900px) {
+  .sectionInner {
+    grid-template-columns: 1.4fr 1fr;
+    align-items: start;
+  }
+}
+
+.sectionText p {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.3;
+  color: var(--color-muted);
+  margin: 0 0 16px;
 }
 
 .sectionEyebrow {
@@ -86,6 +100,7 @@
   text-transform: uppercase;
   color: var(--color-brand);
   margin: 0 0 12px;
+  display: block;
 }
 
 .sectionEyebrowLight {
@@ -96,6 +111,7 @@
   text-transform: uppercase;
   color: rgba(255,255,255,0.6);
   margin: 0 0 12px;
+  display: block;
 }
 
 .sectionHeading {
@@ -103,7 +119,7 @@
   font-size: clamp(1.8rem, 3.5vw, 2.8rem);
   font-weight: 700;
   color: var(--color-ink);
-  margin: 0 0 32px;
+  margin: 0 0 24px;
   line-height: 1.1;
 }
 
@@ -121,34 +137,11 @@
   font-size: 1.05rem;
   line-height: 1.3;
   color: var(--color-muted);
-  margin: -16px 0 40px;
+  margin: 0 0 40px;
   max-width: 680px;
 }
 
-/* ── OUR STORY ── */
-.sectionText p {
-  font-family: var(--font-jakarta), system-ui, sans-serif;
-  font-size: 1rem;
-  line-height: 1.3;
-  color: var(--color-muted);
-  margin: 0 0 16px;
-}
-
-.sectionInner {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 48px;
-}
-
-.sectionText { grid-column: 1; }
-.sectionStat { grid-column: 1; }
-
-@media (min-width: 900px) {
-  .sectionInner { grid-template-columns: 1.4fr 1fr; align-items: start; }
-  .sectionText { grid-column: 1; }
-  .sectionStat { grid-column: 2; }
-}
-
+/* ── STAT CARDS ── */
 .statCard {
   padding: 28px;
   border: 1px solid var(--color-line);
@@ -174,41 +167,74 @@
   line-height: 1.3;
 }
 
-/* ── APPROACH ── */
+/* ── APPROACH — boxes left, quote right ── */
+.approachLayout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .approachLayout {
+    grid-template-columns: 1.4fr 1fr;
+  }
+}
+
 .approachGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  gap: 20px;
 }
 
 .approachCard {
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 16px;
-  padding: 28px;
+  padding: 24px;
 }
 
 .approachCard h3 {
   font-family: var(--font-mali), cursive;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: #fff;
-  margin: 0 0 12px;
+  margin: 0 0 10px;
 }
 
 .approachCard p {
   font-family: var(--font-jakarta), system-ui, sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   line-height: 1.3;
   color: rgba(255,255,255,0.65);
   margin: 0;
 }
 
-/* ── TEAM ── */
+.approachQuote {
+  font-family: var(--font-mali), cursive;
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.3;
+  border-left: 3px solid #2B9ED4;
+  padding-left: 20px;
+  margin: 0;
+}
+
+/* ── TEAM — full-width header, cards below ── */
+.teamHeader {
+  margin-bottom: 40px;
+}
+
 .teamGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 32px;
+}
+
+@media (max-width: 700px) {
+  .teamGrid { grid-template-columns: 1fr; }
+  .approachGrid { grid-template-columns: 1fr; }
 }
 
 .teamCard {
@@ -260,12 +286,18 @@
 }
 .teamEmail:hover { text-decoration: underline; }
 
-/* ── COMMUNITY ── */
-.communityGrid {
+/* ── COMMUNITY — text left, image right ── */
+.communityLayout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
+  grid-template-columns: 1fr;
+  gap: 40px;
   align-items: center;
+}
+
+@media (min-width: 900px) {
+  .communityLayout {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .communityText p {
@@ -283,14 +315,24 @@
   overflow: hidden;
 }
 
-/* ── DAY IN THE LIFE ── */
+/* ── DAY IN THE LIFE — single column ── */
+.dayHeader {
+  margin-bottom: 40px;
+}
+
+.dayIntro {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.3;
+  color: var(--color-muted);
+  margin: 0 0 40px;
+  max-width: 680px;
+}
+
 .dayInLife {
   display: flex;
   flex-direction: column;
-  gap: 0;
   border-left: 2px solid var(--color-brand);
-  padding-left: 0;
-  margin-top: 8px;
 }
 
 .dayEntry {
@@ -407,11 +449,6 @@
 }
 .ctaBtnSecondary:hover { border-color: #fff; }
 
-/* ── RESPONSIVE ── */
-@media (max-width: 900px) {
-  .approachGrid { grid-template-columns: 1fr; }
-  .teamGrid { grid-template-columns: 1fr; }
-  .communityGrid { grid-template-columns: 1fr; }
-  .sectionInner { grid-template-columns: 1fr; }
+@media (max-width: 600px) {
   .dayEntry { grid-template-columns: 60px 1fr; gap: 16px; }
 }
