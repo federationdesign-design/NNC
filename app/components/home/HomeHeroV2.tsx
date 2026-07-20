@@ -105,6 +105,7 @@ export default function HomeHeroV2() {
                 className={`${styles.heroBgVideo} ${i === slideIndex ? styles.heroBgImgActive : ""}`}
                 src={src}
                 autoPlay={i === slideIndex}
+                onLoadedData={(e) => { if (i === slideIndex) (e.target as HTMLVideoElement).play(); }}
                 muted
                 playsInline
                 onEnded={handleVideoEnded}
