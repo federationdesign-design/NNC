@@ -33,7 +33,7 @@ export default function HomeMap({ area }: Props) {
 
       const map = new mapboxgl.Map({
         container: mapContainer.current,
-        style: "mapbox://styles/mapbox/light-v11",
+        style: "mapbox://styles/mapbox/dark-v11",
         center: [SELLINDGE.lng, SELLINDGE.lat],
         zoom: 10,
         interactive: true,
@@ -42,6 +42,21 @@ export default function HomeMap({ area }: Props) {
       mapRef.current = map;
 
       map.on("load", () => {
+        // Custom brand colours — NNC blue palette
+        map.setPaintProperty("water", "fill-color", "#0f3460");
+        map.setPaintProperty("land", "background-color", "#1a1a2e");
+
+        // Attempt to style road and label layers if they exist
+        const style = map.getStyle();
+        style.layers.forEach((layer: any) => {
+          if (layer.type === "fill" && layer.id.includes("land")) {
+            map.setPaintProperty(layer.id, "fill-color", "#16213e");
+          }
+          if (layer.type === "line" && layer.id.includes("road")) {
+            map.setPaintProperty(layer.id, "line-color", "#2B9ED4");
+          }
+        });
+
         // Add a soft marker for the general area
         const el = document.createElement("div");
         el.style.cssText = `
@@ -63,7 +78,6 @@ export default function HomeMap({ area }: Props) {
           )
           .addTo(map);
 
-        map.addControl(new mapboxgl.NavigationControl({ showCompass: false }), "top-right");
       });
     };
     document.head.appendChild(script);
