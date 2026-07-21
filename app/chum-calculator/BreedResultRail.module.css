@@ -1,0 +1,179 @@
+/* ── Rail ─────────────────────────────────────────────────────────────────── */
+.railWrap {
+  position: relative;
+  margin-top: 24px;
+  padding-bottom: 32px;
+}
+
+.rail {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: clamp(12px, 2vw, 20px);
+  overflow-x: auto;
+  overflow-y: visible;
+  -webkit-overflow-scrolling: touch;
+  padding: 16px clamp(16px, 4vw, 40px) 24px;
+  scrollbar-width: none;
+}
+.rail::-webkit-scrollbar { display: none; }
+
+.item {
+  flex: 0 0 auto;
+}
+
+/* ── Custom scrollbar ────────────────────────────────────────────────────── */
+.scrollbar {
+  position: absolute;
+  left: clamp(20px, 4vw, 40px);
+  right: clamp(20px, 4vw, 40px);
+  bottom: 0;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.18);
+  transition: opacity 0.2s ease;
+}
+.scrollThumb {
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  width: 30%;
+  min-width: 44px;
+  border-radius: 999px;
+  background: var(--yellow);
+  cursor: grab;
+  touch-action: none;
+}
+.scrollThumb:active { cursor: grabbing; }
+
+/* ── Flip container ──────────────────────────────────────────────────────── */
+.flipOuter {
+  width: clamp(160px, 45vw, 220px);
+  aspect-ratio: 5 / 7;
+  perspective: 900px;
+  cursor: pointer;
+}
+
+.flipInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Desktop: flip on hover */
+@media (hover: hover) {
+  .flipOuter:hover .flipInner {
+    transform: rotateY(180deg);
+  }
+}
+
+/* Mobile: flip via .flipped class */
+.flipped .flipInner {
+  transform: rotateY(180deg);
+}
+
+/* ── FRONT -- exact Jul 14 breedCard style ───────────────────────────────── */
+.front {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 12px;
+  overflow: hidden;
+  display: block;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  text-decoration: none;
+}
+
+.cardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Exact Jul 14 cardScore */
+.cardScore {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: rotate(-3deg) translateY(2px);
+  font-family: var(--font-display, "Luckiest Guy", cursive);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 0 0 10px 10px;
+  padding: 11px 10px;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+/* ── BACK -- yellow panel ────────────────────────────────────────────────── */
+.back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: rotateY(180deg);
+  border-radius: 12px;
+  background: var(--yellow, #ffe227);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 14px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  gap: 14px;
+  text-align: center;
+}
+
+.backBreedName {
+  font-family: var(--font-display, "Luckiest Guy", cursive);
+  font-size: clamp(1.2rem, 5vw, 1.7rem);
+  color: var(--navy, #0a3a57);
+  margin: 0;
+  line-height: 1.05;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.backCta {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: clamp(0.78rem, 2.4vw, 0.92rem);
+  font-weight: 700;
+  color: var(--navy, #0a3a57);
+  margin: 0;
+  line-height: 1.35;
+}
+
+.backArrow {
+  font-size: 1.6rem;
+  color: var(--navy, #0a3a57);
+  display: block;
+  line-height: 1;
+}
+
+/* Mobile flip-back button */
+.flipBackBtn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(10,58,87,0.12);
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  color: var(--navy, #0a3a57);
+  cursor: pointer;
+  padding: 0;
+}
+@media (hover: hover) {
+  .flipBackBtn { display: none; }
+}
