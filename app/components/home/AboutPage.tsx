@@ -94,8 +94,11 @@ export default function AboutPage() {
               <Image src="/team/george-ball.jpg" alt="George Ball" fill sizes="120px" style={{ objectFit: "cover" }} />
             </div>
             <h3 className={styles.teamName}>George Ball</h3>
-            <p className={styles.teamRole}>Co-founder &amp; Director</p>
-            <p className={styles.teamBio}>Bio to follow.</p>
+            <p className={styles.teamRole}>Co-founder</p>
+            <p className={styles.teamBioTagline}>Creating the right homes, for the right children, in the right places.</p>
+            <p className={styles.teamBio}>George leads the direction, culture and development of Nurturing Nests. He believes growth must be matched by the people, support and standards needed to care for children well.</p>
+            <p className={styles.teamBio}>An award-winning house builder and property developer, he brings years of experience working alongside care operators. He takes the same attention to detail into his leadership, staying involved and setting standards through his own actions.</p>
+            <p className={styles.teamBio}>George works directly with commissioners to understand where suitable homes are needed, using that insight to guide the location, design and development of future services. His ambition is to create more options for children as their needs change, while protecting the personal approach on which Nurturing Nests was founded.</p>
             <a href="mailto:george.ball@nurturingnests.co.uk" className={styles.teamEmail}>george.ball@nurturingnests.co.uk</a>
           </div>
           <div className={styles.teamCard}>
@@ -103,8 +106,11 @@ export default function AboutPage() {
               <Image src="/team/hannah-neeworth.jpg" alt="Hannah Neeworth" fill sizes="120px" style={{ objectFit: "cover" }} />
             </div>
             <h3 className={styles.teamName}>Hannah Neeworth</h3>
-            <p className={styles.teamRole}>Co-founder &amp; Director</p>
-            <p className={styles.teamBio}>Bio to follow.</p>
+            <p className={styles.teamRole}>Co-founder &amp; Recruitment and HR Director</p>
+            <p className={styles.teamBioTagline}>Bringing people, standards and care together.</p>
+            <p className={styles.teamBio}>Hannah leads recruitment, HR and employee wellbeing across Nurturing Nests, helping shape the organisation and its teams as it grows.</p>
+            <p className={styles.teamBio}>A law graduate and founder of her own recruitment business, she brings experience in helping businesses build teams across several sectors, including healthcare. Her strengths lie in understanding people, recognising potential and building strong working relationships.</p>
+            <p className={styles.teamBio}>Hannah works closely with staff and managers, bringing an accessible, personal approach to her role. She places particular importance on training, development and opportunities for progression, building capable teams who feel supported in their work and provide children with consistent, thoughtful care.</p>
             <a href="mailto:hannah.neeworth@nurturingnests.co.uk" className={styles.teamEmail}>hannah.neeworth@nurturingnests.co.uk</a>
           </div>
         </div>
