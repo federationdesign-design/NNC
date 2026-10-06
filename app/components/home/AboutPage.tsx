@@ -26,6 +26,38 @@ export default function AboutPage() {
         </div>
       </div>
 
+
+      {/* ── GETTING TO KNOW EACH CHILD ── */}
+      <section className={styles.section}>
+        <span className={styles.sectionEyebrow}>Our approach</span>
+        <h2 className={styles.sectionHeading}>Getting to know each child</h2>
+        <div className={styles.approachText}>
+          <p>Our homes are designed for small numbers of children. This gives us the space and opportunity to get to know them as individuals, including what they enjoy, what worries them and what helps when things become difficult.</p>
+          <p>We work to understand the experiences behind a child&rsquo;s behaviour and adapt our care to their needs. Building trust takes time. It depends on adults listening, following through and responding consistently, whichever member of staff is on shift.</p>
+          <p>We want children to feel that their views count and that the adults around them believe in what they can achieve.</p>
+        </div>
+      </section>
+
+      {/* ── TEAM CULTURE ── */}
+      <section className={styles.sectionBlue}>
+        <span className={styles.sectionEyebrowLight}>Our community</span>
+        <h2 className={styles.sectionHeadingLight}>A team that feels valued. Relationships that have time to grow.</h2>
+        <div className={styles.communityLayout}>
+          <div className={styles.communityText}>
+            <p>We want people to feel supported, appreciated and able to build their future with us. We&rsquo;re a small team, and listening to each other matters. As we grow, we&rsquo;re planning more opportunities to learn together, celebrate achievements and spend time together beyond the shift.</p>
+            <p>Our aim is to keep good people with us, so children can build lasting relationships with adults they trust.</p>
+          </div>
+          <div className={styles.communityPhoto}>
+            <Image
+              src="/team/team-photo.jpg"
+              alt="The Nurturing Nests team"
+              fill
+              style={{ objectFit: "cover", objectPosition: "center 30%" }}
+              sizes="(min-width: 900px) 50vw, 100vw"
+            />
+          </div>
+        </div>
+      </section>
       {/* ── QUOTES ── */}
       <section className={styles.section}>
         <p className={styles.quoteIntro}>What people say about our homes.</p>
@@ -78,37 +110,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── GETTING TO KNOW EACH CHILD ── */}
-      <section className={styles.section}>
-        <span className={styles.sectionEyebrow}>Our approach</span>
-        <h2 className={styles.sectionHeading}>Getting to know each child</h2>
-        <div className={styles.approachText}>
-          <p>Our homes are designed for small numbers of children. This gives us the space and opportunity to get to know them as individuals, including what they enjoy, what worries them and what helps when things become difficult.</p>
-          <p>We work to understand the experiences behind a child&rsquo;s behaviour and adapt our care to their needs. Building trust takes time. It depends on adults listening, following through and responding consistently, whichever member of staff is on shift.</p>
-          <p>We want children to feel that their views count and that the adults around them believe in what they can achieve.</p>
-        </div>
-      </section>
-
-      {/* ── TEAM CULTURE ── */}
-      <section className={styles.sectionBlue}>
-        <span className={styles.sectionEyebrowLight}>Our community</span>
-        <h2 className={styles.sectionHeadingLight}>A team that feels valued. Relationships that have time to grow.</h2>
-        <div className={styles.communityLayout}>
-          <div className={styles.communityText}>
-            <p>We want people to feel supported, appreciated and able to build their future with us. We&rsquo;re a small team, and listening to each other matters. As we grow, we&rsquo;re planning more opportunities to learn together, celebrate achievements and spend time together beyond the shift.</p>
-            <p>Our aim is to keep good people with us, so children can build lasting relationships with adults they trust.</p>
-          </div>
-          <div className={styles.communityPhoto}>
-            <Image
-              src="/team/team-photo.jpg"
-              alt="The Nurturing Nests team"
-              fill
-              style={{ objectFit: "cover", objectPosition: "center 30%" }}
-              sizes="(min-width: 900px) 50vw, 100vw"
-            />
-          </div>
-        </div>
-      </section>
 
     </main>
   );
