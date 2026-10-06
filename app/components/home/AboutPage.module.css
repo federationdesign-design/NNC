@@ -1,3 +1,132 @@
+.page {
+  min-height: 100vh;
+  background: var(--color-surface);
+}
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  height: 70vh;
+  min-height: 500px;
+  display: flex;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+.heroImg {
+  position: absolute;
+  inset: 0;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 10;
+  padding: 50px clamp(32px, 5vw, 80px) clamp(32px, 5vw, 60px);
+  width: 100%;
+}
+
+.eyebrow {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #2B9ED4;
+  margin: 0 0 12px;
+  display: block;
+}
+
+.heading {
+  font-family: var(--font-mali), cursive;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 16px;
+  line-height: 1.1;
+}
+
+.sub {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  color: rgba(255,255,255,0.85);
+  margin: 0;
+  max-width: 640px;
+  line-height: 1.3;
+}
+
+/* ── SECTIONS ── */
+.section {
+  padding: clamp(56px, 8vw, 100px) clamp(32px, 5vw, 80px);
+}
+
+.sectionDark {
+  background: #1a1a2e;
+  padding: clamp(56px, 8vw, 100px) clamp(32px, 5vw, 80px);
+}
+
+.sectionBlue {
+  background: var(--color-brand);
+  padding: clamp(56px, 8vw, 100px) clamp(32px, 5vw, 80px);
+}
+
+/* ── EYEBROWS + HEADINGS ── */
+.sectionEyebrow {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-brand);
+  margin: 0 0 12px;
+  display: block;
+}
+
+.sectionEyebrowLight {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  margin: 0 0 12px;
+  display: block;
+}
+
+.sectionHeading {
+  font-family: var(--font-mali), cursive;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  color: var(--color-ink);
+  margin: 0 0 24px;
+  line-height: 1.1;
+}
+
+.sectionHeadingLight {
+  font-family: var(--font-mali), cursive;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 24px;
+  line-height: 1.1;
+}
+
+.sectionIntro {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.3;
+  color: var(--color-muted);
+  margin: 0 0 40px;
+  max-width: 680px;
+}
+
+.sectionIntroLight {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.3;
+  color: rgba(255,255,255,0.7);
+  margin: 0 0 40px;
+  max-width: 680px;
+}
 
 /* ── QUOTE INTRO + GRID ── */
 .quoteIntro {
@@ -49,7 +178,71 @@
   margin: 0;
 }
 
-/* ── APPROACH LAYOUT ── */
+/* ── TEAM ── */
+.teamHeader {
+  margin-bottom: 40px;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+@media (max-width: 700px) {
+  .teamGrid { grid-template-columns: 1fr; }
+}
+
+.teamCard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.teamPhoto {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.teamName {
+  font-family: var(--font-mali), cursive;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.teamRole {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #2B9ED4;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.teamBio {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.3;
+  color: rgba(255,255,255,0.65);
+  margin: 0;
+}
+
+.teamEmail {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 0.85rem;
+  color: #2B9ED4;
+  text-decoration: none;
+}
+.teamEmail:hover { text-decoration: underline; }
+
+/* ── APPROACH ── */
 .approachLayout {
   display: grid;
   grid-template-columns: 1fr;
@@ -69,12 +262,200 @@
   margin: 0 0 16px;
 }
 
-/* ── TEAM DARK SECTION ── */
-.sectionIntroLight {
+.approachGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 700px) {
+  .approachGrid { grid-template-columns: 1fr; }
+}
+
+.approachCard {
+  background: #f7f8fa;
+  border: 1px solid var(--color-line);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.approachCard h3 {
+  font-family: var(--font-mali), cursive;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  margin: 0 0 10px;
+}
+
+.approachCard p {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.3;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+/* ── COMMUNITY ── */
+.communityLayout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .communityLayout { grid-template-columns: 1fr 1fr; }
+}
+
+.communityText p {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.3;
+  color: rgba(255,255,255,0.8);
+  margin: 0 0 16px;
+}
+
+.communityPhoto {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* ── DAY IN THE LIFE ── */
+.dayHeader {
+  margin-bottom: 40px;
+}
+
+.dayIntro {
   font-family: var(--font-jakarta), system-ui, sans-serif;
   font-size: 1.05rem;
   line-height: 1.3;
-  color: rgba(255,255,255,0.7);
+  color: var(--color-muted);
   margin: 0 0 40px;
   max-width: 680px;
 }
+
+.dayInLife {
+  display: flex;
+  flex-direction: column;
+  border-left: 2px solid var(--color-brand);
+}
+
+.dayEntry {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 24px;
+  padding: 32px 0 32px 32px;
+  border-bottom: 1px solid var(--color-line);
+}
+
+@media (max-width: 600px) {
+  .dayEntry { grid-template-columns: 60px 1fr; gap: 16px; }
+}
+
+.dayTime {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-brand);
+  padding-top: 4px;
+}
+
+.dayContent h3 {
+  font-family: var(--font-mali), cursive;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  margin: 0 0 10px;
+}
+
+.dayContent p {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.3;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+.dayQuote {
+  margin: 40px 0 0 32px;
+  padding: 32px;
+  background: #f7f8fa;
+  border-radius: 16px;
+  border-left: 4px solid var(--color-brand);
+  font-family: var(--font-mali), cursive;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 700;
+  color: var(--color-ink);
+  line-height: 1.3;
+}
+
+.dayQuote cite {
+  display: block;
+  margin-top: 16px;
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--color-muted);
+}
+
+/* ── CTA ── */
+.ctaSection {
+  background: #1a1a2e;
+  padding: clamp(56px, 8vw, 80px) clamp(32px, 5vw, 80px);
+}
+
+.ctaInner {
+  max-width: 600px;
+}
+
+.ctaHeading {
+  font-family: var(--font-mali), cursive;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 16px;
+}
+
+.ctaSub {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.3;
+  color: rgba(255,255,255,0.65);
+  margin: 0 0 32px;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.ctaBtnPrimary {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--color-brand);
+  border-radius: 999px;
+  padding: 14px 28px;
+  text-decoration: none;
+  transition: background var(--t-fast);
+}
+.ctaBtnPrimary:hover { background: #1f87b8; }
+
+.ctaBtnSecondary {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  background: none;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  border-radius: 999px;
+  padding: 14px 28px;
+  text-decoration: none;
+  transition: border-color var(--t-fast);
+}
+.ctaBtnSecondary:hover { border-color: #fff; }
