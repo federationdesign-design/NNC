@@ -6,7 +6,7 @@ export default function AboutPage() {
   return (
     <main className={styles.page}>
 
-      {/* ── HERO — text pinned to top ── */}
+      {/* ── HERO ── */}
       <div className={styles.hero}>
         <div className={styles.heroImg}>
           <Image
@@ -20,73 +20,36 @@ export default function AboutPage() {
         </div>
         <div className={styles.heroContent}>
           <p className={styles.eyebrow}>About us</p>
-          <h1 className={styles.heading}>People who care.<br />Homes that work.</h1>
-          <p className={styles.sub}>Nurturing Nests Care is a small, specialist provider of children's residential homes in East Kent. We exist to give children with complex needs the one thing that changes everything — a stable, safe, consistent home with people who turn up for them every single day.</p>
+          <h1 className={styles.heading}>Childhood should still feel like childhood.</h1>
+          <p className={styles.sub}>Nurturing Nests provides residential care for children at Ivy Cottage and Holly Tree Cottage in Kent. We want children living with us to feel understood, build relationships they can trust and have opportunities to enjoy being children.</p>
         </div>
       </div>
 
-      {/* ── OUR STORY ── */}
+      {/* ── QUOTE INTRO + 3 QUOTES ── */}
       <section className={styles.section}>
-        <div className={styles.sectionInner}>
-          <div className={styles.sectionText}>
-            <span className={styles.sectionEyebrow}>Our story</span>
-            <h2 className={styles.sectionHeading}>Built around what Kent's children actually need</h2>
-            <p>Nurturing Nests was founded in May 2025 by George Ball and Hannah Neeworth, two professionals with deep roots in children's residential care governance and therapeutic practice. They had both spent years working within the system and had seen the same problem play out repeatedly — children with complex emotional, behavioural and relational needs being placed far from their communities, in homes that weren't built for them.</p>
-            <p>The solution they built is deliberately small and deliberately local. Two homes, side by side in Sellindge, East Kent. Staffed by a consistent team. Designed around the real referral patterns Kent's local authorities generate. Since opening we have received over 480 referrals from Kent County Council alone — which tells you everything about the scale of the need we're here to meet.</p>
-            <p>We are not trying to grow fast. We are trying to get it right. Five homes in East Kent, each with high staffing ratios, consistent adults and routines designed around the children we support — that is the plan, and we are building it carefully.</p>
+        <p className={styles.quoteIntro}>Our homes are designed for small numbers of children. This gives us the space and opportunity to get to know them as individuals, including what they enjoy, what worries them and what helps when things become difficult.</p>
+        <div className={styles.quoteGrid}>
+          <div className={styles.quoteCard}>
+            <p className={styles.quoteText}>&ldquo;There are clear efforts to ensure that her voice is heard and that she is supported to express her views and feelings.&rdquo;</p>
+            <p className={styles.quoteAttribution}>Social Worker</p>
           </div>
-          <div>
-            <div className={styles.statCard}>
-              <span className={styles.statNumber}>480+</span>
-              <span className={styles.statLabel}>Referrals received from Kent County Council since May 2025</span>
-            </div>
-            <div className={styles.statCard}>
-              <span className={styles.statNumber}>2</span>
-              <span className={styles.statLabel}>Ofsted registered homes, both rated Good</span>
-            </div>
-            <div className={styles.statCard}>
-              <span className={styles.statNumber}>24/7</span>
-              <span className={styles.statLabel}>Consistent, trained staff in every home</span>
-            </div>
+          <div className={styles.quoteCard}>
+            <p className={styles.quoteText}>&ldquo;The staff create a nurturing environment in which children can progress. They keep children at the forefront of their practice and continue to build strong, supportive relationships with them.&rdquo;</p>
+            <p className={styles.quoteAttribution}>Ofsted Inspector</p>
           </div>
-        </div>
-      </section>
-
-      {/* ── OUR APPROACH ── */}
-      <section className={styles.sectionDark}>
-        <span className={styles.sectionEyebrowLight}>Our approach</span>
-        <h2 className={styles.sectionHeadingLight}>Structure is not a restriction.<br />It is a foundation.</h2>
-        <div className={styles.approachLayout}>
-          <div className={styles.approachGrid}>
-            <div className={styles.approachCard}>
-              <h3>Relational consistency</h3>
-              <p>Children who have experienced trauma do not heal through programmes — they heal through people. We invest heavily in keeping the same adults in the same homes, building the kind of trust that takes time and showing up every single day.</p>
-            </div>
-            <div className={styles.approachCard}>
-              <h3>Structure as care</h3>
-              <p>Many of the children we support have never experienced a reliable routine. Knowing what happens next — when meals are, who is picking them up, what the rules are and that those rules will not change — is not a restriction. It is the foundation every child needs to begin to grow.</p>
-            </div>
-            <div className={styles.approachCard}>
-              <h3>Therapeutic environment</h3>
-              <p>Our model is informed by therapeutic relational practice. Staff are trained to understand behaviour as communication, to respond rather than react, and to build the kind of environment where children feel safe enough to let their guard down.</p>
-            </div>
-            <div className={styles.approachCard}>
-              <h3>Child-led progress</h3>
-              <p>We do not impose timelines. Every child grows at their own pace, on their own terms — but with complete, unwavering support from our team at every step. Our job is to hold the space and stay consistent while they find their way.</p>
-            </div>
+          <div className={styles.quoteCard}>
+            <p className={styles.quoteText}>&ldquo;She is loved and thriving. The staff are approachable, kind and considerate and I feel valued and listened to as a parent.&rdquo;</p>
+            <p className={styles.quoteAttribution}>Parent</p>
           </div>
-          <blockquote className={styles.approachQuote}>
-            &ldquo;Without structure, how can people grow? This is especially true for children who have lacked that structure in their lives. We aim to provide a stable, consistent environment for all children to help them grow and learn — on their own terms, but with unwavering support from our team.&rdquo;
-          </blockquote>
         </div>
       </section>
 
       {/* ── THE TEAM ── */}
-      <section className={styles.section}>
+      <section className={styles.sectionDark}>
         <div className={styles.teamHeader}>
-          <span className={styles.sectionEyebrow}>The team</span>
-          <h2 className={styles.sectionHeading}>Led by people with something to prove</h2>
-          <p className={styles.sectionIntro}>Our senior team brings together extensive experience in children's residential care governance, therapeutic practice and operational leadership. They are not absent directors — they are in the homes, with the staff, working through the hard days alongside everyone else.</p>
+          <span className={styles.sectionEyebrowLight}>The team</span>
+          <h2 className={styles.sectionHeadingLight}>Led by people with something to prove</h2>
+          <p className={styles.sectionIntroLight}>Our senior team brings together extensive experience in children's residential care governance, therapeutic practice and operational leadership. They are not absent directors — they are in the homes, with the staff, working through the hard days alongside everyone else.</p>
         </div>
         <div className={styles.teamGrid}>
           <div className={styles.teamCard}>
@@ -110,15 +73,47 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── COMMUNITY ── */}
+      {/* ── GETTING TO KNOW EACH CHILD ── */}
+      <section className={styles.section}>
+        <span className={styles.sectionEyebrow}>Our approach</span>
+        <h2 className={styles.sectionHeading}>Getting to know each child</h2>
+        <div className={styles.approachLayout}>
+          <div className={styles.approachText}>
+            <p>Our homes are designed for small numbers of children. This gives us the space and opportunity to get to know them as individuals, including what they enjoy, what worries them and what helps when things become difficult.</p>
+            <p>We work to understand the experiences behind a child's behaviour and adapt our care to their needs. Building trust takes time. It depends on adults listening, following through and responding consistently, whichever member of staff is on shift.</p>
+            <p>We want children to feel that their views count and that the adults around them believe in what they can achieve.</p>
+          </div>
+          <div className={styles.approachGrid}>
+            <div className={styles.approachCard}>
+              <h3>Relational consistency</h3>
+              <p>Children who have experienced trauma do not heal through programmes — they heal through people. We invest heavily in keeping the same adults in the same homes.</p>
+            </div>
+            <div className={styles.approachCard}>
+              <h3>Structure as care</h3>
+              <p>Knowing what happens next is not a restriction. It is the foundation every child needs to begin to grow.</p>
+            </div>
+            <div className={styles.approachCard}>
+              <h3>Therapeutic environment</h3>
+              <p>Staff are trained to understand behaviour as communication, to respond rather than react, and to build environments where children feel safe.</p>
+            </div>
+            <div className={styles.approachCard}>
+              <h3>Child-led progress</h3>
+              <p>Every child grows at their own pace, on their own terms — but with complete, unwavering support from our team at every step.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── AN ORGANISATION THAT STAYS INVOLVED ── */}
       <section className={styles.sectionBlue}>
         <span className={styles.sectionEyebrowLight}>Our community</span>
-        <h2 className={styles.sectionHeadingLight}>A team that genuinely looks out for each other</h2>
+        <h2 className={styles.sectionHeadingLight}>An organisation that stays involved</h2>
         <div className={styles.communityLayout}>
           <div className={styles.communityText}>
-            <p>We talk a lot about structure and consistency for the children in our homes. What we talk about less — but believe just as strongly — is that the same principles apply to the people who deliver that care every day.</p>
-            <p>Residential support work is one of the most demanding jobs there is. You cannot expect a team to show up consistently for children unless that team itself feels valued, supported and genuinely part of something.</p>
-            <p>We invest in our staff. We celebrate milestones. We get together outside of work. We disagree and work through it. We make decisions together. That is not a nice-to-have — it is how you build a team that lasts, and lasting teams are what children in residential care need most.</p>
+            <p>We are a small organisation, and our directors remain closely involved in the homes. They know the children and staff, spend time on site and meet weekly with the senior leadership team.</p>
+            <p>We expect everyone working here to understand the importance of their role in a child's life. That means setting clear expectations, supporting staff through supervision and team discussions, and making sure concerns can be raised and acted on.</p>
+            <p>Our responsibility includes listening to the professionals and families involved in each child's care. Their observations help us understand what is working and where we need to improve.</p>
+            <p>We are ambitious for the children who live with us and committed to learning how we can support them better.</p>
           </div>
           <div className={styles.communityPhoto}>
             <Image
@@ -132,51 +127,49 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── DAY IN THE LIFE — single column ── */}
+      {/* ── DAY IN THE LIFE ── */}
       <section className={styles.section}>
         <div className={styles.dayHeader}>
           <span className={styles.sectionEyebrow}>Life at Nurturing Nests</span>
           <h2 className={styles.sectionHeading}>A day in the life of a Residential Support Worker</h2>
           <p className={styles.dayIntro}>Wondering what it is actually like to work in one of our homes? [Name], one of our Residential Support Workers, shares what a typical day looks like — and why no two days are ever quite the same.</p>
         </div>
-
         <div className={styles.dayInLife}>
           <div className={styles.dayEntry}>
             <span className={styles.dayTime}>07:30</span>
             <div className={styles.dayContent}>
               <h3>The handover</h3>
-              <p>My shift starts with a handover from the night team. I find out how the night went — whether anyone had a difficult night, if there were any incidents, what mood the children woke up in. This is not just paperwork. It shapes how I approach the first hour of the day. If I know a child had a hard night, I know they might need more patience this morning and fewer demands before breakfast.</p>
+              <p>My shift starts with a handover from the night team. I find out how the night went — whether anyone had a difficult night, if there were any incidents, what mood the children woke up in. This is not just paperwork. It shapes how I approach the first hour of the day.</p>
             </div>
           </div>
           <div className={styles.dayEntry}>
             <span className={styles.dayTime}>08:00</span>
             <div className={styles.dayContent}>
               <h3>Morning routines</h3>
-              <p>Getting children ready for school sounds simple. In practice, it takes skill, patience and a good sense of humour. Some mornings go smoothly. Others involve negotiating around a child who has decided they are not going in, managing anxiety that shows up as anger, and somehow keeping the atmosphere calm enough that everyone gets out of the door on time. I know these children well enough to know what works for each of them — and that knowledge only comes from being here consistently, day after day.</p>
+              <p>Getting children ready for school sounds simple. In practice, it takes skill, patience and a good sense of humour. I know these children well enough to know what works for each of them — and that knowledge only comes from being here consistently, day after day.</p>
             </div>
           </div>
           <div className={styles.dayEntry}>
             <span className={styles.dayTime}>09:30</span>
             <div className={styles.dayContent}>
               <h3>While the children are at school</h3>
-              <p>Once the school run is done, there is still plenty to do. Housework, admin, care planning, liaising with social workers, preparing for the afternoon. I might also be involved in a review meeting for one of the children, or catching up with the senior team about how things are going. This is the part of the job that keeps the home running smoothly — and that means it matters just as much as the moments with the children themselves.</p>
+              <p>Once the school run is done, there is still plenty to do. Housework, admin, care planning, liaising with social workers, preparing for the afternoon. This is the part of the job that keeps the home running smoothly.</p>
             </div>
           </div>
           <div className={styles.dayEntry}>
             <span className={styles.dayTime}>15:30</span>
             <div className={styles.dayContent}>
               <h3>School pick-up and the afternoon</h3>
-              <p>Afternoons vary enormously. Sometimes a child comes home settled and happy and we spend the evening doing something fun together — cooking, going to a club, watching a film. Other times they come home carrying the weight of a difficult day and need space, support and someone who is not going to react to whatever comes out first. That is the part of this job that you can never fully prepare for. But over time, you learn to read each child, to know what they need and to trust your own instincts.</p>
+              <p>Afternoons vary enormously. Sometimes a child comes home settled and happy. Other times they come home carrying the weight of a difficult day and need space, support and someone who is not going to react to whatever comes out first. Over time, you learn to read each child.</p>
             </div>
           </div>
           <div className={styles.dayEntry}>
             <span className={styles.dayTime}>19:00</span>
             <div className={styles.dayContent}>
               <h3>Evening and wind-down</h3>
-              <p>Evenings are about bringing the day to a close in a way that feels safe. Dinner together, time to talk about the day, a predictable bedtime routine. Children who have not experienced consistency find comfort in knowing what comes next. By the end of the evening, even a child who woke up refusing to go to school might come to say goodnight and mean it. Those moments make this job what it is.</p>
+              <p>Evenings are about bringing the day to a close in a way that feels safe. Dinner together, time to talk about the day, a predictable bedtime routine. By the end of the evening, even a child who woke up refusing to go to school might come to say goodnight and mean it.</p>
             </div>
           </div>
-
           <blockquote className={styles.dayQuote}>
             &ldquo;You go home tired some days. But you also go home knowing that what you did today mattered to a real child who needed you to show up — and you did. That is not something many jobs can offer you.&rdquo;
             <cite>— [Name], Residential Support Worker, Nurturing Nests</cite>
