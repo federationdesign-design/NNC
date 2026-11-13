@@ -142,13 +142,16 @@
 .detailIconPair {
   display: flex;
   gap: 4px;
+  align-items: center;
 }
 
-.detailIconPair .detailIcon {
+.detailIconCircle {
+  position: relative;
   width: 40px;
   height: 40px;
   border-radius: 50%;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .detailLabel {

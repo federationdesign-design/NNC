@@ -27,6 +27,8 @@ interface HomeData {
   registrationCertUrl?: string | null;
   ofstedPageUrl?: string;
   gallery?: string[];
+  bedImages?: string[];
+  authorityLogos?: string[];
   vimeoUrl?: string;
 }
 
@@ -74,11 +76,11 @@ export default function HomeDetailPage({ home }: { home: HomeData }) {
                 <span className={styles.detailValue}>{home.location}</span>
               </div>
 
-              {/* Beds — show first 2 gallery images as circular thumbnails */}
+              {/* Beds — specific bedroom photos as circular thumbnails */}
               <div className={styles.detail}>
                 <div className={styles.detailIconPair}>
-                  {(home.gallery ?? []).slice(0, home.beds).map((src, i) => (
-                    <div key={i} className={styles.detailIcon} style={{ borderRadius: "50%", overflow: "hidden", position: "relative", width: 40, height: 40 }}>
+                  {(home.bedImages ?? (home.gallery ?? []).slice(0, home.beds)).map((src: string, i: number) => (
+                    <div key={i} className={styles.detailIconCircle}>
                       <Image src={src} alt={`Bedroom ${i + 1}`} fill style={{ objectFit: "cover" }} sizes="40px" />
                     </div>
                   ))}
@@ -87,16 +89,14 @@ export default function HomeDetailPage({ home }: { home: HomeData }) {
                 <span className={styles.detailValue}>{home.beds} bed{home.beds > 1 ? "s" : ""}</span>
               </div>
 
-              {/* Type — home icon */}
+              {/* Type — authority logos */}
               <div className={styles.detail}>
-                <div className={styles.detailIcon}>
-                  <Image
-                    src={home.slug === "holly-tree-cottage" ? "/homes/holly-icon.png" : "/homes/ivy-icon.png"}
-                    alt={home.type}
-                    fill
-                    style={{ objectFit: "contain" }}
-                    sizes="48px"
-                  />
+                <div className={styles.detailIconPair}>
+                  {(home.authorityLogos ?? []).map((src: string, i: number) => (
+                    <div key={i} className={styles.detailIcon} style={{ position: "relative", width: 48, height: 48 }}>
+                      <Image src={src} alt="Authority logo" fill style={{ objectFit: "contain" }} sizes="48px" />
+                    </div>
+                  ))}
                 </div>
                 <span className={styles.detailLabel}>Type</span>
                 <span className={styles.detailValue}>{home.type}</span>

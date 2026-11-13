@@ -23,6 +23,14 @@ const HOMES = [
     gallery: Array.from({ length: 32 }, (_, i) =>
       `/homes/ivy/Ivy Cottage-${i + 1}.jpg`
     ),
+    bedImages: [
+      "/homes/ivy/Ivy Cottage-12.jpg",
+      "/homes/ivy/Ivy Cottage-5.jpg",
+    ],
+    authorityLogos: [
+      "/kent-council.png",
+      "/Lewisham-Council-logo-black.png.webp",
+    ],
   },
   {
     slug: "holly-tree-cottage",
@@ -44,6 +52,12 @@ const HOMES = [
     gallery: Array.from({ length: 21 }, (_, i) =>
       `/homes/holly/Holy Tree Cottage-${i + 1}.jpg`
     ),
+    bedImages: [
+      "/homes/holly/Holy Tree Cottage-1.jpg",
+    ],
+    authorityLogos: [
+      "/kent-council.png",
+    ],
   },
 ];
 
