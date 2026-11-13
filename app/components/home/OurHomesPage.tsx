@@ -180,6 +180,7 @@ export default function OurHomesPage() {
 
       <StatementRequestModal
         open={statementOpen}
+        homeName={HOMES.find(h => h.slug === activeHome)?.name ?? ""}
         onClose={() => { setStatementOpen(false); setActiveHome(null); }}
       />
       <OfstedModal open={ofstedOpen} onClose={() => setOfstedOpen(false)} />
