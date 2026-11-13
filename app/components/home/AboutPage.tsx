@@ -40,10 +40,10 @@ export default function AboutPage() {
 
       {/* ── TEAM CULTURE ── */}
       <section className={styles.sectionBlue}>
-        <span className={styles.sectionEyebrowLight}>Our community</span>
-        <h2 className={styles.sectionHeadingLight}>A team that feels valued. Relationships that have time to grow.</h2>
         <div className={styles.communityLayout}>
           <div className={styles.communityText}>
+            <span className={styles.sectionEyebrowLight}>Our community</span>
+            <h2 className={styles.communityHeading}>A team that feels valued.<br />Relationships that have time to grow.</h2>
             <p>We want people to feel supported, appreciated and able to build their future with us. We&rsquo;re a small team, and listening to each other matters. As we grow, we&rsquo;re planning more opportunities to learn together, celebrate achievements and spend time together beyond the shift.</p>
             <p>Our aim is to keep good people with us, so children can build lasting relationships with adults they trust.</p>
           </div>
