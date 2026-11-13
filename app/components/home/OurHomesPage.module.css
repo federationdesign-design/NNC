@@ -106,7 +106,8 @@
 
 /* ── HOME CARDS LIST ── */
 .list {
-  padding: clamp(48px, 6vw, 80px) clamp(24px, 4vw, 60px);
+  padding-top: clamp(48px, 6vw, 80px);
+  padding-bottom: clamp(48px, 6vw, 80px);
   display: flex;
   flex-direction: column;
   gap: clamp(56px, 8vw, 96px);
@@ -118,6 +119,7 @@
   grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: clamp(32px, 5vw, 72px);
+  padding-inline: clamp(24px, 4vw, 60px);
 }
 
 /* Alternate: image on right — use order, not direction, to avoid alignment issues */
@@ -131,11 +133,7 @@
 /* ── ROUNDAL ── */
 .roundalWrap {
   display: flex;
-  justify-content: flex-start;
-}
-
-.cardReverse .roundalWrap {
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .roundal {
