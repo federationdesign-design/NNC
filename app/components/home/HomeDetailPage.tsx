@@ -44,7 +44,6 @@ export default function HomeDetailPage({ home }: { home: HomeData }) {
         <div className={styles.hero}>
           <div className={styles.heroImg}>
             <Image src={home.image} alt={home.name} fill style={{ objectFit: "cover" }} priority sizes="100vw" />
-            <div className={styles.heroOverlay} />
           </div>
           <div className={styles.heroContent}>
             <Link href="/homes" className={styles.backLink}>← Our homes</Link>
@@ -63,32 +62,68 @@ export default function HomeDetailPage({ home }: { home: HomeData }) {
         <div className={styles.content}>
           <div className={styles.main}>
 
-            {/* Key details */}
+            {/* Key details info row */}
             <div className={styles.detailsGrid}>
+
+              {/* Location */}
               <div className={styles.detail}>
+                <div className={styles.detailIcon}>
+                  <Image src="/pin-and-map.jpg" alt="Location" fill style={{ objectFit: "contain" }} sizes="48px" />
+                </div>
                 <span className={styles.detailLabel}>Location</span>
                 <span className={styles.detailValue}>{home.location}</span>
               </div>
+
+              {/* Beds — show first 2 gallery images as circular thumbnails */}
               <div className={styles.detail}>
+                <div className={styles.detailIconPair}>
+                  {(home.gallery ?? []).slice(0, home.beds).map((src, i) => (
+                    <div key={i} className={styles.detailIcon} style={{ borderRadius: "50%", overflow: "hidden", position: "relative", width: 40, height: 40 }}>
+                      <Image src={src} alt={`Bedroom ${i + 1}`} fill style={{ objectFit: "cover" }} sizes="40px" />
+                    </div>
+                  ))}
+                </div>
                 <span className={styles.detailLabel}>Beds</span>
                 <span className={styles.detailValue}>{home.beds} bed{home.beds > 1 ? "s" : ""}</span>
               </div>
+
+              {/* Type — home icon */}
               <div className={styles.detail}>
+                <div className={styles.detailIcon}>
+                  <Image
+                    src={home.slug === "holly-tree-cottage" ? "/homes/holly-icon.png" : "/homes/ivy-icon.png"}
+                    alt={home.type}
+                    fill
+                    style={{ objectFit: "contain" }}
+                    sizes="48px"
+                  />
+                </div>
                 <span className={styles.detailLabel}>Type</span>
                 <span className={styles.detailValue}>{home.type}</span>
               </div>
+
+              {/* Ofsted URN */}
               {home.urn && (
                 <div className={styles.detail}>
+                  <div className={styles.detailIcon}>
+                    <Image src="/ofsted-white-bg.jpg" alt="Ofsted" fill style={{ objectFit: "contain" }} sizes="48px" />
+                  </div>
                   <span className={styles.detailLabel}>Ofsted URN</span>
                   <span className={styles.detailValue}>{home.urn}</span>
                 </div>
               )}
+
+              {/* Ofsted rating */}
               {home.ofstedRating && (
                 <div className={styles.detail}>
-                  <span className={styles.detailLabel}>Ofsted rating</span>
+                  <div className={styles.detailIcon}>
+                    <Image src="/ofsted.png" alt="Ofsted rating" fill style={{ objectFit: "contain" }} sizes="48px" />
+                  </div>
+                  <span className={styles.detailLabel}>Ofsted Rating</span>
                   <span className={styles.detailValue}>{home.ofstedRating}{home.ofstedDate ? ` — ${home.ofstedDate}` : ""}</span>
                 </div>
               )}
+
             </div>
 
             {/* Description */}

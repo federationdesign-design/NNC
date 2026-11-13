@@ -6,8 +6,9 @@
 /* Hero */
 .hero {
   position: relative;
-  height: 60vh;
-  min-height: 420px;
+  height: 75vh;
+  min-height: 520px;
+  max-height: 760px;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
@@ -16,6 +17,19 @@
 .heroImg {
   position: absolute;
   inset: 0;
+}
+
+.heroImg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(18, 90, 150, 0.9) 0%,
+    rgba(18, 90, 150, 0.55) 35%,
+    transparent 65%
+  );
+  z-index: 1;
 }
 
 
@@ -95,42 +109,64 @@
   align-items: start;
 }
 
-/* Details grid */
+/* Details / info row */
 .detailsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  display: flex;
   gap: 0;
   border: 1px solid var(--color-line);
   border-radius: 16px;
   overflow: hidden;
   margin-bottom: 40px;
+  background: #fff;
 }
 
 .detail {
-  padding: 20px 24px;
+  flex: 1;
+  padding: 18px 20px;
   border-right: 1px solid var(--color-line);
-  border-bottom: 1px solid var(--color-line);
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 10px;
+  min-width: 0;
 }
 
 .detail:last-child { border-right: none; }
 
+.detailIcon {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
+
+.detailIconPair {
+  display: flex;
+  gap: 4px;
+}
+
+.detailIconPair .detailIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
 .detailLabel {
   font-family: var(--font-jakarta), system-ui, sans-serif;
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-muted);
+  margin: 0;
 }
 
 .detailValue {
   font-family: var(--font-jakarta), system-ui, sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--color-ink);
+  margin: 0;
 }
 
 /* Description */
