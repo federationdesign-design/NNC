@@ -64,19 +64,33 @@ export default function AboutPage() {
         <div className={styles.quoteGrid}>
           <div className={styles.quoteCard}>
             <p className={styles.quoteText}>&ldquo;The staff create a nurturing environment in which children can progress. They keep children at the forefront of their practice and continue to build strong, supportive relationships with them.&rdquo;</p>
-            <p className={styles.quoteAttribution}>Ofsted Inspector</p>
+            <div className={styles.quoteFooter}>
+              <p className={styles.quoteAttribution}>Ofsted Inspector</p>
+              <div className={styles.quoteLogo}>
+                <Image src="/ofsted.png" alt="Ofsted" fill style={{ objectFit: "contain", objectPosition: "right center" }} sizes="60px" />
+              </div>
+            </div>
           </div>
           <div className={styles.quoteCard}>
             <p className={styles.quoteText}>&ldquo;Staff appear dedicated, child-centred, and responsive to the individual needs of my young person.&rdquo;</p>
-            <p className={styles.quoteAttribution}>Social Worker, Kent County Council. June 2026.</p>
+            <div className={styles.quoteFooter}>
+              <p className={styles.quoteAttribution}>Social Worker, Kent County Council. June 2026.</p>
+            </div>
           </div>
           <div className={styles.quoteCard}>
             <p className={styles.quoteText}>&ldquo;The home continues to go above and beyond.&rdquo;</p>
-            <p className={styles.quoteAttribution}>Independent Regulation 44 Visitor, Ivy Cottage. June 2026.</p>
+            <div className={styles.quoteFooter}>
+              <p className={styles.quoteAttribution}>Independent Regulation 44 Visitor, Ivy Cottage. June 2026.</p>
+              <div className={styles.quoteLogo}>
+                <Image src="/ofsted.png" alt="Ofsted" fill style={{ objectFit: "contain", objectPosition: "right center" }} sizes="60px" />
+              </div>
+            </div>
           </div>
           <div className={styles.quoteCard}>
             <p className={styles.quoteText}>&ldquo;I love it here.&rdquo;</p>
-            <p className={styles.quoteAttribution}>A child living at Holly Tree Cottage. June 2026. <em>(Pending approval)</em></p>
+            <div className={styles.quoteFooter}>
+              <p className={styles.quoteAttribution}>A child living at Holly Tree Cottage. June 2026. <em>(Pending approval)</em></p>
+            </div>
           </div>
         </div>
       </section>
