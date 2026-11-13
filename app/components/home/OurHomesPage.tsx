@@ -116,7 +116,7 @@ export default function OurHomesPage() {
         {HOMES.map((home, i) => (
           <article
             key={home.slug}
-            className={`${styles.card} ${i % 2 === 1 ? styles.cardReverse : ""}`}
+            className={styles.card}
           >
             {/* Roundal */}
             <div className={styles.roundalWrap}>
