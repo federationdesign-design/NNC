@@ -120,12 +120,12 @@
   gap: clamp(32px, 5vw, 72px);
 }
 
-/* Alternate: image on right */
-.cardReverse {
-  direction: rtl;
+/* Alternate: image on right — use order, not direction, to avoid alignment issues */
+.cardReverse .roundalWrap {
+  order: 2;
 }
-.cardReverse > * {
-  direction: ltr;
+.cardReverse .body {
+  order: 1;
 }
 
 /* ── ROUNDAL ── */
@@ -269,11 +269,11 @@
   .card,
   .cardReverse {
     grid-template-columns: 1fr;
-    direction: ltr;
   }
 
-  .cardReverse > * {
-    direction: ltr;
+  .cardReverse .roundalWrap,
+  .cardReverse .body {
+    order: unset;
   }
 
   .roundal {
