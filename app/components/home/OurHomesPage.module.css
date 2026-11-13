@@ -131,7 +131,11 @@
 /* ── ROUNDAL ── */
 .roundalWrap {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+}
+
+.cardReverse .roundalWrap {
+  justify-content: flex-end;
 }
 
 .roundal {
