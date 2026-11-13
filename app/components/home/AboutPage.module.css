@@ -346,8 +346,13 @@
   align-items: center;
 }
 
+.communityText { order: 1; }
+.communityPhoto { order: 2; }
+
 @media (max-width: 900px) {
   .communityLayout { grid-template-columns: 1fr; }
+  .communityText { order: 1; }
+  .communityPhoto { order: 2; }
 }
 
 .communityText p {
